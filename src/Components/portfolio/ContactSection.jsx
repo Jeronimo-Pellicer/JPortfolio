@@ -227,7 +227,7 @@ export default function ContactSection() {
 
                                         <div className="space-y-2">
                                             <label htmlFor="message" className="text-zinc-700 text-sm font-medium">{t.contact.form.message}</label>
-                                            <Textarea
+                                            <textarea
                                                 id="message"
                                                 name="message"
                                                 value={formData.message}
