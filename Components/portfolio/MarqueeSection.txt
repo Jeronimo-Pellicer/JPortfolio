@@ -1,0 +1,61 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const brands = [
+    { name: 'Topper', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/009616be5_Topper_arg_logo.png' },
+    { name: 'Naranja X', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/a3603990f_Naranja_X.png' },
+    { name: 'Kiddo', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/cb0a9597a_image.png' },
+    { name: 'Bitcoin', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/320px-Bitcoin.svg.png' },
+    { name: 'Ethereum', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/320px-Ethereum_logo_2014.svg.png' },
+];
+
+export default function MarqueeSection() {
+    // Duplicate the array to create seamless loop
+    const duplicatedBrands = [...brands, ...brands, ...brands];
+
+    return (
+        <section className="py-16 bg-zinc-900 border-y border-zinc-800/50 overflow-hidden">
+            <div className="mb-8 text-center">
+                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wide">Trusted By</h3>
+            </div>
+            
+            <div className="relative">
+                <motion.div
+                    className="flex gap-12"
+                    animate={{
+                        x: [0, -100 * brands.length],
+                    }}
+                    transition={{
+                        x: {
+                            repeat: Infinity,
+                            repeatType: "loop",
+                            duration: 30,
+                            ease: "linear",
+                        },
+                    }}
+                >
+                    {duplicatedBrands.map((brand, index) => (
+                        <motion.div
+                            key={`${brand.name}-${index}`}
+                            className="flex-shrink-0 w-32 h-16 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer group"
+                            whileHover={{ scale: 1.1 }}
+                        >
+                            <img
+                                src={brand.logo}
+                                alt={brand.name}
+                                className="max-w-full max-h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+                                style={{ filter: 'grayscale(100%)' }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.filter = 'hue-rotate(145deg) saturate(3)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.filter = 'grayscale(100%)';
+                                }}
+                            />
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
+    );
+}
