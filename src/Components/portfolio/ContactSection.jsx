@@ -186,7 +186,7 @@ export default function ContactSection() {
                                     <form onSubmit={handleSubmit} className="space-y-6">
                                         <div className="grid md:grid-cols-2 gap-6">
                                             <div className="space-y-2">
-                                                <Label htmlFor="name" className="text-zinc-700 text-sm font-medium">{t.contact.form.name}</Label>
+                                                <Label htmlFor="name" className="text-zinc-700 text-sm font-medium">{t.contact.form.name}</label>
                                                 <Input
                                                     id="name"
                                                     name="name"
@@ -198,7 +198,7 @@ export default function ContactSection() {
                                                 />
                                             </div>
                                             <div className="space-y-2">
-                                                <Label htmlFor="email" className="text-zinc-700 text-sm font-medium">{t.contact.form.email}</Label>
+                                                <label htmlFor="email" className="text-zinc-700 text-sm font-medium">{t.contact.form.email}</label>
                                                 <Input
                                                     id="email"
                                                     name="email"
@@ -213,7 +213,7 @@ export default function ContactSection() {
                                         </div>
 
                                         <div className="space-y-2">
-                                            <Label htmlFor="subject" className="text-zinc-700 text-sm font-medium">{t.contact.form.subject}</Label>
+                                            <label htmlFor="subject" className="text-zinc-700 text-sm font-medium">{t.contact.form.subject}</label>
                                             <Input
                                                 id="subject"
                                                 name="subject"
@@ -226,7 +226,7 @@ export default function ContactSection() {
                                         </div>
 
                                         <div className="space-y-2">
-                                            <Label htmlFor="message" className="text-zinc-700 text-sm font-medium">{t.contact.form.message}</Label>
+                                            <label htmlFor="message" className="text-zinc-700 text-sm font-medium">{t.contact.form.message}</label>
                                             <Textarea
                                                 id="message"
                                                 name="message"
