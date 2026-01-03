@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github, Filter } from 'lucide-react';
 import { LanguageProvider, useLanguage } from '@/Components/portfolio/LanguageContext';
 import LanguageSwitcher from '@/Components/portfolio/LanguageSwitcher';
-import { Button } from '@/components/ui/button';
 
 function ProjectsPageContent() {
     const { t } = useLanguage();
