@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { LanguageProvider, useLanguage } from './Components/portfolio/LanguageContext';
+import LanguageSwitcher from './Components/portfolio/LanguageSwitcher';
 
 function LayoutContent({ children, currentPageName }) {
     const { t, language } = useLanguage();
@@ -51,6 +52,7 @@ const handleResumeClick = () => {
 
     return (
         <div className="min-h-screen bg-zinc-950 relative">
+            <LanguageSwitcher />
             {/* Noise Texture Overlay */}
             <div 
                 className="fixed inset-0 pointer-events-none z-0"
