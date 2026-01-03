@@ -166,10 +166,9 @@ function ProjectsPageContent() {
                         <div className="flex items-center justify-center gap-2 flex-wrap">
                             <Filter className="w-4 h-4 text-slate-400 mr-2" />
                             {filters.map((filter) => (
-                                <Button
+                                <button
                                     key={filter.key}
                                     onClick={() => setActiveFilter(filter.key)}
-                                    variant={activeFilter === filter.key ? 'default' : 'outline'}
                                     className={`
                                         ${activeFilter === filter.key 
                                             ? 'bg-slate-900 text-white hover:bg-slate-800' 
@@ -178,7 +177,7 @@ function ProjectsPageContent() {
                                     `}
                                 >
                                     {filter.label}
-                                </Button>
+                                </button>
                             ))}
                         </div>
                         <div className="text-center mt-4">
