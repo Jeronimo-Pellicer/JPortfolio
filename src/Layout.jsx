@@ -5,20 +5,30 @@ import { Menu, X } from 'lucide-react';
 import { LanguageProvider, useLanguage } from './Components/portfolio/LanguageContext';
 
 function LayoutContent({ children, currentPageName }) {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     
     const navItems = [
         { label: 'ABOUT ME', href: '#about', type: 'scroll' },
         { label: 'PROJECTS', href: '#projects', type: 'scroll' },
     ];
 
-    const handleResumeClick = () => {
-        const link = document.createElement('a');
-        link.href = '/assets/resume.pdf';
-        link.download = 'CV-Jeronimo-Pellicer.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+const handleResumeClick = () => {
+    const link = document.createElement('a');
+
+    // Si el idioma es español ('es'), baja el CV en español
+    if (language === 'es') {
+        link.href = '/assets/cv-es.pdf';
+        link.download = 'CV-Jeronimo-Pellicer-ES.pdf';
+    } else {
+        // Si no, baja el CV en inglés
+        link.href = '/assets/cv-en.pdf';
+        link.download = 'CV-Jeronimo-Pellicer-EN.pdf';
+    }
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
     };
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
