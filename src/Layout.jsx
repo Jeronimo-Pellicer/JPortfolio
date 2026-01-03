@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { LanguageProvider, useLanguage } from './components/portfolio/LanguageContext';
+import { LanguageProvider, useLanguage } from './Components/portfolio/LanguageContext';
 
 function LayoutContent({ children, currentPageName }) {
     const { t } = useLanguage();
