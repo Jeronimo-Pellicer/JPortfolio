@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'; // Agregamos Outlet, useLocation y useNavigate
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { LanguageProvider, useLanguage } from './Components/portfolio/LanguageContext';
@@ -7,32 +7,62 @@ import LanguageSwitcher from './Components/portfolio/LanguageSwitcher';
 
 function LayoutContent({ children, currentPageName }) {
     const { t, language } = useLanguage();
+    const location = useLocation();
+    const navigate = useNavigate();
     
-    const navItems = [
-        { label: 'ABOUT ME', href: '#about', type: 'scroll' },
-        { label: 'PROJECTS', href: '#projects', type: 'scroll' },
-    ];
-
-const handleResumeClick = () => {
-    const link = document.createElement('a');
-
-    // Si el idioma es español ('es'), baja el CV en español
-    if (language === 'es') {
-        link.href = '/assets/cv-es.pdf';
-        link.download = 'CV-Jeronimo-Pellicer-ES.pdf';
-    } else {
-        // Si no, baja el CV en inglés
-        link.href = '/assets/cv-en.pdf';
-        link.download = 'CV-Jeronimo-Pellicer-EN.pdf';
-    }
-
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-};
-    };
+    // Hooks de estado
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const isHomePage = location.pathname === '/';
+
+    const handleNavClick = (item) => {
+        if (item.type === 'route') {
+            navigate(item.href);
+            setIsMobileMenuOpen(false);
+        } else if (item.type === 'scroll') {
+            if (isHomePage) {
+                scrollToSection(item.href);
+            } else {
+                navigate(`/${item.href}`);
+            }
+        }
+    };
+
+    const handleContactClick = () => {
+        if (isHomePage) {
+            scrollToSection('#contact');
+        } else {
+            navigate('/#contact');
+        }
+        setIsMobileMenuOpen(false);
+    };
+
+    const handleLogoClick = () => {
+        if (isHomePage) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            navigate('/');
+        }
+    };
+
+    const handleResumeClick = () => {
+        const link = document.createElement('a');
+
+        // Si el idioma es español ('es'), baja el CV en español
+        if (language === 'es') {
+            link.href = '/assets/cv-es.pdf';
+            link.download = 'CV-Jeronimo-Pellicer-ES.pdf';
+        } else {
+            // Si no, baja el CV en inglés
+            link.href = '/assets/cv-en.pdf';
+            link.download = 'CV-Jeronimo-Pellicer-EN.pdf';
+        }
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -48,7 +78,7 @@ const handleResumeClick = () => {
             element.scrollIntoView({ behavior: 'smooth' });
         }
         setIsMobileMenuOpen(false);
-    };
+    }; // <--- Esta llave faltaba antes
 
     return (
         <div className="min-h-screen bg-zinc-950 relative">
@@ -76,7 +106,7 @@ const handleResumeClick = () => {
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
                         <motion.button
-                            onClick={() => scrollToSection('#home')}
+                            onClick={handleLogoClick}
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="text-xl font-bold text-white tracking-tight relative group"
@@ -87,24 +117,44 @@ const handleResumeClick = () => {
 
                         {/* Desktop Navigation */}
                         <div className="hidden md:flex items-center gap-2">
-                            {navItems.map((item) => (
+                            {/* ABOUT ME */}
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => handleNavClick({ type: 'scroll', href: '#about' })}
+                                className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800/50 transition-all duration-300"
+                            >
+                                {t.nav.aboutMe}
+                            </motion.button>
+                            
+                            {/* PROJECTS - Link to /projects */}
+                            <Link to="/projects">
                                 <motion.button
-                                    key={item.label}
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    onClick={() => scrollToSection(item.href)}
                                     className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800/50 transition-all duration-300"
                                 >
-                                    {item.label}
+                                    {t.nav.projects}
                                 </motion.button>
-                            ))}
+                            </Link>
+                            
+                            {/* CONTACT ME */}
+                            <motion.button
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={handleContactClick}
+                                className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800/50 transition-all duration-300"
+                            >
+                                {t.nav.contactMe}
+                            </motion.button>
+                            
                             <motion.button
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={handleResumeClick}
                                 className="ml-2 px-6 py-2.5 text-sm font-medium bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg hover:from-emerald-400 hover:to-teal-400 transition-all duration-300 shadow-[0_10px_30px_rgba(52,211,153,0.4)] hover:shadow-[0_15px_40px_rgba(52,211,153,0.5)] cursor-pointer"
                             >
-                                RESUME
+                                {t.nav.resume}
                             </motion.button>
                         </div>
 
@@ -123,27 +173,44 @@ const handleResumeClick = () => {
                 <AnimatePresence>
                     {isMobileMenuOpen && (
                         <motion.div
-                              initial={{ opacity: 0, height: 0 }}
-                              animate={{ opacity: 1, height: 'auto' }}
-                              exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.3 }}
-                              className="md:hidden bg-zinc-900/60 backdrop-blur-2xl border-t border-zinc-800/50 overflow-hidden rounded-b-2xl"
-                          >
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="md:hidden bg-zinc-900/60 backdrop-blur-2xl border-t border-zinc-800/50 overflow-hidden rounded-b-2xl"
+                        >
                             <div className="container mx-auto px-6 py-6 space-y-2">
-                                {navItems.map((item) => (
+                                {/* ABOUT ME */}
+                                <button
+                                    onClick={() => handleNavClick({ type: 'scroll', href: '#about' })}
+                                    className="block w-full text-left px-4 py-3 text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors font-medium rounded-lg"
+                                >
+                                    {t.nav.aboutMe}
+                                </button>
+                                
+                                {/* PROJECTS */}
+                                <Link to="/projects" className="block">
                                     <button
-                                        key={item.label}
-                                        onClick={() => scrollToSection(item.href)}
+                                        onClick={() => setIsMobileMenuOpen(false)}
                                         className="block w-full text-left px-4 py-3 text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors font-medium rounded-lg"
                                     >
-                                        {item.label}
+                                        {t.nav.projects}
                                     </button>
-                                ))}
+                                </Link>
+                                
+                                {/* CONTACT ME */}
+                                <button
+                                    onClick={handleContactClick}
+                                    className="block w-full text-left px-4 py-3 text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors font-medium rounded-lg"
+                                >
+                                    {t.nav.contactMe}
+                                </button>
+                                
                                 <button
                                     onClick={handleResumeClick}
                                     className="w-full mt-4 px-6 py-3 text-center font-medium bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg transition-colors"
                                 >
-                                    RESUME
+                                    {t.nav.resume}
                                 </button>
                             </div>
                         </motion.div>
@@ -151,9 +218,10 @@ const handleResumeClick = () => {
                 </AnimatePresence>
             </motion.header>
 
-            {/* Main content */}
+            {/* Main content - Aquí es donde ocurre la magia */}
             <main>
-                {children}
+                {/* Usamos children O Outlet para asegurarnos que se vea el contenido */}
+                {children || <Outlet />}
             </main>
 
             {/* Footer */}
@@ -169,21 +237,47 @@ const handleResumeClick = () => {
                             </p>
                         </div>
                         <div className="flex items-center gap-6">
-                            {navItems.map((item) => (
+                            <button
+                                onClick={() => handleNavClick({ type: 'scroll', href: '#about' })}
+                                className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                            >
+                                {t.nav.aboutMe}
+                            </button>
+                            <Link to="/projects">
                                 <button
-                                    key={item.label}
-                                    onClick={() => scrollToSection(item.href)}
                                     className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
                                 >
-                                    {item.label}
+                                    {t.nav.projects}
                                 </button>
-                            ))}
+                            </Link>
+                            <button
+                                onClick={handleContactClick}
+                                className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                            >
+                                {t.nav.contactMe}
+                            </button>
                         </div>
                     </div>
-                    <div className="border-t border-zinc-800/50 mt-10 pt-8 text-center">
-                        <p className="text-zinc-600 text-sm">
-                            © {new Date().getFullYear()} Jerónimo Pellicer. All rights reserved.
-                        </p>
+                    <div className="border-t border-zinc-800/50 mt-10 pt-8">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                            <p className="text-zinc-600 text-sm">
+                                © {new Date().getFullYear()} Jerónimo Pellicer. {t.footer.copyright}
+                            </p>
+                            <Link 
+                                to="/books"
+                                className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors flex items-center gap-2 group"
+                            >
+                                <span className="font-medium">{t.footer.booksRecommend}</span>
+                                <svg 
+                                    className="w-4 h-4 group-hover:translate-x-1 transition-transform" 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </footer>

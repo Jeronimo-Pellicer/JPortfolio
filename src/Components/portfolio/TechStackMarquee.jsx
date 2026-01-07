@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from './LanguageContext';
 
 const techStack = [
     { name: 'Power BI', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/e5c3b36f9_Microsoft-Power-BI-Logo.png', category: 'Data Viz' },
@@ -17,20 +18,21 @@ const techStack = [
 ];
 
 export default function TechStackMarquee() {
+    const { t } = useLanguage();
     // Duplicate the array to create seamless loop
     const duplicatedStack = [...techStack, ...techStack, ...techStack];
 
     return (
         <section className="py-16 bg-zinc-900 border-y border-zinc-800/50 overflow-hidden">
             <div className="mb-8 text-center">
-                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wide">Tools & Technologies</h3>
+                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wide">{t.marquee.toolsTechnologies}</h3>
             </div>
             
-            <div className="relative">
+            <div className="relative overflow-hidden">
                 <motion.div
                     className="flex gap-12"
                     animate={{
-                        x: [-100 * techStack.length, 0],
+                        x: [0, -(techStack.length * (160 + 48))], // w-40 (160px) + gap-12 (48px)
                     }}
                     transition={{
                         x: {

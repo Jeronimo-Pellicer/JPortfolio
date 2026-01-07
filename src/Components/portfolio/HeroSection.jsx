@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
@@ -53,7 +54,7 @@ export default function HeroSection() {
                                     className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full"
                                 >
                                     <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                                    <span className="text-sm font-medium text-emerald-400">Available for Opportunities</span>
+                                    <span className="text-sm font-medium text-emerald-400">{t.contact.available}</span>
                                 </motion.div>
                                 
                                 <motion.div
@@ -62,10 +63,9 @@ export default function HeroSection() {
                                     transition={{ delay: 0.4, duration: 0.6, ease: [0.6, 0.05, 0.01, 0.9] }}
                                     className="inline-flex items-center gap-2 px-4 py-2 bg-zinc-800/50 border border-zinc-700/50 rounded-full"
                                 >
-                                    <span className="text-sm">📍</span>
-                                    <span className="text-sm font-medium text-zinc-400">Buenos Aires, AR (GMT-3)</span>
+                                    <span className="text-sm font-medium text-zinc-400">{t.hero.location}</span>
                                     <span className="text-zinc-600">•</span>
-                                    <span className="text-sm font-medium text-zinc-400">Open to Work</span>
+                                    <span className="text-sm font-medium text-zinc-400">{t.hero.openToWork}</span>
                                     <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                                 </motion.div>
                             </div>
@@ -78,16 +78,16 @@ export default function HeroSection() {
                             >
                                 {/* Handwritten text breaking out to the left */}
                                 <motion.span 
-                                    initial={{ opacity: 0, x: -50, rotate: -5 }}
+                                    initial={{ opacity: 0, x: -70, rotate: -5 }}
                                     animate={{ opacity: 1, x: 0, rotate: -5 }}
                                     transition={{ delay: 0.7, duration: 0.8 }}
-                                    className="absolute -left-10 -top-6 text-5xl md:text-6xl text-emerald-400 whitespace-nowrap"
+                                    className="absolute -left-10 -top-9 text-5xl md:text-6xl text-emerald-400 whitespace-nowrap"
                                     style={{ 
                                         fontFamily: "'Caveat', cursive",
                                         transformOrigin: 'left center',
                                     }}
                                 >
-                                    Hello, my name is
+                                    {t.hero.greeting}
                                 </motion.span>
                                 
                                 <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mt-16">
@@ -101,7 +101,7 @@ export default function HeroSection() {
                                 transition={{ delay: 0.9, duration: 0.8 }}
                                 className="text-lg md:text-xl text-zinc-400 mb-8 leading-relaxed max-w-2xl"
                             >
-                                I'm a <span className="text-white font-medium">Digital Business Student & UX Analyst</span> passionate about data-driven user experience optimization, SEO, and digital marketing strategies.
+                                {t.hero.subtitle} <span className="text-white font-medium">{t.hero.role}</span> {t.hero.description}
                             </motion.p>
 
                             <motion.div
@@ -110,21 +110,22 @@ export default function HeroSection() {
                                 transition={{ delay: 1.1, duration: 0.8 }}
                                 className="flex flex-wrap items-center gap-4"
                             >
-                                <motion.button
-                                    whileHover={{ scale: 1.05, y: -2 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    onClick={() => scrollToSection('projects')}
-                                    className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-2xl hover:from-emerald-400 hover:to-teal-400 transition-all duration-300 shadow-[0_10px_40px_rgba(52,211,153,0.4)] hover:shadow-[0_20px_50px_rgba(52,211,153,0.5)] cursor-pointer"
-                                >
-                                    View My Work
-                                </motion.button>
+                                <Link to="/projects">
+                                    <motion.button
+                                        whileHover={{ scale: 1.05, y: -2 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-2xl hover:from-emerald-400 hover:to-teal-400 transition-all duration-300 shadow-[0_10px_40px_rgba(52,211,153,0.4)] hover:shadow-[0_20px_50px_rgba(52,211,153,0.5)] cursor-pointer"
+                                    >
+                                        {t.hero.viewWork}
+                                    </motion.button>
+                                </Link>
                                 <motion.button
                                     whileHover={{ scale: 1.05, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => scrollToSection('contact')}
                                     className="px-8 py-4 bg-zinc-800/50 backdrop-blur-sm text-white font-medium rounded-2xl border border-zinc-700/50 hover:bg-zinc-800 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-[0_10px_30px_rgba(52,211,153,0.2)] cursor-pointer"
                                 >
-                                    Get In Touch
+                                    {t.hero.getInTouch}
                                 </motion.button>
                             </motion.div>
                         </motion.div>
@@ -144,7 +145,7 @@ export default function HeroSection() {
                             <div className="flex flex-col h-full justify-between">
                                 <div>
                                     <h3 className="text-4xl font-bold text-white mb-2">2+</h3>
-                                    <p className="text-zinc-500 text-sm">Years of Experience</p>
+                                    <p className="text-zinc-500 text-sm">{t.hero.yearsExperience}</p>
                                 </div>
                                 <div className="w-12 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full" />
                             </div>
@@ -159,7 +160,7 @@ export default function HeroSection() {
                             <div className="flex flex-col h-full justify-between">
                                 <div>
                                     <h3 className="text-4xl font-bold text-white mb-2">10+</h3>
-                                    <p className="text-zinc-500 text-sm">Projects Completed</p>
+                                    <p className="text-zinc-500 text-sm">{t.hero.projectsCompleted}</p>
                                 </div>
                                 <div className="w-12 h-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full" />
                             </div>
@@ -172,7 +173,7 @@ export default function HeroSection() {
                             transition={{ delay: 1.7, duration: 0.7, ease: [0.6, 0.05, 0.01, 0.9] }}
                             className="lg:col-span-4 bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-6 group hover:border-zinc-700/50 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/5"
                         >
-                            <p className="text-zinc-500 text-sm mb-4">Connect with me</p>
+                            <p className="text-zinc-500 text-sm mb-4">{t.hero.connectWithMe}</p>
                             <div className="flex items-center gap-3">
                                 {[
                                     { icon: Github, href: 'https://github.com/Jeronimo-Pellicer', label: 'GitHub' },

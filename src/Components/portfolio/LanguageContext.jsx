@@ -31,6 +31,11 @@ export const translations = {
             description: 'specialized in data-driven customer experience optimization and digital marketing.',
             viewWork: 'View My Work',
             getInTouch: 'Get In Touch',
+            location: 'Buenos Aires, AR (GMT-3)',
+            openToWork: 'Open to Work',
+            yearsExperience: 'Years of Experience',
+            projectsCompleted: 'Projects Completed',
+            connectWithMe: 'Connect with me',
         },
         // About Section
         about: {
@@ -54,32 +59,33 @@ export const translations = {
             heading: 'Featured Projects',
             description: 'A selection of projects that showcase my skills and passion for creating impactful digital solutions.',
             viewAll: 'View All Projects',
+            viewDetails: 'View Details',
             filter: {
                 all: 'All Projects',
-                web: 'Web Apps',
-                mobile: 'Mobile',
-                ai: 'AI/ML',
-                other: 'Other',
+                strategy: 'Strategy',
+                marketing: 'Marketing',
+                analytics: 'Analytics',
+                design: 'Design',
             },
             project1: {
-                title: 'E-Commerce Platform',
-                description: 'A full-featured online store with real-time inventory, payment processing, and an intuitive admin dashboard.',
+                title: 'Kiddo Franchising Strategy',
+                description: 'Development of a commercial expansion strategy and franchising model for a gastronomic brand, focusing on scalability and business modeling.',
             },
             project2: {
-                title: 'Task Management App',
-                description: 'Collaborative project management tool with real-time updates, drag-and-drop boards, and team analytics.',
+                title: 'Topper Mobile-First Plan',
+                description: 'Creation of a comprehensive digital marketing brief and paid media campaign planning for a leading apparel brand, specifically optimized for mobile user acquisition.',
             },
             project3: {
-                title: 'AI Content Generator',
-                description: 'Smart content creation platform leveraging AI to generate marketing copy, blog posts, and social media content.',
+                title: 'EasyTrack Financial Report',
+                description: 'Paid Media performance analysis for a personal finance (fintech) application, optimizing campaign ROI and user tracking.',
             },
             project4: {
-                title: 'Fitness Tracking App',
-                description: 'Mobile-first fitness application with workout planning, progress tracking, and personalized recommendations.',
+                title: 'Lisicki Litvin Corp Metrics',
+                description: 'Design of executive KPI Monthly Presentations and dashboards for a top-tier accounting firm to visualize operational efficiency and service metrics.',
             },
             project5: {
-                title: 'Real Estate Platform',
-                description: 'Property listing and management system with virtual tours, advanced search, and mortgage calculator.',
+                title: 'Stiberman Law SEO/SEM',
+                description: 'Strategic Digital Marketing Brief focused on SEO and SEM positioning for a US-based Bankruptcy Law Firm.',
             },
             project6: {
                 title: 'Social Media Dashboard',
@@ -149,6 +155,41 @@ export const translations = {
         footer: {
             tagline: 'Optimizing customer experiences through data and strategy',
             copyright: 'All rights reserved. Built with passion.',
+            booksRecommend: 'Books I Recommend',
+        },
+        // Marquee Sections
+        marquee: {
+            trustedBy: 'Trusted By',
+            toolsTechnologies: 'Tools & Technologies',
+        },
+        // Books Section
+        books: {
+            title: 'Books I Recommend',
+            description: 'A selection of books that have influenced my thinking about business, design, and personal development.',
+            backToHome: 'Back to Home',
+            buyOnAmazon: 'Buy on Amazon',
+            opinions: {
+                atomicHabits: 'A fundamental book on habit building. Clear explains clearly and practically how small changes can generate extraordinary results. The "1% better each day" methodology is transformative and applicable to any area of life.',
+                leanStartup: 'Revolutionary for understanding product development and startup methodology. Ries introduces key concepts like MVP and pivoting that are essential in today\'s digital world. A must-read for entrepreneurs and technology professionals.',
+                thinkingFast: 'Kahneman explores the two systems of thinking that govern our decisions. It\'s fascinating to discover how our brain makes decisions and the cognitive biases that affect us. Essential for understanding human behavior in business and design.',
+                hooked: 'Excellent for understanding how digital applications and products create habits in users. The "Hook" model is very practical for designing experiences that truly engage. Useful for both product managers and UX designers.',
+                designEveryday: 'A design classic that remains relevant. Norman explains the fundamental principles of user-centered design in an accessible way. Although some examples are old, the concepts about usability and affordances are timeless.',
+            },
+        },
+        // Project Detail
+        projectDetail: {
+            notFound: 'Project Not Found',
+            notFoundMessage: "The project you're looking for doesn't exist.",
+            backToProjects: 'Back to Projects',
+            overview: 'Project Overview',
+            technologies: 'Technologies Used',
+        },
+        // Navigation
+        nav: {
+            aboutMe: 'ABOUT ME',
+            projects: 'PROJECTS',
+            contactMe: 'CONTACT ME',
+            resume: 'RESUME',
         },
     },
     es: {
@@ -171,6 +212,11 @@ export const translations = {
             description: 'especializado en optimización de experiencia del cliente basada en datos y marketing digital.',
             viewWork: 'Ver Mi Trabajo',
             getInTouch: 'Contactar',
+            location: 'Buenos Aires, AR (GMT-3)',
+            openToWork: 'Disponible para trabajar',
+            yearsExperience: 'Años de Experiencia',
+            projectsCompleted: 'Proyectos Completados',
+            connectWithMe: 'Conéctate conmigo',
         },
         // Sección Sobre Mí
         about: {
@@ -196,30 +242,31 @@ export const translations = {
             viewAll: 'Ver Todos los Proyectos',
             filter: {
                 all: 'Todos los Proyectos',
-                web: 'Aplicaciones Web',
-                mobile: 'Móvil',
-                ai: 'IA/ML',
-                other: 'Otros',
+                strategy: 'Estrategia',
+                marketing: 'Marketing',
+                analytics: 'Analítica',
+                design: 'Diseño',
             },
+            viewDetails: 'Ver Detalles',
             project1: {
-                title: 'Plataforma E-Commerce',
-                description: 'Tienda en línea completa con inventario en tiempo real, procesamiento de pagos y panel de administración intuitivo.',
+                title: 'Kiddo Estrategia de Franquicias',
+                description: 'Desarrollo de una estrategia de expansión comercial y modelo de franquicias para una marca gastronómica, enfocada en escalabilidad y modelado de negocio.',
             },
             project2: {
-                title: 'App de Gestión de Tareas',
-                description: 'Herramienta colaborativa de gestión de proyectos con actualizaciones en tiempo real, tableros drag-and-drop y análisis de equipo.',
+                title: 'Topper Plan Mobile-First',
+                description: 'Creación de un brief integral de marketing digital y planificación de campañas de medios pagos para una marca líder de indumentaria, específicamente optimizado para adquisición de usuarios móviles.',
             },
             project3: {
-                title: 'Generador de Contenido IA',
-                description: 'Plataforma inteligente de creación de contenido aprovechando IA para generar textos de marketing, artículos de blog y contenido de redes sociales.',
+                title: 'EasyTrack Reporte Financiero',
+                description: 'Análisis de rendimiento de Paid Media para una aplicación de finanzas personales (fintech), optimizando el ROI de campañas y seguimiento de usuarios.',
             },
             project4: {
-                title: 'App de Seguimiento Fitness',
-                description: 'Aplicación fitness mobile-first con planificación de entrenamientos, seguimiento de progreso y recomendaciones personalizadas.',
+                title: 'Lisicki Litvin Corp Métricas',
+                description: 'Diseño de presentaciones ejecutivas mensuales de KPIs y dashboards para una firma contable de primer nivel para visualizar eficiencia operativa y métricas de servicio.',
             },
             project5: {
-                title: 'Plataforma Inmobiliaria',
-                description: 'Sistema de listado y gestión de propiedades con tours virtuales, búsqueda avanzada y calculadora de hipotecas.',
+                title: 'Stiberman Law SEO/SEM',
+                description: 'Brief Estratégico de Marketing Digital enfocado en posicionamiento SEO y SEM para una firma de abogados de quiebras con sede en EE.UU.',
             },
             project6: {
                 title: 'Dashboard Redes Sociales',
@@ -227,6 +274,7 @@ export const translations = {
             },
             liveDemo: 'Demo en Vivo',
             source: 'Código',
+            viewDetails: 'Ver Detalles',
         },
         // Sección Contacto
         contact: {
@@ -289,12 +337,47 @@ export const translations = {
         footer: {
             tagline: 'Optimizando experiencias del cliente a través de datos y estrategia',
             copyright: 'Todos los derechos reservados. Construido con pasión.',
+            booksRecommend: 'Libros que Recomiendo',
+        },
+        // Secciones Marquee
+        marquee: {
+            trustedBy: 'Confían en Mí',
+            toolsTechnologies: 'Herramientas y Tecnologías',
+        },
+        // Sección Libros
+        books: {
+            title: 'Libros que Recomiendo',
+            description: 'Una selección de libros que han influido en mi forma de pensar sobre negocios, diseño y desarrollo personal.',
+            backToHome: 'Volver al Inicio',
+            buyOnAmazon: 'Comprar en Amazon',
+            opinions: {
+                atomicHabits: 'Un libro fundamental sobre la construcción de hábitos. Clear explica de manera clara y práctica cómo pequeños cambios pueden generar resultados extraordinarios. La metodología de "1% mejor cada día" es transformadora y aplicable a cualquier área de la vida.',
+                leanStartup: 'Revolucionario para entender la metodología de desarrollo de productos y startups. Ries introduce conceptos clave como MVP y pivoteo que son esenciales en el mundo digital actual. Una lectura obligada para emprendedores y profesionales de tecnología.',
+                thinkingFast: 'Kahneman explora los dos sistemas de pensamiento que gobiernan nuestras decisiones. Es fascinante descubrir cómo nuestro cerebro toma decisiones y los sesgos cognitivos que nos afectan. Fundamental para entender el comportamiento humano en negocios y diseño.',
+                hooked: 'Excelente para entender cómo las aplicaciones y productos digitales crean hábitos en los usuarios. El modelo del "Hook" es muy práctico para diseñar experiencias que realmente enganchen. Útil tanto para product managers como para diseñadores UX.',
+                designEveryday: 'Un clásico del diseño que sigue siendo relevante. Norman explica los principios fundamentales del diseño centrado en el usuario de manera accesible. Aunque algunos ejemplos son antiguos, los conceptos sobre usabilidad y affordances son atemporales.',
+            },
+        },
+        // Detalle de Proyecto
+        projectDetail: {
+            notFound: 'Proyecto No Encontrado',
+            notFoundMessage: 'El proyecto que estás buscando no existe.',
+            backToProjects: 'Volver a Proyectos',
+            overview: 'Descripción del Proyecto',
+            technologies: 'Tecnologías Utilizadas',
+        },
+        // Navegación
+        nav: {
+            aboutMe: 'SOBRE MÍ',
+            projects: 'PROYECTOS',
+            contactMe: 'CONTÁCTAME',
+            resume: 'CV',
         },
     },
 };
 
 export function LanguageProvider({ children }) {
-    const [language, setLanguage] = useState('en');
+    const [language, setLanguage] = useState('es'); // Idioma por defecto: español
 
     const toggleLanguage = () => {
         setLanguage(prev => prev === 'en' ? 'es' : 'en');

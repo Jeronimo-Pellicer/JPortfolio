@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from './LanguageContext';
 
 const brands = [
     { name: 'Topper', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/009616be5_Topper_arg_logo.png' },
@@ -10,20 +11,21 @@ const brands = [
 ];
 
 export default function MarqueeSection() {
+    const { t } = useLanguage();
     // Duplicate the array to create seamless loop
     const duplicatedBrands = [...brands, ...brands, ...brands];
 
     return (
         <section className="py-16 bg-zinc-900 border-y border-zinc-800/50 overflow-hidden">
             <div className="mb-8 text-center">
-                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wide">Trusted By</h3>
+                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wide">{t.marquee.trustedBy}</h3>
             </div>
             
-            <div className="relative">
+            <div className="relative overflow-hidden">
                 <motion.div
                     className="flex gap-12"
                     animate={{
-                        x: [0, -100 * brands.length],
+                        x: [0, -(brands.length * (128 + 48))], // w-32 (128px) + gap-12 (48px)
                     }}
                     transition={{
                         x: {
