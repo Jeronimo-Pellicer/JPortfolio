@@ -1,7 +1,15 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useLanguage } from './LanguageContext';
 
 export default function ScrollReadingText({ text, className = "" }) {
+    const { language } = useLanguage();
+    
+    // Use text prop if provided, otherwise use translations
+    const displayText = text || (language === 'es' 
+        ? "Diseño experiencias de usuario basadas en datos que transforman cómo las empresas se conectan con sus audiencias. Desde la optimización de UX hasta campañas de marketing enfocadas en conversión, ayudo a las marcas a crecer con propósito y precisión."
+        : "I design data-driven user experiences that transform how businesses connect with their audiences. From UX optimization to conversion-focused marketing campaigns, I help brands grow with purpose and precision."
+    );
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -9,7 +17,7 @@ export default function ScrollReadingText({ text, className = "" }) {
     });
 
     // Split text into words
-    const words = text.split(' ');
+    const words = displayText.split(' ');
 
     return (
         <div ref={ref} className={`relative ${className}`}>

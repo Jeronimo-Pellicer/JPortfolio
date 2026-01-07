@@ -36,12 +36,31 @@ export const translations = {
             yearsExperience: 'Years of Experience',
             projectsCompleted: 'Projects Completed',
             connectWithMe: 'Connect with me',
+            dropOffRate: 'Drop-off Rate',
+            csat: 'Customer Satisfaction (CSAT)',
         },
         // About Section
         about: {
             title: 'About Me',
             heading: 'Data-Driven Customer Experience',
             subtitle: 'Empathetic professional focused on digital transformation',
+            whyTrustMe: 'Why Trust Me?',
+            trust1: {
+                title: 'Academic Excellence and Leadership in Global Initiatives',
+                description: 'Bachelor\'s in Internet Administration at UEAN, with a GPA of +8.66. Leading an optional International Finance Project and Green Bonds integration in Argentina, with projection to several congresses.',
+            },
+            trust2: {
+                title: 'International Certification, Local Strategies',
+                description: 'With certifications in Digital Marketing from The University of Manchester, I combine analytical skills with strategic thinking. I specialize in SEO, content marketing, social media strategies, and analytics, all focused on driving business success.',
+            },
+            trust3: {
+                title: 'Cutting-Edge Innovation Applied to Your Business',
+                description: 'I continuously train in new technologies, artificial intelligence, and digital tools, with a focus on their practical application for process improvement, strategic analysis, and value generation in organizations.',
+            },
+            trust4: {
+                title: 'Professional Resilience and Measurable Results',
+                description: 'I easily adapt to dynamic environments with clear goals and precise objectives. I actively seek challenges that represent opportunities for professional growth, whether through data analysis, process optimization, or digital marketing initiatives.',
+            },
             paragraph1: "I'm currently studying Digital Business Administration at UEAN while working as a Customer Experience Analyst at Estudio Notarial Castro. I led the optimization of the client service system through data analysis, reducing response times and improving satisfaction in high-confidentiality critical procedures.",
             paragraph2: 'With certifications in Digital Marketing from The University of Manchester, I combine analytical skills with strategic thinking. I specialize in SEO, content marketing, social media strategies, and analytics, all focused on driving business success.',
             paragraph3: 'I thrive in dynamic environments with clear goals and precise objectives. I actively seek challenges that represent opportunities for professional growth, whether through data analysis, process optimization, or digital marketing initiatives.',
@@ -170,10 +189,9 @@ export const translations = {
             buyOnAmazon: 'Buy on Amazon',
             opinions: {
                 atomicHabits: 'A fundamental book on habit building. Clear explains clearly and practically how small changes can generate extraordinary results. The "1% better each day" methodology is transformative and applicable to any area of life.',
-                leanStartup: 'Revolutionary for understanding product development and startup methodology. Ries introduces key concepts like MVP and pivoting that are essential in today\'s digital world. A must-read for entrepreneurs and technology professionals.',
+                thinkingSystems: 'A masterpiece on systems thinking. Meadows provides a comprehensive framework for understanding complex systems and how to intervene effectively. Essential for anyone working with organizational change, policy, or complex problems.',
                 thinkingFast: 'Kahneman explores the two systems of thinking that govern our decisions. It\'s fascinating to discover how our brain makes decisions and the cognitive biases that affect us. Essential for understanding human behavior in business and design.',
-                hooked: 'Excellent for understanding how digital applications and products create habits in users. The "Hook" model is very practical for designing experiences that truly engage. Useful for both product managers and UX designers.',
-                designEveryday: 'A design classic that remains relevant. Norman explains the fundamental principles of user-centered design in an accessible way. Although some examples are old, the concepts about usability and affordances are timeless.',
+                juegoVida: 'Una obra profunda sobre estrategia, toma de decisiones y pensamiento sistémico aplicado a la vida personal y profesional. Llovet ofrece insights valiosos sobre cómo navegar la complejidad del mundo moderno.',
             },
         },
         // Project Detail
@@ -190,6 +208,37 @@ export const translations = {
             projects: 'PROJECTS',
             contactMe: 'CONTACT ME',
             resume: 'RESUME',
+            tools: 'TOOLS',
+            resources: 'RESOURCES',
+        },
+        // Tools Page
+        tools: {
+            heading: 'TOOLS',
+            description: 'Professional tools to optimize your digital and marketing strategies.',
+            roi: {
+                title: 'ROI Calculator for Digital Campaigns',
+                description: 'Calculate return on investment, CPA and projections for your digital campaigns.',
+            },
+            persona: {
+                title: 'Buyer Persona Generator',
+                description: 'Create detailed buyer persona profiles and generate downloadable PDFs.',
+            },
+            matrix: {
+                title: 'Prioritization Matrix (Impact vs Effort)',
+                description: 'Organize tasks in a visual impact vs effort matrix.',
+            },
+            quiz: {
+                title: 'Quiz: How optimized is your digital strategy?',
+                description: 'Evaluate your digital strategy with 8-10 questions and get personalized recommendations.',
+            },
+        },
+        // Resources Page
+        resources: {
+            heading: 'RESOURCES',
+            description: 'Templates, guides and infographics to boost your digital strategy.',
+            templates: 'TEMPLATES',
+            guides: 'PDF GUIDES',
+            infographics: 'INFOGRAPHICS',
         },
     },
     es: {
@@ -217,12 +266,31 @@ export const translations = {
             yearsExperience: 'Años de Experiencia',
             projectsCompleted: 'Proyectos Completados',
             connectWithMe: 'Conéctate conmigo',
+            dropOffRate: 'Tasa de Abandono',
+            csat: 'Satisfacción CSAT',
         },
         // Sección Sobre Mí
         about: {
             title: 'Sobre Mí',
             heading: 'Experiencia del Cliente Basada en Datos',
             subtitle: 'Profesional empático enfocado en la transformación digital',
+            whyTrustMe: '¿Por qué confiar en mí?',
+            trust1: {
+                title: 'Excelencia académica y liderazgo en iniciativas globales',
+                description: 'Licenciatura en Administración en Internet en UEAN, con promedio de +8,66. Liderando un Proyecto facultativo de Finanzas Internacionales e inserción de Green Bonds en Argentina, con proyección a varios congresos.',
+            },
+            trust2: {
+                title: 'Certificación internacional, estrategias locales',
+                description: 'Con certificaciones en Marketing Digital de The University of Manchester, combino habilidades analíticas con pensamiento estratégico. Me especializo en SEO, marketing de contenido, estrategias en redes sociales y analítica, todo enfocado en impulsar el éxito empresarial.',
+            },
+            trust3: {
+                title: 'Innovación de vanguardia aplicada a tu negocio',
+                description: 'Me capacito de manera permanente en nuevas tecnologías, inteligencia artificial y herramientas digitales, con foco en su aplicación práctica para la mejora de procesos, el análisis estratégico y la generación de valor en organizaciones.',
+            },
+            trust4: {
+                title: 'Resiliencia profesional y resultados medibles',
+                description: 'Me adapto fácilmente a entornos dinámicos con metas claras y objetivos precisos. Busco activamente desafíos que representen oportunidades de crecimiento profesional, ya sea mediante análisis de datos, optimización de procesos o iniciativas de marketing digital.',
+            },
             paragraph1: 'Actualmente estudio Licenciatura en Administración en Internet en UEAN mientras trabajo como Analista de Experiencia del Cliente en Estudio Notarial Castro. Lideré la optimización del sistema de atención mediante análisis de datos, reduciendo tiempos de respuesta y mejorando la satisfacción en trámites críticos de alta confidencialidad.',
             paragraph2: 'Con certificaciones en Marketing Digital de The University of Manchester, combino habilidades analíticas con pensamiento estratégico. Me especializo en SEO, marketing de contenido, estrategias en redes sociales y analítica, todo enfocado en impulsar el éxito empresarial.',
             paragraph3: 'Me adapto fácilmente a entornos dinámicos con metas claras y objetivos precisos. Busco activamente desafíos que representen oportunidades de crecimiento profesional, ya sea mediante análisis de datos, optimización de procesos o iniciativas de marketing digital.',
@@ -352,10 +420,9 @@ export const translations = {
             buyOnAmazon: 'Comprar en Amazon',
             opinions: {
                 atomicHabits: 'Un libro fundamental sobre la construcción de hábitos. Clear explica de manera clara y práctica cómo pequeños cambios pueden generar resultados extraordinarios. La metodología de "1% mejor cada día" es transformadora y aplicable a cualquier área de la vida.',
-                leanStartup: 'Revolucionario para entender la metodología de desarrollo de productos y startups. Ries introduce conceptos clave como MVP y pivoteo que son esenciales en el mundo digital actual. Una lectura obligada para emprendedores y profesionales de tecnología.',
+                thinkingSystems: 'Una obra maestra sobre pensamiento sistémico. Meadows proporciona un marco comprensivo para entender sistemas complejos y cómo intervenir efectivamente. Esencial para cualquiera que trabaje con cambio organizacional, políticas o problemas complejos.',
                 thinkingFast: 'Kahneman explora los dos sistemas de pensamiento que gobiernan nuestras decisiones. Es fascinante descubrir cómo nuestro cerebro toma decisiones y los sesgos cognitivos que nos afectan. Fundamental para entender el comportamiento humano en negocios y diseño.',
-                hooked: 'Excelente para entender cómo las aplicaciones y productos digitales crean hábitos en los usuarios. El modelo del "Hook" es muy práctico para diseñar experiencias que realmente enganchen. Útil tanto para product managers como para diseñadores UX.',
-                designEveryday: 'Un clásico del diseño que sigue siendo relevante. Norman explica los principios fundamentales del diseño centrado en el usuario de manera accesible. Aunque algunos ejemplos son antiguos, los conceptos sobre usabilidad y affordances son atemporales.',
+                juegoVida: 'Una obra profunda sobre estrategia, toma de decisiones y pensamiento sistémico aplicado a la vida personal y profesional. Llovet ofrece insights valiosos sobre cómo navegar la complejidad del mundo moderno.',
             },
         },
         // Detalle de Proyecto
@@ -372,6 +439,37 @@ export const translations = {
             projects: 'PROYECTOS',
             contactMe: 'CONTÁCTAME',
             resume: 'CV',
+            tools: 'HERRAMIENTAS',
+            resources: 'RECURSOS',
+        },
+        // Página Herramientas
+        tools: {
+            heading: 'HERRAMIENTAS',
+            description: 'Herramientas profesionales para optimizar tus estrategias digitales y de marketing.',
+            roi: {
+                title: 'Calculadora de ROI para Campañas Digitales',
+                description: 'Calcula el retorno de inversión, CPA y proyecciones para tus campañas digitales.',
+            },
+            persona: {
+                title: 'Generador de Buyer Persona',
+                description: 'Crea perfiles detallados de buyer persona y genera PDFs descargables.',
+            },
+            matrix: {
+                title: 'Matriz de Priorización (Impacto vs Esfuerzo)',
+                description: 'Organiza tareas en una matriz visual de impacto vs esfuerzo.',
+            },
+            quiz: {
+                title: 'Quiz: ¿Qué tan optimizada está tu estrategia digital?',
+                description: 'Evalúa tu estrategia digital con 8-10 preguntas y obtén recomendaciones personalizadas.',
+            },
+        },
+        // Página Recursos
+        resources: {
+            heading: 'RECURSOS',
+            description: 'Templates, guías e infografías para potenciar tu estrategia digital.',
+            templates: 'TEMPLATES',
+            guides: 'GUÍAS EN PDF',
+            infographics: 'INFOGRAFÍAS',
         },
     },
 };

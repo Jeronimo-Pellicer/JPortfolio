@@ -6,6 +6,8 @@ import Layout from './Layout'; // Asegúrate de que se llame Layout.jsx
 import Projects from './Pages/Projects';
 import ProjectDetail from './Pages/ProjectDetail';
 import Books from './Pages/Books';
+import Herramientas from './Pages/Herramientas';
+import Recursos from './Pages/Recursos';
 import HeroSection from './Components/portfolio/HeroSection';
 import AboutSection from './Components/portfolio/AboutSection';
 import ContactSection from './Components/portfolio/ContactSection';
@@ -50,6 +52,8 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:projectId" element={<ProjectDetail />} />
           <Route path="/books" element={<Books />} />
+          <Route path="/herramientas" element={<Herramientas />} />
+          <Route path="/recursos" element={<Recursos />} />
         </Routes>
       </Layout>
     </BrowserRouter>

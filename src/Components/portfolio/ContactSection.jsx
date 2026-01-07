@@ -4,13 +4,13 @@ import { Send, Mail, MapPin, Phone, Github, Linkedin, Twitter, CheckCircle } fro
 import { useLanguage } from './LanguageContext';
 
 const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Github, href: 'https://github.com/Jeronimo-Pellicer', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/jeronimopellicer/', label: 'LinkedIn' },
+    { icon: Mail, href: 'mailto:pellicerjeronimo@gmail.com', label: 'Email' },
 ];
 
 export default function ContactSection() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     
     // Simplificamos la info para mostrarla en rejilla de texto
     const contactInfo = [
@@ -43,7 +43,7 @@ export default function ContactSection() {
     };
 
     return (
-        <section id="contact" className="py-20 lg:py-32 bg-zinc-950 relative overflow-hidden">
+        <section id="contact" className="py-20 lg:py-32 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
             <div className="container mx-auto px-6 lg:px-12 relative z-10">
                 
                 <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -58,9 +58,13 @@ export default function ContactSection() {
                     >
                         <div>
                             <span className="text-zinc-500 text-sm font-medium tracking-wider uppercase mb-4 block">/ {t.contact.title} /</span>
-                            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
+                            <motion.h2 
+                                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
+                                whileHover={{ scale: 1.02 }}
+                                transition={{ duration: 0.3 }}
+                            >
                                 {t.contact.heading}
-                            </h2>
+                            </motion.h2>
                             <p className="text-zinc-400 text-lg leading-relaxed max-w-md">
                                 {t.contact.description}
                             </p>
@@ -89,13 +93,38 @@ export default function ContactSection() {
                                         <a 
                                             key={item.label}
                                             href={item.href}
-                                            className="text-zinc-400 hover:text-white transition-colors hover:scale-110 transform duration-200"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-zinc-400 hover:text-emerald-400 transition-colors hover:scale-110 transform duration-200"
+                                            aria-label={item.label}
                                         >
                                             <item.icon className="w-6 h-6" />
                                         </a>
                                     ))}
                                 </div>
                             </div>
+                            
+                            {/* CV Download Button - Single CTA */}
+                            <motion.button
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => {
+                                    const link = document.createElement('a');
+                                    if (language === 'es') {
+                                        link.href = '/assets/cv-es.pdf';
+                                        link.download = 'CV-Jeronimo-Pellicer-ES.pdf';
+                                    } else {
+                                        link.href = '/assets/cv-en.pdf';
+                                        link.download = 'CV-Jeronimo-Pellicer-EN.pdf';
+                                    }
+                                    document.body.appendChild(link);
+                                    link.click();
+                                    document.body.removeChild(link);
+                                }}
+                                className="mt-8 w-full px-6 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-xl hover:from-emerald-400 hover:to-teal-400 transition-all duration-300 shadow-[0_10px_30px_rgba(52,211,153,0.4)] hover:shadow-[0_15px_40px_rgba(52,211,153,0.5)] cursor-pointer"
+                            >
+                                {t.nav.resume}
+                            </motion.button>
                         </div>
                     </motion.div>
 

@@ -1,9 +1,101 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'; // Agregamos Outlet, useLocation y useNavigate
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { LanguageProvider, useLanguage } from './Components/portfolio/LanguageContext';
 import LanguageSwitcher from './Components/portfolio/LanguageSwitcher';
+
+// NavButton Component with circular multicolor stroke on hover
+function NavButton({ onClick, label }) {
+    return (
+        <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={onClick}
+            className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800/50 transition-all duration-300 relative group"
+        >
+            <span className="relative z-10">{label}</span>
+            <motion.div
+                className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none"
+                style={{
+                    background: 'linear-gradient(90deg, #10b981, #14b8a6, #06b6d4, #3b82f6, #8b5cf6, #ec4899, #f59e0b, #10b981)',
+                    backgroundSize: '400% 400%',
+                    animation: 'gradientMove 3s ease infinite',
+                    borderRadius: '0.5rem',
+                    padding: '2px',
+                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                    WebkitMaskComposite: 'xor',
+                    maskComposite: 'exclude',
+                }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileHover={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3 }}
+            />
+        </motion.button>
+    );
+}
+
+// NavDropdown Component
+function NavDropdown({ label, items }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
+
+    return (
+        <div 
+            className="relative"
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
+        >
+            <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800/50 transition-all duration-300 relative group flex items-center gap-1"
+            >
+                <span className="relative z-10">{label}</span>
+                <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                <motion.div
+                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none"
+                    style={{
+                        background: 'linear-gradient(90deg, #10b981, #14b8a6, #06b6d4, #3b82f6, #8b5cf6, #ec4899, #f59e0b, #10b981)',
+                        backgroundSize: '400% 400%',
+                        animation: 'gradientMove 3s ease infinite',
+                        borderRadius: '0.5rem',
+                        padding: '2px',
+                        WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                        WebkitMaskComposite: 'xor',
+                        maskComposite: 'exclude',
+                    }}
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    whileHover={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                />
+            </motion.button>
+            
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute top-full left-0 mt-2 bg-zinc-900/95 backdrop-blur-xl border border-zinc-800/50 rounded-xl overflow-hidden min-w-[200px] shadow-2xl z-50"
+                    >
+                        {items.map((item, index) => (
+                            <Link
+                                key={index}
+                                to={item.href}
+                                onClick={() => setIsOpen(false)}
+                                className="block px-4 py-3 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors"
+                            >
+                                {item.label}
+                            </Link>
+                        ))}
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
+    );
+}
 
 function LayoutContent({ children, currentPageName }) {
     const { t, language } = useLanguage();
@@ -102,7 +194,14 @@ function LayoutContent({ children, currentPageName }) {
                         : 'bg-zinc-900/20 backdrop-blur-xl border border-zinc-800/30'
                 } rounded-2xl`}
             >
-                <nav className="container mx-auto px-6">
+                <style>{`
+                    @keyframes gradientMove {
+                        0% { background-position: 0% 50%; }
+                        50% { background-position: 100% 50%; }
+                        100% { background-position: 0% 50%; }
+                    }
+                `}</style>
+                <nav className="container mx-auto px-6 relative z-10">
                     <div className="flex items-center justify-between h-16">
                         {/* Logo */}
                         <motion.button
@@ -116,46 +215,48 @@ function LayoutContent({ children, currentPageName }) {
                         </motion.button>
 
                         {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center gap-2">
+                        <div className="hidden md:flex items-center gap-2 relative z-10">
                             {/* ABOUT ME */}
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                            <NavButton
                                 onClick={() => handleNavClick({ type: 'scroll', href: '#about' })}
-                                className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800/50 transition-all duration-300"
-                            >
-                                {t.nav.aboutMe}
-                            </motion.button>
+                                label={t.nav.aboutMe}
+                            />
                             
                             {/* PROJECTS - Link to /projects */}
-                            <Link to="/projects">
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800/50 transition-all duration-300"
-                                >
-                                    {t.nav.projects}
-                                </motion.button>
-                            </Link>
+                            <NavButton
+                                onClick={() => {
+                                    navigate('/projects');
+                                    window.scrollTo({ top: 0, behavior: 'instant' });
+                                }}
+                                label={t.nav.projects}
+                            />
+                            
+                            {/* HERRAMIENTAS with dropdown */}
+                            <NavDropdown
+                                label={t.nav.tools || 'HERRAMIENTAS'}
+                                items={[
+                                    { label: 'Calculadora de ROI', href: '/herramientas#roi' },
+                                    { label: 'Generador de Buyer Persona', href: '/herramientas#persona' },
+                                    { label: 'Matriz de Priorización', href: '/herramientas#matrix' },
+                                    { label: 'Quiz de Estrategia Digital', href: '/herramientas#quiz' },
+                                ]}
+                            />
+                            
+                            {/* RECURSOS with dropdown */}
+                            <NavDropdown
+                                label={t.nav.resources || 'RECURSOS'}
+                                items={[
+                                    { label: 'Templates', href: '/recursos#templates' },
+                                    { label: 'Guías en PDF', href: '/recursos#guides' },
+                                    { label: 'Infografías', href: '/recursos#infographics' },
+                                ]}
+                            />
                             
                             {/* CONTACT ME */}
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                            <NavButton
                                 onClick={handleContactClick}
-                                className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800/50 transition-all duration-300"
-                            >
-                                {t.nav.contactMe}
-                            </motion.button>
-                            
-                            <motion.button
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={handleResumeClick}
-                                className="ml-2 px-6 py-2.5 text-sm font-medium bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg hover:from-emerald-400 hover:to-teal-400 transition-all duration-300 shadow-[0_10px_30px_rgba(52,211,153,0.4)] hover:shadow-[0_15px_40px_rgba(52,211,153,0.5)] cursor-pointer"
-                            >
-                                {t.nav.resume}
-                            </motion.button>
+                                label={t.nav.contactMe}
+                            />
                         </div>
 
                         {/* Mobile menu button */}
@@ -191,10 +292,33 @@ function LayoutContent({ children, currentPageName }) {
                                 {/* PROJECTS */}
                                 <Link to="/projects" className="block">
                                     <button
-                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        onClick={() => {
+                                            setIsMobileMenuOpen(false);
+                                            window.scrollTo({ top: 0, behavior: 'instant' });
+                                        }}
                                         className="block w-full text-left px-4 py-3 text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors font-medium rounded-lg"
                                     >
                                         {t.nav.projects}
+                                    </button>
+                                </Link>
+                                
+                                {/* HERRAMIENTAS */}
+                                <Link to="/herramientas" className="block">
+                                    <button
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block w-full text-left px-4 py-3 text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors font-medium rounded-lg"
+                                    >
+                                        {t.nav.tools || 'HERRAMIENTAS'}
+                                    </button>
+                                </Link>
+                                
+                                {/* RECURSOS */}
+                                <Link to="/recursos" className="block">
+                                    <button
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block w-full text-left px-4 py-3 text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors font-medium rounded-lg"
+                                    >
+                                        {t.nav.resources || 'RECURSOS'}
                                     </button>
                                 </Link>
                                 
@@ -204,13 +328,6 @@ function LayoutContent({ children, currentPageName }) {
                                     className="block w-full text-left px-4 py-3 text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors font-medium rounded-lg"
                                 >
                                     {t.nav.contactMe}
-                                </button>
-                                
-                                <button
-                                    onClick={handleResumeClick}
-                                    className="w-full mt-4 px-6 py-3 text-center font-medium bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg transition-colors"
-                                >
-                                    {t.nav.resume}
                                 </button>
                             </div>
                         </motion.div>

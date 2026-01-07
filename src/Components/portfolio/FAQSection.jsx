@@ -13,7 +13,7 @@ export default function FAQSection() {
     };
 
     return (
-        <section id="insights" className="py-32 bg-zinc-950 relative overflow-hidden">
+        <section id="insights" className="py-32 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
             {/* Schema.org JSON-LD for SEO */}
             <script 
                 type="application/ld+json"

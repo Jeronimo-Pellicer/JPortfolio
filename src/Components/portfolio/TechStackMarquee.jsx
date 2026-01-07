@@ -23,10 +23,22 @@ export default function TechStackMarquee() {
     const duplicatedStack = [...techStack, ...techStack, ...techStack];
 
     return (
-        <section className="py-16 bg-zinc-900 border-y border-zinc-800/50 overflow-hidden">
-            <div className="mb-8 text-center">
-                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wide">{t.marquee.toolsTechnologies}</h3>
-            </div>
+        <section className="py-16 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border-y border-zinc-800/50 overflow-hidden">
+            <motion.div 
+                className="mb-8 text-center"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+            >
+                <motion.h3 
+                    className="text-sm font-semibold text-zinc-500 uppercase tracking-wide"
+                    whileHover={{ scale: 1.05, color: '#10b981' }}
+                    transition={{ duration: 0.3 }}
+                >
+                    {t.marquee.toolsTechnologies}
+                </motion.h3>
+            </motion.div>
             
             <div className="relative overflow-hidden">
                 <motion.div
@@ -46,19 +58,19 @@ export default function TechStackMarquee() {
                     {duplicatedStack.map((tech, index) => (
                         <motion.div
                             key={`${tech.name}-${index}`}
-                            className="flex-shrink-0 w-40 flex flex-col items-center justify-center gap-3 cursor-pointer group"
+                            className="flex-shrink-0 w-40 flex flex-col items-center justify-center gap-3 cursor-pointer group relative"
                             whileHover={{ scale: 1.1 }}
                         >
-                            <div className="w-20 h-20 rounded-2xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center group-hover:border-emerald-400/50 group-hover:bg-zinc-800 transition-all duration-300 p-3">
+                            <div className="w-20 h-20 rounded-2xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center group-hover:border-emerald-400/50 group-hover:bg-zinc-800 transition-all duration-300 p-3 overflow-visible">
                                 <img 
                                     src={tech.logo} 
                                     alt={tech.name}
                                     className="w-full h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all duration-300"
                                 />
                             </div>
-                            <div className="text-center">
-                                <p className="text-sm font-medium text-white">{tech.name}</p>
-                                <p className="text-xs text-zinc-500">{tech.category}</p>
+                            <div className="text-center w-full">
+                                <p className="text-sm font-medium text-white whitespace-nowrap">{tech.name}</p>
+                                <p className="text-xs text-zinc-500 whitespace-nowrap">{tech.category}</p>
                             </div>
                         </motion.div>
                     ))}

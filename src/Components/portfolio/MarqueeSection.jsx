@@ -16,10 +16,22 @@ export default function MarqueeSection() {
     const duplicatedBrands = [...brands, ...brands, ...brands];
 
     return (
-        <section className="py-16 bg-zinc-900 border-y border-zinc-800/50 overflow-hidden">
-            <div className="mb-8 text-center">
-                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wide">{t.marquee.trustedBy}</h3>
-            </div>
+        <section className="py-16 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border-y border-zinc-800/50 overflow-hidden">
+            <motion.div 
+                className="mb-8 text-center"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+            >
+                <motion.h3 
+                    className="text-sm font-semibold text-zinc-500 uppercase tracking-wide"
+                    whileHover={{ scale: 1.05, color: '#10b981' }}
+                    transition={{ duration: 0.3 }}
+                >
+                    {t.marquee.trustedBy}
+                </motion.h3>
+            </motion.div>
             
             <div className="relative overflow-hidden">
                 <motion.div

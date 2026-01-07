@@ -20,7 +20,7 @@ export default function AboutSection() {
     ];
     
     return (
-        <section id="about" className="py-32 bg-zinc-950 relative overflow-hidden">
+        <section id="about" className="py-32 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
             {/* Background effects */}
             <div className="absolute inset-0">
                 <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl" />
@@ -49,7 +49,8 @@ export default function AboutSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
-                            className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6"
+                            whileHover={{ scale: 1.02 }}
+                            className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6 cursor-default"
                         >
                             {t.about.heading}
                         </motion.h2>
@@ -71,78 +72,102 @@ export default function AboutSection() {
                         className="mb-20"
                     >
                         <ScrollReadingText 
-                            text="I design data-driven user experiences that transform how businesses connect with their audiences. From UX optimization to conversion-focused marketing campaigns, I help brands grow with purpose and precision."
                             className="leading-tight"
                         />
                     </motion.div>
 
-                    {/* Bento Grid About Content */}
-                    <div className="grid lg:grid-cols-12 gap-6 mb-16">
-                        {/* Large text card */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="lg:col-span-8 bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-8 lg:p-12 group hover:border-zinc-700/50 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/5"
-                        >
-                            <h3 className="text-2xl md:text-3xl font-semibold text-white mb-6">
-                                {t.about.subtitle}
-                            </h3>
-                            <div className="space-y-4 text-zinc-400 leading-relaxed">
-                                <p>{t.about.paragraph1}</p>
-                                <p>{t.about.paragraph2}</p>
-                                <p>{t.about.paragraph3}</p>
-                            </div>
-                        </motion.div>
+                    {/* Why Trust Me Section - Asymmetric, Minimalist Cards */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="mb-16"
+                    >
+                        <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-12 text-center">
+                            {t.about.whyTrustMe || 'Por qué confiar en mí?'}
+                        </h3>
+                        
+                        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+                            {[
+                                {
+                                    title: t.about.trust1?.title || 'Excelencia académica y liderazgo en iniciativas globales',
+                                    description: t.about.trust1?.description || 'Licenciatura en Administración en Internet en UEAN, con promedio de +8,66. Liderando un Proyecto facultativo de Finanzas Internacionales e inserción de Green Bonds en Argentina, con proyección a varios congresos.',
+                                    bgStyle: 'bg-gradient-to-br from-emerald-500/10 via-transparent to-teal-500/10',
+                                    borderStyle: 'border-l-4 border-emerald-400',
+                                    position: 'md:col-span-1',
+                                    rotation: 'rotate-1',
+                                },
+                                {
+                                    title: t.about.trust2?.title || 'Certificación internacional, estrategias locales',
+                                    description: t.about.trust2?.description || 'Con certificaciones en Marketing Digital de The University of Manchester, combino habilidades analíticas con pensamiento estratégico. Me especializo en SEO, marketing de contenido, estrategias en redes sociales y analítica, todo enfocado en impulsar el éxito empresarial.',
+                                    bgStyle: 'bg-gradient-to-tr from-blue-500/10 via-purple-500/10 to-pink-500/10',
+                                    borderStyle: 'border-t-4 border-blue-400',
+                                    position: 'md:col-span-1',
+                                    rotation: '-rotate-1',
+                                },
+                                {
+                                    title: t.about.trust3?.title || 'Innovación de vanguardia aplicada a tu negocio',
+                                    description: t.about.trust3?.description || 'Me capacito de manera permanente en nuevas tecnologías, inteligencia artificial y herramientas digitales, con foco en su aplicación práctica para la mejora de procesos, el análisis estratégico y la generación de valor en organizaciones.',
+                                    bgStyle: 'bg-gradient-to-bl from-yellow-500/10 via-orange-500/10 to-red-500/10',
+                                    borderStyle: 'border-r-4 border-yellow-400',
+                                    position: 'md:col-span-2',
+                                    rotation: 'rotate-0.5',
+                                },
+                                {
+                                    title: t.about.trust4?.title || 'Resiliencia profesional y resultados medibles',
+                                    description: t.about.trust4?.description || 'Me adapto fácilmente a entornos dinámicos con metas claras y objetivos precisos. Busco activamente desafíos que representen oportunidades de crecimiento profesional, ya sea mediante análisis de datos, optimización de procesos o iniciativas de marketing digital.',
+                                    bgStyle: 'bg-gradient-to-tl from-cyan-500/10 via-indigo-500/10 to-violet-500/10',
+                                    borderStyle: 'border-b-4 border-cyan-400',
+                                    position: 'md:col-span-1 md:row-span-2',
+                                    rotation: '-rotate-0.5',
+                                },
+                            ].map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                                    whileHover={{ y: -8, scale: 1.02 }}
+                                    className={`${item.position} ${item.bgStyle} ${item.borderStyle} ${item.rotation} backdrop-blur-xl rounded-3xl p-8 lg:p-12 group hover:shadow-2xl hover:shadow-emerald-500/10 transition-all duration-500 border border-zinc-800/30`}
+                                >
+                                    <h4 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 group-hover:text-emerald-400 transition-colors leading-tight">
+                                        {item.title}
+                                    </h4>
+                                    <p className="text-zinc-300 leading-relaxed text-base md:text-lg">
+                                        {item.description}
+                                    </p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
 
-                        {/* Profile image card with parallax */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 40 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            className="lg:col-span-4 bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl overflow-hidden group hover:border-zinc-700/50 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/5"
-                        >
-                            <div className="aspect-square relative overflow-hidden">
-                                <motion.img 
-                                    whileHover={{ scale: 1.1, rotateZ: 2 }}
-                                    transition={{ duration: 0.6, ease: "easeOut" }}
-                                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/2730eb946_ProfilePhoto.jpg"
-                                    alt="Jerónimo Pellicer"
-                                    className="w-full h-full object-cover object-top"
-                                    style={{ objectPosition: 'center 15%' }}
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-60" />
-                            </div>
-                        </motion.div>
-
-                        {/* Technologies card */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.3 }}
-                            className="lg:col-span-12 bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-8 group hover:border-zinc-700/50 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/5"
-                        >
-                            <p className="text-sm font-medium text-emerald-400 mb-6 uppercase tracking-wide">{t.about.techLabel}</p>
-                            <div className="flex flex-wrap gap-3">
-                                {technologies.map((tech, index) => (
-                                    <motion.span
-                                        key={tech}
-                                        initial={{ opacity: 0, scale: 0.8 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        viewport={{ once: true }}
-                                        transition={{ delay: 0.05 * index }}
-                                        whileHover={{ scale: 1.1, y: -2 }}
-                                        className="px-4 py-2 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 text-zinc-300 text-sm font-medium rounded-xl hover:border-emerald-500/30 hover:text-emerald-400 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300 cursor-default"
-                                    >
-                                        {tech}
-                                    </motion.span>
-                                ))}
-                            </div>
-                        </motion.div>
-                    </div>
+                    {/* Technologies card */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                        className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-8 group hover:border-zinc-700/50 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/5 mb-16"
+                    >
+                        <p className="text-sm font-medium text-emerald-400 mb-6 uppercase tracking-wide">{t.about.techLabel}</p>
+                        <div className="flex flex-wrap gap-3">
+                            {technologies.map((tech, index) => (
+                                <motion.span
+                                    key={tech}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: 0.05 * index }}
+                                    whileHover={{ scale: 1.1, y: -2 }}
+                                    className="px-4 py-2 bg-zinc-800/50 backdrop-blur-sm border border-zinc-700/50 text-zinc-300 text-sm font-medium rounded-xl hover:border-emerald-500/30 hover:text-emerald-400 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300 cursor-default"
+                                >
+                                    {tech}
+                                </motion.span>
+                            ))}
+                        </div>
+                    </motion.div>
 
                     {/* Skills grid - 4 cards */}
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

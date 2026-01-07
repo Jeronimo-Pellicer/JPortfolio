@@ -18,13 +18,13 @@ function getBooks(t) {
         },
         {
             id: 2,
-            title: 'The Lean Startup',
-            author: 'Eric Ries',
-            publisher: 'Crown Business',
+            title: 'Thinking in Systems',
+            author: 'Donatella Meadows',
+            publisher: 'Chelsea Green Publishing',
             rating: 5,
-            amazonUrl: 'https://www.amazon.com/Lean-Startup-Entrepreneurs-Continuous-Innovation/dp/0307887898',
-            opinionKey: 'leanStartup',
-            image: 'https://images-na.ssl-images-amazon.com/images/I/81-QB7nDh4L.jpg'
+            amazonUrl: 'https://www.amazon.com/Thinking-Systems-Donella-H-Meadows/dp/1603580557',
+            opinionKey: 'thinkingSystems',
+            image: 'https://images-na.ssl-images-amazon.com/images/I/71T5h3vL5FL.jpg'
         },
         {
             id: 3,
@@ -38,23 +38,13 @@ function getBooks(t) {
         },
         {
             id: 4,
-            title: 'Hooked: How to Build Habit-Forming Products',
-            author: 'Nir Eyal',
-            publisher: 'Portfolio',
-            rating: 4.5,
-            amazonUrl: 'https://www.amazon.com/Hooked-How-Build-Habit-Forming-Products/dp/1591847788',
-            opinionKey: 'hooked',
-            image: 'https://images-na.ssl-images-amazon.com/images/I/81zD0dVEuUL.jpg'
-        },
-        {
-            id: 5,
-            title: 'The Design of Everyday Things',
-            author: 'Don Norman',
-            publisher: 'Basic Books',
-            rating: 4,
-            amazonUrl: 'https://www.amazon.com/Design-Everyday-Things-Revised-Expanded/dp/0465050654',
-            opinionKey: 'designEveryday',
-            image: 'https://images-na.ssl-images-amazon.com/images/I/81zpLhP1gvL.jpg'
+            title: 'El Juego De La Vida',
+            author: 'Horacio Llovet',
+            publisher: 'Editorial Planeta',
+            rating: 5,
+            amazonUrl: 'https://www.amazon.com/s?k=El+Juego+De+La+Vida+Horacio+Llovet',
+            opinionKey: 'juegoVida',
+            image: 'https://via.placeholder.com/200x300/1f2937/9ca3af?text=El+Juego+De+La+Vida'
         }
     ];
 }
