@@ -6,7 +6,7 @@ import { useLanguage } from './LanguageContext';
 const socialLinks = [
     { icon: Github, href: 'https://github.com/Jeronimo-Pellicer', label: 'GitHub' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/jeronimopellicer/', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:pellicerjeronimo@gmail.com', label: 'Email' },
+    { icon: Mail, href: 'https://mail.google.com/mail/u/0/?to=pellicerjeronimo@gmail.com&su=Knowing+More&body=Hi,+I+talk+in+representation+of+X,+I+would+like+to+know+more+about+the+services+you+offer.&fs=1&tf=cm', label: 'Email' },
 ];
 
 export default function ContactSection() {
@@ -16,7 +16,7 @@ export default function ContactSection() {
     const contactInfo = [
         { label: t.contact.info.phone, value: '+54 9 11 2362 9722', href: 'tel:+5491123629722' },
         { label: t.contact.info.location, value: t.contact.info.locationValue, href: null },
-        { label: t.contact.info.email, value: 'pellicerjeronimo@gmail.com', href: 'http://mail.google.com/mail/u/0/?to=pellicerjeronimo@gmail.com&su=Knowing+More&body=Hi,+I+am+talking+in+representation+of+X,+I+would+like+to+know+more+about+the+services+you+offer.&fs=1&tf=cm' },
+        { label: t.contact.info.email, value: 'pellicerjeronimo@gmail.com', href: 'https://mail.google.com/mail/u/0/?to=pellicerjeronimo@gmail.com&su=Knowing+More&body=Hi,+I+talk+in+representation+of+X,+I+would+like+to+know+more+about+the+services+you+offer.&fs=1&tf=cm' },
     ];
 
     const [formData, setFormData] = useState({

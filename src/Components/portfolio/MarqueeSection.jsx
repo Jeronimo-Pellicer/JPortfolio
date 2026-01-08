@@ -2,18 +2,25 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from './LanguageContext';
 
-const brands = [
-    { name: 'Topper', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/009616be5_Topper_arg_logo.png' },
-    { name: 'Naranja X', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/a3603990f_Naranja_X.png' },
-    { name: 'Kiddo', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/cb0a9597a_image.png' },
-    { name: 'Bitcoin', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/320px-Bitcoin.svg.png' },
-    { name: 'Ethereum', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ethereum_logo_2014.svg/320px-Ethereum_logo_2014.svg.png' },
+const techStack = [
+    { name: 'Power BI', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/e5c3b36f9_Microsoft-Power-BI-Logo.png', category: 'Data Viz' },
+    { name: 'Google Sheets', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/83a9eaacb_Google_Sheets_2020_Logosvg.png', category: 'Advanced/Scripting' },
+    { name: 'MySQL', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/364cf34d1_ECX-1909_Hero_MySQL_600x4002x-1.png', category: 'Database' },
+    { name: 'Python', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/90f86dd10_Python-logo-notextsvg.png', category: 'Analysis' },
+    { name: 'Figma', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/8cf991ead_figma-logo-icon-figma-app-editable-transparent-background-premium-social-media-design-for-digital-download-free-png.png', category: 'UI Design' },
+    { name: 'Adobe Photoshop', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/68a664dee_adobe-photoshop-logo-transparent-background-free-png.png', category: 'Creative' },
+    { name: 'Adobe Illustrator', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/c9878fa4d_Screenshot_2026-01-02_104533-removebg-preview.png', category: 'Vector Graphics' },
+    { name: 'Google Analytics', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/86e34507d_Google-Analytics-logo-01.png', category: 'Analytics' },
+    { name: 'Meta Ads', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/896d3fa21_Meta-Logo.png', category: 'Advertising' },
+    { name: 'HubSpot', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/64d856549_HubSpot_Logo.png', category: 'CRM' },
+    { name: 'Slack', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/e04c8e980_Slack_icon_2019svg.png', category: 'Communication' },
+    { name: 'Notion', logo: 'https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/69520339a2e433e284c0a19d/7e520ddbc_Notion_app_logo.png', category: 'Productivity' },
 ];
 
 export default function MarqueeSection() {
     const { t } = useLanguage();
     // Duplicate the array to create seamless loop
-    const duplicatedBrands = [...brands, ...brands, ...brands];
+    const duplicatedStack = [...techStack, ...techStack, ...techStack];
 
     return (
         <section className="py-16 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border-y border-zinc-800/50 overflow-hidden">
@@ -29,7 +36,7 @@ export default function MarqueeSection() {
                     whileHover={{ scale: 1.05, color: '#10b981' }}
                     transition={{ duration: 0.3 }}
                 >
-                    {t.marquee.trustedBy}
+                    {t.marquee.toolsTechnologies}
                 </motion.h3>
             </motion.div>
             
@@ -37,7 +44,7 @@ export default function MarqueeSection() {
                 <motion.div
                     className="flex gap-12"
                     animate={{
-                        x: [0, -(brands.length * (128 + 48))], // w-32 (128px) + gap-12 (48px)
+                        x: [0, -(techStack.length * (160 + 48))], // w-40 (160px) + gap-12 (48px)
                     }}
                     transition={{
                         x: {
@@ -48,24 +55,22 @@ export default function MarqueeSection() {
                         },
                     }}
                 >
-                    {duplicatedBrands.map((brand, index) => (
+                    {duplicatedStack.map((tech, index) => (
                         <motion.div
-                            key={`${brand.name}-${index}`}
-                            className="flex-shrink-0 w-32 h-16 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 cursor-pointer group"
-                            whileHover={{ scale: 1.1 }}
+                            key={`${tech.name}-${index}`}
+                            className="flex-shrink-0 w-40 flex flex-col items-center justify-center gap-3 cursor-pointer group relative"
                         >
-                            <img
-                                src={brand.logo}
-                                alt={brand.name}
-                                className="max-w-full max-h-full object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-300"
-                                style={{ filter: 'grayscale(100%)' }}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.filter = 'hue-rotate(145deg) saturate(3)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.filter = 'grayscale(100%)';
-                                }}
-                            />
+                            <div className="w-20 h-20 rounded-2xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center group-hover:border-emerald-400/50 group-hover:bg-zinc-800 transition-all duration-300 p-3 overflow-visible">
+                                <img 
+                                    src={tech.logo} 
+                                    alt={tech.name}
+                                    className="w-full h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all duration-300"
+                                />
+                            </div>
+                            <div className="text-center w-full">
+                                <p className="text-sm font-medium text-white whitespace-nowrap">{tech.name}</p>
+                                <p className="text-xs text-zinc-500 whitespace-nowrap">{tech.category}</p>
+                            </div>
                         </motion.div>
                     ))}
                 </motion.div>

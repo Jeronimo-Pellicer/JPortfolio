@@ -14,12 +14,12 @@ export const translations = {
     en: {
         // Navigation
         nav: {
-            home: 'Home',
-            about: 'About',
-            projects: 'Projects',
-            projectsPage: 'All Projects',
-            contact: 'Contact',
-            hireMe: 'Hire Me',
+            aboutMe: 'ABOUT ME',
+            projects: 'PROJECTS',
+            contactMe: 'CONTACT ME',
+            resume: 'RESUME',
+            tools: 'TOOLS',
+            resources: 'RESOURCES',
         },
         // Hero Section
         hero: {
@@ -202,15 +202,6 @@ export const translations = {
             overview: 'Project Overview',
             technologies: 'Technologies Used',
         },
-        // Navigation
-        nav: {
-            aboutMe: 'ABOUT ME',
-            projects: 'PROJECTS',
-            contactMe: 'CONTACT ME',
-            resume: 'RESUME',
-            tools: 'TOOLS',
-            resources: 'RESOURCES',
-        },
         // Tools Page
         tools: {
             heading: 'TOOLS',
@@ -244,12 +235,12 @@ export const translations = {
     es: {
         // Navegación
         nav: {
-            home: 'Inicio',
-            about: 'Sobre Mí',
-            projects: 'Proyectos',
-            projectsPage: 'Todos los Proyectos',
-            contact: 'Contacto',
-            hireMe: 'Contrátame',
+            aboutMe: 'SOBRE MÍ',
+            projects: 'PROYECTOS',
+            contactMe: 'CONTÁCTAME',
+            resume: 'CV',
+            tools: 'HERRAMIENTAS',
+            resources: 'RECURSOS',
         },
         // Sección Hero
         hero: {
@@ -315,7 +306,6 @@ export const translations = {
                 analytics: 'Analítica',
                 design: 'Diseño',
             },
-            viewDetails: 'Ver Detalles',
             project1: {
                 title: 'Kiddo Estrategia de Franquicias',
                 description: 'Desarrollo de una estrategia de expansión comercial y modelo de franquicias para una marca gastronómica, enfocada en escalabilidad y modelado de negocio.',
@@ -432,15 +422,6 @@ export const translations = {
             backToProjects: 'Volver a Proyectos',
             overview: 'Descripción del Proyecto',
             technologies: 'Tecnologías Utilizadas',
-        },
-        // Navegación
-        nav: {
-            aboutMe: 'SOBRE MÍ',
-            projects: 'PROYECTOS',
-            contactMe: 'CONTÁCTAME',
-            resume: 'CV',
-            tools: 'HERRAMIENTAS',
-            resources: 'RECURSOS',
         },
         // Página Herramientas
         tools: {

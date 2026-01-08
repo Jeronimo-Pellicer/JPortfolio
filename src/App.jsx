@@ -13,7 +13,6 @@ import AboutSection from './Components/portfolio/AboutSection';
 import ContactSection from './Components/portfolio/ContactSection';
 import FAQSection from './Components/portfolio/FAQSection';
 import MarqueeSection from './Components/portfolio/MarqueeSection';
-import TechStackMarquee from './Components/portfolio/TechStackMarquee';
 
 function HomeContent() {
   const location = useLocation();
@@ -36,7 +35,6 @@ function HomeContent() {
       <HeroSection />
       <MarqueeSection />
       <AboutSection />
-      <TechStackMarquee />
       <FAQSection />
       <ContactSection />
     </>

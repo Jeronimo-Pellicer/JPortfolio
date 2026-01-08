@@ -27,9 +27,23 @@ export default function Recursos() {
             alert('Por favor ingresa tu email');
             return;
         }
+        // Direct download for free items
+        if (!requiresEmail) {
+            downloadResource(itemName);
+            return;
+        }
         // In a real implementation, this would send email and provide download
         alert(`Gracias! El recurso "${itemName}" será enviado a ${email || 'tu email registrado'}`);
         setEmail('');
+    };
+
+    const downloadResource = (itemName) => {
+        // Generate a generic download (this is a placeholder - in real app you'd have actual files)
+        const link = document.createElement('a');
+        link.href = '#'; // You would replace this with actual file URLs
+        link.download = `${itemName}.xlsx`; // Adjust extension based on resource type
+        // In production, you would fetch the actual file URL from your server
+        alert(`Descargando: ${itemName}`);
     };
 
     const templates = [
@@ -150,22 +164,13 @@ export default function Recursos() {
                                     <h3 className="text-xl font-bold text-white mb-2">{template.name}</h3>
                                     <p className="text-zinc-400 text-sm mb-4">{template.format}</p>
                                     {template.free ? (
-                                        <div>
-                                            <input
-                                                type="email"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                placeholder="Tu email"
-                                                className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-2 text-white mb-3 focus:outline-none focus:border-emerald-500"
-                                            />
-                                            <button
-                                                onClick={() => handleEmailSubmit(template.name, true)}
-                                                className="w-full px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-xl hover:from-emerald-400 hover:to-teal-400 transition-all flex items-center justify-center gap-2"
-                                            >
-                                                <Mail className="w-4 h-4" />
-                                                Descargar
-                                            </button>
-                                        </div>
+                                        <button
+                                            onClick={() => downloadResource(template.name)}
+                                            className="w-full px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-xl hover:from-emerald-400 hover:to-teal-400 transition-all flex items-center justify-center gap-2"
+                                        >
+                                            <Download className="w-4 h-4" />
+                                            Descargar Gratis
+                                        </button>
                                     ) : (
                                         <button
                                             onClick={() => handlePaywall(template.name)}
@@ -200,22 +205,13 @@ export default function Recursos() {
                                     <h3 className="text-xl font-bold text-white mb-2">{guide.name}</h3>
                                     <p className="text-zinc-400 text-sm mb-4">{guide.pages}</p>
                                     {guide.free ? (
-                                        <div>
-                                            <input
-                                                type="email"
-                                                value={email}
-                                                onChange={(e) => setEmail(e.target.value)}
-                                                placeholder="Tu email"
-                                                className="w-full bg-zinc-800/50 border border-zinc-700/50 rounded-xl px-4 py-2 text-white mb-3 focus:outline-none focus:border-emerald-500"
-                                            />
-                                            <button
-                                                onClick={() => handleEmailSubmit(guide.name, true)}
-                                                className="w-full px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-xl hover:from-emerald-400 hover:to-teal-400 transition-all flex items-center justify-center gap-2"
-                                            >
-                                                <Mail className="w-4 h-4" />
-                                                Descargar
-                                            </button>
-                                        </div>
+                                        <button
+                                            onClick={() => downloadResource(guide.name)}
+                                            className="w-full px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-xl hover:from-emerald-400 hover:to-teal-400 transition-all flex items-center justify-center gap-2"
+                                        >
+                                            <Download className="w-4 h-4" />
+                                            Descargar Gratis
+                                        </button>
                                     ) : (
                                         <button
                                             onClick={() => handlePaywall(guide.name)}

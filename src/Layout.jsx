@@ -5,38 +5,67 @@ import { Menu, X, ChevronDown } from 'lucide-react';
 import { LanguageProvider, useLanguage } from './Components/portfolio/LanguageContext';
 import LanguageSwitcher from './Components/portfolio/LanguageSwitcher';
 
-// NavButton Component with circular multicolor stroke on hover
+// NavButton Component with elegant multicolor border effect
 function NavButton({ onClick, label }) {
     return (
         <motion.button
-            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={onClick}
-            className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800/50 transition-all duration-300 relative group"
+            className="px-4 py-2 text-sm font-medium text-white rounded-lg transition-all duration-300 relative group"
         >
             <span className="relative z-10">{label}</span>
-            <motion.div
-                className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none"
+            {/* Animated multicolor border stroke */}
+            <svg
+                className="absolute inset-0 w-full h-full rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                preserveAspectRatio="none"
+                viewBox="0 0 100 40"
                 style={{
-                    background: 'linear-gradient(90deg, #10b981, #14b8a6, #06b6d4, #3b82f6, #8b5cf6, #ec4899, #f59e0b, #10b981)',
-                    backgroundSize: '400% 400%',
-                    animation: 'gradientMove 3s ease infinite',
-                    borderRadius: '0.5rem',
-                    padding: '2px',
-                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                    WebkitMaskComposite: 'xor',
-                    maskComposite: 'exclude',
+                    filter: 'drop-shadow(0 0 6px rgba(16, 185, 129, 0.2))',
                 }}
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileHover={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.3 }}
-            />
+            >
+                <defs>
+                    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#10b981" />
+                        <stop offset="20%" stopColor="#14b8a6" />
+                        <stop offset="40%" stopColor="#06b6d4" />
+                        <stop offset="60%" stopColor="#3b82f6" />
+                        <stop offset="80%" stopColor="#8b5cf6" />
+                        <stop offset="100%" stopColor="#10b981" />
+                        <animate attributeName="x1" values="0%;100%;0%" dur="2.5s" repeatCount="indefinite" />
+                        <animate attributeName="x2" values="100%;200%;100%" dur="2.5s" repeatCount="indefinite" />
+                    </linearGradient>
+                </defs>
+                <style>{`
+                    @keyframes borderFlow {
+                        0% { stroke-dashoffset: 280; }
+                        100% { stroke-dashoffset: 0; }
+                    }
+                    .flowing-border {
+                        stroke-dasharray: 280;
+                        animation: borderFlow 2.5s linear infinite;
+                    }
+                `}</style>
+                <rect
+                    x="2"
+                    y="2"
+                    width="96"
+                    height="36"
+                    rx="6"
+                    ry="6"
+                    fill="none"
+                    stroke="url(#borderGradient)"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="flowing-border"
+                />
+            </svg>
         </motion.button>
     );
 }
 
-// NavDropdown Component
-function NavDropdown({ label, items }) {
+// NavDropdown Component with elegant multicolor border effect
+function NavDropdown({ label, items, onNavigate }) {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -47,28 +76,62 @@ function NavDropdown({ label, items }) {
             onMouseLeave={() => setIsOpen(false)}
         >
             <motion.button
-                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-4 py-2 text-sm font-medium text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800/50 transition-all duration-300 relative group flex items-center gap-1"
+                onClick={() => {
+                    if (onNavigate) {
+                        onNavigate();
+                    }
+                }}
+                className="px-4 py-2 text-sm font-medium text-white rounded-lg transition-all duration-300 relative group flex items-center gap-1"
             >
                 <span className="relative z-10">{label}</span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                <motion.div
-                    className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 pointer-events-none"
+                <ChevronDown className={`w-4 h-4 transition-transform relative z-10 ${isOpen ? 'rotate-180' : ''}`} />
+                {/* Animated multicolor border stroke */}
+                <svg
+                    className="absolute inset-0 w-full h-full rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                    preserveAspectRatio="none"
+                    viewBox="0 0 100 40"
                     style={{
-                        background: 'linear-gradient(90deg, #10b981, #14b8a6, #06b6d4, #3b82f6, #8b5cf6, #ec4899, #f59e0b, #10b981)',
-                        backgroundSize: '400% 400%',
-                        animation: 'gradientMove 3s ease infinite',
-                        borderRadius: '0.5rem',
-                        padding: '2px',
-                        WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                        WebkitMaskComposite: 'xor',
-                        maskComposite: 'exclude',
+                        filter: 'drop-shadow(0 0 6px rgba(16, 185, 129, 0.2))',
                     }}
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    whileHover={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                />
+                >
+                    <defs>
+                        <linearGradient id="borderGradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stopColor="#10b981" />
+                            <stop offset="20%" stopColor="#14b8a6" />
+                            <stop offset="40%" stopColor="#06b6d4" />
+                            <stop offset="60%" stopColor="#3b82f6" />
+                            <stop offset="80%" stopColor="#8b5cf6" />
+                            <stop offset="100%" stopColor="#10b981" />
+                            <animate attributeName="x1" values="0%;100%;0%" dur="2.5s" repeatCount="indefinite" />
+                            <animate attributeName="x2" values="100%;200%;100%" dur="2.5s" repeatCount="indefinite" />
+                        </linearGradient>
+                    </defs>
+                    <style>{`
+                        @keyframes borderFlow {
+                            0% { stroke-dashoffset: 280; }
+                            100% { stroke-dashoffset: 0; }
+                        }
+                        .flowing-border-dropdown {
+                            stroke-dasharray: 280;
+                            animation: borderFlow 2.5s linear infinite;
+                        }
+                    `}</style>
+                    <rect
+                        x="2"
+                        y="2"
+                        width="96"
+                        height="36"
+                        rx="6"
+                        ry="6"
+                        fill="none"
+                        stroke="url(#borderGradient2)"
+                        strokeWidth="1.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="flowing-border-dropdown"
+                    />
+                </svg>
             </motion.button>
             
             <AnimatePresence>
@@ -240,6 +303,10 @@ function LayoutContent({ children, currentPageName }) {
                                     { label: 'Matriz de Priorización', href: '/herramientas#matrix' },
                                     { label: 'Quiz de Estrategia Digital', href: '/herramientas#quiz' },
                                 ]}
+                                onNavigate={() => {
+                                    navigate('/herramientas');
+                                    window.scrollTo({ top: 0, behavior: 'instant' });
+                                }}
                             />
                             
                             {/* RECURSOS with dropdown */}
@@ -250,6 +317,10 @@ function LayoutContent({ children, currentPageName }) {
                                     { label: 'Guías en PDF', href: '/recursos#guides' },
                                     { label: 'Infografías', href: '/recursos#infographics' },
                                 ]}
+                                onNavigate={() => {
+                                    navigate('/recursos');
+                                    window.scrollTo({ top: 0, behavior: 'instant' });
+                                }}
                             />
                             
                             {/* CONTACT ME */}
