@@ -28,13 +28,15 @@ export default function AboutSection() {
         <section id="about" className="relative pt-16 pb-24">
             <div className="container mx-auto px-6">
                 <div className="mb-20">
-                    <div className="mb-4">
+                    <div className="text-center mb-8">
                         <div className="text-sm uppercase text-emerald-400 font-semibold">{t.about.title}</div>
-                        <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold text-white">{t.about.heading}</h2>
-                        <p className="text-zinc-300 mt-2 max-w-2xl">{t.about.subtitle || t.about.paragraph1}</p>
+                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mt-4 tracking-tight">{t.about.heading}</h1>
+                        <div className="w-20 h-1 bg-emerald-500 mx-auto my-4 rounded"></div>
+                        <p className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-emerald-400 max-w-4xl mx-auto leading-tight">{t.about.subtitle || t.about.paragraph1}</p>
                     </div>
 
-                    <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold italic uppercase text-white mb-6 text-left">
+                    {/* keep typing title but visually smaller and secondary */}
+                    <h3 className="text-xl md:text-2xl lg:text-2xl font-bold italic uppercase text-white/70 mb-6 text-left">
                         <span className="typing" style={{ ['--chars']: trustTitle.length, ['--duration']: `${trustTitle.length * 0.06}s` }}>{trustTitle}</span>
                     </h3>
 
