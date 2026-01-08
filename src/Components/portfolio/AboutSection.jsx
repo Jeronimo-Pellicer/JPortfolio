@@ -28,8 +28,8 @@ export default function AboutSection() {
         <section id="about" className="relative pt-16 pb-24">
             <div className="container mx-auto px-6">
                 <div className="mb-20">
-                    <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 text-left">
-                        <span className="typing" style={{ ['--chars']: trustTitle.length, ['--duration']: `${trustTitle.length * 0.08}s` }}>{trustTitle}</span>
+                    <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold italic uppercase text-white mb-6 text-left">
+                        <span className="typing" style={{ ['--chars']: trustTitle.length, ['--duration']: `${trustTitle.length * 0.06}s` }}>{trustTitle}</span>
                     </h3>
 
                     <style>{`
@@ -56,20 +56,47 @@ export default function AboutSection() {
                         }
                     `}</style>
 
-                    <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mt-8">
-                        {trusts.map((item, index) => (
-                            <div
-                                key={index}
-                                className="backdrop-blur-xl rounded-2xl p-8 lg:p-10 border border-white/10 bg-white/5 overflow-hidden"
-                            >
-                                <h4 className="text-lg md:text-xl lg:text-xl font-normal text-white mb-4 leading-tight">
-                                    {item.title}
-                                </h4>
-                                <p className="text-zinc-300 leading-relaxed text-sm md:text-base text-justify">
-                                    {item.description}
-                                </p>
+                    <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mt-8">
+                        {/* Left large card (trust2) */}
+                        <div className="col-span-1 md:col-span-2 row-span-2 rounded-2xl overflow-hidden relative" style={{ minHeight: 320 }}>
+                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/assets/trust2.png')` }} />
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+                            <div className="relative p-8 lg:p-10 border border-white/10 bg-transparent h-full flex flex-col justify-end">
+                                <h4 className="text-lg md:text-xl lg:text-2xl font-normal text-white mb-4 leading-tight">{t.about.trust2?.title}</h4>
+                                <p className="text-zinc-300 leading-relaxed text-sm md:text-base text-justify">{t.about.trust2?.description}</p>
                             </div>
-                        ))}
+                        </div>
+
+                        {/* Right top (trust3) */}
+                        <div className="col-span-1 rounded-2xl overflow-hidden relative" style={{ minHeight: 150 }}>
+                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/assets/trust3.png')` }} />
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+                            <div className="relative p-6 lg:p-8 border border-white/10 bg-transparent h-full flex flex-col justify-end">
+                                <h4 className="text-lg md:text-xl font-normal text-white mb-3 leading-tight">{t.about.trust3?.title}</h4>
+                                <p className="text-zinc-300 text-sm leading-relaxed">{t.about.trust3?.description}</p>
+                            </div>
+                        </div>
+
+                        {/* Right bottom (trust1) */}
+                        <div className="col-span-1 rounded-2xl overflow-hidden relative" style={{ minHeight: 150 }}>
+                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/assets/trust1.png')` }} />
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+                            <div className="relative p-6 lg:p-8 border border-white/10 bg-transparent h-full flex flex-col justify-end">
+                                <h4 className="text-lg md:text-xl font-normal text-white mb-3 leading-tight">{t.about.trust1?.title}</h4>
+                                <p className="text-zinc-300 text-sm leading-relaxed">{t.about.trust1?.description}</p>
+                            </div>
+                        </div>
+
+                        {/* Full-width academic card without background (trust4 / faculty) */}
+                        <div className="col-span-3 mt-6 rounded-2xl p-8 lg:p-10 border border-white/10 bg-white/5">
+                            <h4 className="text-lg md:text-xl lg:text-xl font-normal text-white mb-4 leading-tight">{t.about.trust4?.title}</h4>
+                            <p className="text-zinc-300 leading-relaxed text-sm md:text-base text-justify">{t.about.trust4?.description}</p>
+                        </div>
+
+                        {/* CTA at the end of the section */}
+                        <div className="col-span-3 mt-6 flex justify-end">
+                            <a href="#contact" className="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-full">VER MAS &gt;</a>
+                        </div>
                     </div>
                 </div>
             </div>
