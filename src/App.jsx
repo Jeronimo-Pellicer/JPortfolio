@@ -1,18 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './Layout'; // Asegúrate de que se llame Layout.jsx
 
-// Aquí corregimos la ruta para entrar en la carpeta 'portfolio'
-import Projects from './Pages/Projects';
-import ProjectDetail from './Pages/ProjectDetail';
-import Books from './Pages/Books';
-import Herramientas from './Pages/Herramientas';
-import Recursos from './Pages/Recursos';
-import HeroSection from './Components/portfolio/HeroSection';
-import AboutSection from './Components/portfolio/AboutSection';
-import ContactSection from './Components/portfolio/ContactSection';
-import FAQSection from './Components/portfolio/FAQSection';
-import MarqueeSection from './Components/portfolio/MarqueeSection';
+// Lazy-load pages (route-level splitting)
+const Projects = lazy(() => import('./Pages/Projects'));
+const ProjectDetail = lazy(() => import('./Pages/ProjectDetail'));
+const Books = lazy(() => import('./Pages/Books'));
+const Herramientas = lazy(() => import('./Pages/Herramientas'));
+const Recursos = lazy(() => import('./Pages/Recursos'));
+
+// Lazy-load heavy home subcomponents
+const HeroSection = lazy(() => import('./Components/portfolio/HeroSection'));
+const AboutSection = lazy(() => import('./Components/portfolio/AboutSection'));
+const ContactSection = lazy(() => import('./Components/portfolio/ContactSection'));
+const FAQSection = lazy(() => import('./Components/portfolio/FAQSection'));
+const MarqueeSection = lazy(() => import('./Components/portfolio/MarqueeSection'));
 
 function HomeContent() {
   const location = useLocation();
@@ -30,14 +32,13 @@ function HomeContent() {
   }, [location.hash]);
 
   return (
-    <>
-      {/* Si tienes estos componentes, descoméntalos */}
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Cargando...</div>}>
       <HeroSection />
       <MarqueeSection />
       <AboutSection />
       <FAQSection />
       <ContactSection />
-    </>
+    </Suspense>
   );
 }
 
@@ -45,14 +46,16 @@ function App() {
   return (
     <BrowserRouter>
       <Layout>
-        <Routes>
-          <Route path="/" element={<HomeContent />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:projectId" element={<ProjectDetail />} />
-          <Route path="/books" element={<Books />} />
-          <Route path="/herramientas" element={<Herramientas />} />
-          <Route path="/recursos" element={<Recursos />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Cargando...</div>}>
+          <Routes>
+            <Route path="/" element={<HomeContent />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:projectId" element={<ProjectDetail />} />
+            <Route path="/books" element={<Books />} />
+            <Route path="/herramientas" element={<Herramientas />} />
+            <Route path="/recursos" element={<Recursos />} />
+          </Routes>
+        </Suspense>
       </Layout>
     </BrowserRouter>
   );

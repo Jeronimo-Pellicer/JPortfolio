@@ -29,7 +29,7 @@ export default function AboutSection() {
             <div className="container mx-auto px-6">
                 <div className="mb-20">
                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 text-left">
-                        <span className="typing" style={{ ['--chars']: trustTitle.length, ['--duration']: '5s' }}>{trustTitle}</span>
+                        <span className="typing" style={{ ['--chars']: trustTitle.length, ['--duration']: `${trustTitle.length * 0.08}s` }}>{trustTitle}</span>
                     </h3>
 
                     <style>{`
@@ -40,15 +40,15 @@ export default function AboutSection() {
                             border-right: 3px solid rgba(255,255,255,0.65);
                             box-sizing: border-box;
                             opacity: 0;
-                            animation: fadeIn 0.5s ease forwards, typing var(--duration) steps(var(--chars), end) 0.12s forwards, blink-caret .7s step-end calc(var(--duration) + 0.12s) infinite;
+                            animation: fadeIn 0.4s ease forwards, typing var(--duration) linear 0.1s forwards, blink-caret .7s step-end calc(var(--duration) + 0.1s) infinite;
                         }
                         @keyframes fadeIn {
-                            from { opacity: 0; transform: translateY(6px); }
+                            from { opacity: 0; transform: translateY(4px); }
                             to { opacity: 1; transform: translateY(0); }
                         }
                         @keyframes typing {
-                            from { width: 0 }
-                            to { width: 100% }
+                            from { width: 0; }
+                            to { width: 100%; }
                         }
                         @keyframes blink-caret {
                             from, to { border-color: transparent }

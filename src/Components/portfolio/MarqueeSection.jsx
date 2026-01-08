@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useLanguage } from './LanguageContext';
 
 const techStack = [
@@ -24,39 +23,31 @@ export default function MarqueeSection() {
 
     return (
         <section className="py-16 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border-y border-zinc-800/50 overflow-hidden">
-            <motion.div 
-                className="mb-8 text-center"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-            >
-                <motion.h3 
-                    className="text-sm font-semibold text-zinc-500 uppercase tracking-wide"
-                    whileHover={{ scale: 1.05, color: '#10b981' }}
-                    transition={{ duration: 0.3 }}
-                >
+            <div className="mb-8 text-center">
+                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wide hover:text-emerald-400 transition-colors duration-300 cursor-default">
                     {t.marquee.toolsTechnologies}
-                </motion.h3>
-            </motion.div>
+                </h3>
+            </div>
             
             <div className="relative overflow-hidden">
-                <motion.div
-                    className="flex gap-12"
-                    animate={{
-                        x: [0, -(techStack.length * (160 + 48))], // w-40 (160px) + gap-12 (48px)
-                    }}
-                    transition={{
-                        x: {
-                            repeat: Infinity,
-                            repeatType: "loop",
-                            duration: 30,
-                            ease: "linear",
-                        },
-                    }}
-                >
+                <style>{`
+                    @keyframes marquee {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(calc(-${techStack.length * 208}px)); }
+                    }
+                    .marquee-container {
+                        display: flex;
+                        gap: 48px;
+                        animation: marquee 40s linear infinite;
+                        will-change: transform;
+                    }
+                    .marquee-container:hover {
+                        animation-play-state: paused;
+                    }
+                `}</style>
+                <div className="marquee-container">
                     {duplicatedStack.map((tech, index) => (
-                        <motion.div
+                        <div
                             key={`${tech.name}-${index}`}
                             className="flex-shrink-0 w-40 flex flex-col items-center justify-center gap-3 cursor-pointer group relative"
                         >
@@ -71,9 +62,9 @@ export default function MarqueeSection() {
                                 <p className="text-sm font-medium text-white whitespace-nowrap">{tech.name}</p>
                                 <p className="text-xs text-zinc-500 whitespace-nowrap">{tech.category}</p>
                             </div>
-                        </motion.div>
+                        </div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );
