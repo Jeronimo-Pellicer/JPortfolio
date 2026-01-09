@@ -465,7 +465,7 @@ export function LanguageProvider({ children }) {
     const t = translations[language];
 
     return (
-        <LanguageContext.Provider value={{ language, toggleLanguage, t }}>
+        <LanguageContext.Provider value={{ language, locale: language, toggleLanguage, t }}>
             {children}
         </LanguageContext.Provider>
     );
