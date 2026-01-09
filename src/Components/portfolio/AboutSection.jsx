@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLanguage } from './LanguageContext';
 
 export default function AboutSection() {
-    const { t } = useLanguage();
+    const { t, locale } = useLanguage();
     const trustTitle = t.about.whyTrustMe || '¿Por qué confiar en mí?';
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const sectionRef = useRef(null);
 
     const trusts = [
         {
@@ -24,19 +26,60 @@ export default function AboutSection() {
         },
     ];
 
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!sectionRef.current) return;
+            const rect = sectionRef.current.getBoundingClientRect();
+            const sectionTop = rect.top;
+            const sectionHeight = rect.height;
+            const windowHeight = window.innerHeight;
+            
+            // Faster, more responsive progress calculation
+            const progress = Math.max(0, Math.min(1, (windowHeight * 0.7 - sectionTop) / (windowHeight + sectionHeight * 0.5)));
+            setScrollProgress(progress);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const longParagraphText = locale === 'en' ? "I design and develop data-driven user experiences that transform how businesses connect with their audiences. By combining UX/UI optimization, front-end development, and conversion-focused digital marketing strategies, I create scalable solutions that enhance engagement, improve performance, and drive measurable growth. My work is grounded in analytics, strategic thinking, and a deep understanding of user behavior, helping brands grow with purpose, precision, and long-term impact." : "Diseño y desarrollo experiencias de usuario basadas en datos que transforman cómo las empresas se conectan con sus audiencias. Al combinar optimización UX/UI, desarrollo frontend y estrategias de marketing digital enfocadas en conversión, creo soluciones escalables que mejoran el engagement, optimizan el rendimiento e impulsan el crecimiento medible. Mi trabajo se fundamenta en analítica, pensamiento estratégico y una comprensión profunda del comportamiento del usuario, ayudando a las marcas a crecer con propósito, precisión e impacto a largo plazo.";
+    const words = longParagraphText.split(' ');
+    // Exponential progress for faster, more dynamic reveal effect
+    const expProgress = Math.pow(scrollProgress, 0.6);
+    const coloredWordCount = Math.floor(words.length * expProgress);
+
+    const renderColoredParagraph = () => {
+        return words.map((word, idx) => (
+            <span key={idx} className={idx < coloredWordCount ? 'text-emerald-400' : 'text-white/30'}>
+                {word}{' '}
+            </span>
+        ));
+    };
+
     return (
-        <section id="about" className="relative pt-16 pb-24">
+        <section id="about" className="relative pt-16 pb-24" ref={sectionRef}>
             <div className="container mx-auto px-6">
                 <div className="mb-20">
-                    <div className="text-center mb-8">
-                        <div className="text-sm uppercase text-emerald-400 font-semibold">{t.about.title}</div>
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white mt-4 tracking-tight">{t.about.heading}</h1>
-                        <div className="w-20 h-1 bg-emerald-500 mx-auto my-4 rounded"></div>
-                        <p className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-emerald-400 max-w-4xl mx-auto leading-tight">{t.about.subtitle || t.about.paragraph1}</p>
+                    <div className="text-center mb-12">
+                        <div className="text-xs md:text-sm uppercase text-emerald-400 font-semibold tracking-widest">{t.about.title}</div>
+                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mt-6 tracking-tight leading-tight">{t.about.heading}</h1>
+                        <div className="w-24 h-1.5 bg-emerald-500 mx-auto my-6 rounded"></div>
                     </div>
 
-                    {/* keep typing title but visually smaller and secondary */}
-                    <h3 className="text-xl md:text-2xl lg:text-2xl font-bold italic uppercase text-white/70 mb-6 text-left">
+                    {/* Long description with scroll reveal */}
+                    <div className="w-full mx-auto mb-16 px-6 md:px-12">
+                        <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-relaxed text-justify">
+                            {renderColoredParagraph()}
+                        </p>
+                    </div>
+
+                    {/* Divider line */}
+                    <div className="w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent my-16"></div>
+
+                    {/* Why Trust Me title */}
+                    <h3 className="text-4xl md:text-6xl lg:text-7xl font-bold italic uppercase text-white mb-8 text-left leading-tight">
                         <span className="typing" style={{ ['--chars']: trustTitle.length, ['--duration']: `${trustTitle.length * 0.06}s` }}>{trustTitle}</span>
                     </h3>
 
