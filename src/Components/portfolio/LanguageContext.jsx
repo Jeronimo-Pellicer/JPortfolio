@@ -367,7 +367,7 @@ export const translations = {
         faq: {
             title: 'Insights Estratégicos',
             heading: '5 Insights Clave',
-            description: 'Perspectivas estratégicas sobre el futuro de la experiencia del cliente y el marketing digital',
+            description: 'Perspectivas estratégicas sobre el futuro de la experiencia del cliente y el marketing digital.',
             questions: [
                 {
                     q: '¿Qué es la Artificial Experience (AX) y cómo transforma la experiencia del cliente?',
