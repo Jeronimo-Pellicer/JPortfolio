@@ -7,7 +7,7 @@ import LanguageSwitcher from '@/Components/portfolio/LanguageSwitcher';
 import { createProjectSlug } from '../utils/projectUtils';
 
 function Projects() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const [activeFilter, setActiveFilter] = useState('all');
 
     const allProjects = [
@@ -227,6 +227,25 @@ function Projects() {
                             {t.projects.description}
                         </motion.p>
 
+                        {/* Beta Message */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6 }}
+                            className="mt-10 max-w-3xl mx-auto bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-6 backdrop-blur-sm"
+                        >
+                            <div className="flex items-start gap-3">
+                                <span className="px-3 py-1 bg-emerald-500 text-black text-xs font-bold rounded-lg uppercase tracking-wider">
+                                    Beta
+                                </span>
+                                <p className="text-zinc-300 text-sm leading-relaxed flex-1 text-left">
+                                    {language === 'en' 
+                                        ? 'Project viewing is temporarily limited. This section is currently in beta and under optimization to deliver a more complete and intuitive experience. For more information, please get in touch through the available contact channel.' 
+                                        : 'La visualización de los proyectos se encuentra temporalmente limitada. Esta sección está en fase beta y en proceso de optimización para brindar una experiencia más completa e intuitiva. Para más información, podés comunicarte a través del contacto disponible.'}
+                                </p>
+                            </div>
+                        </motion.div>
+
                         <motion.div
                             initial={{ width: 0 }}
                             animate={{ width: '100px' }}
@@ -295,133 +314,59 @@ function Projects() {
                         <motion.div
                             key={project.title}
                             variants={itemVariants}
-                            whileHover={project.beta ? {} : { y: -10, scale: 1.02 }}
                             className="group relative"
                         >
-                            {project.beta ? (
-                                <div className="relative h-full">
-                                    <div className="relative h-full bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 backdrop-blur-xl border border-zinc-800/50 rounded-3xl overflow-hidden hover:border-emerald-500/50 transition-all duration-500 shadow-2xl cursor-not-allowed">
-                                        {/* Project Image */}
-                                        <div className="relative h-64 overflow-hidden">
-                                            <img
-                                                src={project.image}
-                                                alt={project.title}
-                                                className="w-full h-full object-cover"
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
-                                            
-                                            {/* BETA Banner */}
-                                            <div className="absolute top-0 right-0 w-32 h-32 overflow-hidden">
-                                                <div className="absolute top-2 -right-8 w-32 h-12 bg-white/90 backdrop-blur-md flex items-center justify-center transform rotate-45 shadow-lg">
-                                                    <span className="text-zinc-950 font-bold text-sm tracking-widest">BETA</span>
-                                                </div>
+                            <div className="relative h-full">
+                                <div className="relative h-full bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 backdrop-blur-xl border border-zinc-800/50 rounded-3xl overflow-hidden transition-all duration-500 shadow-2xl cursor-not-allowed opacity-75">
+                                    {/* Project Image */}
+                                    <div className="relative h-64 overflow-hidden">
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-full object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
+                                        
+                                        {/* BETA Banner */}
+                                        <div className="absolute top-0 right-0 w-32 h-32 overflow-hidden">
+                                            <div className="absolute top-2 -right-8 w-32 h-12 bg-emerald-500 backdrop-blur-md flex items-center justify-center transform rotate-45 shadow-lg">
+                                                <span className="text-black font-bold text-sm tracking-widest">BETA</span>
                                             </div>
                                         </div>
+                                    </div>
 
-                                        {/* Project Content */}
-                                        <div className="p-6 space-y-4">
-                                            <div>
-                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors"
-                                                    style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.02em' }}
-                                                >
-                                                    {project.title}
-                                                </h3>
-                                                <p className="text-zinc-400 leading-relaxed text-sm"
-                                                    style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
-                                                >
-                                                    {project.description}
-                                                </p>
-                                            </div>
-                                            
-                                            {/* Tags */}
-                                            <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800">
-                                                {project.tags.map((tag, tagIndex) => (
-                                                    <motion.span
-                                                        key={tag}
-                                                        initial={{ opacity: 0, scale: 0.8 }}
-                                                        animate={{ opacity: 1, scale: 1 }}
-                                                        transition={{ delay: index * 0.05 + tagIndex * 0.03 }}
-                                                        className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold rounded-lg"
-                                                    >
-                                                        {tag}
-                                                    </motion.span>
-                                                ))}
-                                            </div>
+                                    {/* Project Content */}
+                                    <div className="p-6 space-y-4">
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-white mb-3 transition-colors"
+                                                style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.02em' }}
+                                            >
+                                                {project.title}
+                                            </h3>
+                                            <p className="text-zinc-400 leading-relaxed text-sm"
+                                                style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                                            >
+                                                {project.description}
+                                            </p>
                                         </div>
-
-                                        {/* Shine effect */}
-                                        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer transition-opacity duration-500" />
+                                        
+                                        {/* Tags */}
+                                        <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800">
+                                            {project.tags.map((tag, tagIndex) => (
+                                                <motion.span
+                                                    key={tag}
+                                                    initial={{ opacity: 0, scale: 0.8 }}
+                                                    animate={{ opacity: 1, scale: 1 }}
+                                                    transition={{ delay: index * 0.05 + tagIndex * 0.03 }}
+                                                    className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold rounded-lg"
+                                                >
+                                                    {tag}
+                                                </motion.span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            ) : (
-                                <Link to={`/projects/${createProjectSlug(project.title)}`}>
-                                    <div className="relative h-full bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 backdrop-blur-xl border border-zinc-800/50 rounded-3xl overflow-hidden hover:border-emerald-500/50 transition-all duration-500 shadow-2xl">
-                                        {/* Project Image */}
-                                        <div className="relative h-64 overflow-hidden">
-                                            <motion.img
-                                                src={project.image}
-                                                alt={project.title}
-                                                className="w-full h-full object-cover"
-                                                whileHover={{ scale: 1.1 }}
-                                                transition={{ duration: 0.5 }}
-                                            />
-                                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
-                                            
-                                            {/* Overlay on hover */}
-                                            <motion.div
-                                                initial={{ opacity: 0 }}
-                                                whileHover={{ opacity: 1 }}
-                                                className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-teal-500/20 backdrop-blur-sm flex items-center justify-center"
-                                            >
-                                                <motion.div
-                                                    initial={{ scale: 0 }}
-                                                    whileHover={{ scale: 1 }}
-                                                    className="bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20"
-                                                >
-                                                    <span className="text-white font-semibold flex items-center gap-2">
-                                                        {t.projects.viewDetails}
-                                                        <ArrowRight className="w-5 h-5" />
-                                                    </span>
-                                                </motion.div>
-                                            </motion.div>
-                                        </div>
-
-                                        {/* Project Content */}
-                                        <div className="p-6 space-y-4">
-                                            <div>
-                                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-400 transition-colors"
-                                                    style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.02em' }}
-                                                >
-                                                    {project.title}
-                                                </h3>
-                                                <p className="text-zinc-400 leading-relaxed text-sm"
-                                                    style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
-                                                >
-                                                    {project.description}
-                                                </p>
-                                            </div>
-                                            
-                                            {/* Tags */}
-                                            <div className="flex flex-wrap gap-2 pt-4 border-t border-zinc-800">
-                                                {project.tags.map((tag, tagIndex) => (
-                                                    <motion.span
-                                                        key={tag}
-                                                        initial={{ opacity: 0, scale: 0.8 }}
-                                                        animate={{ opacity: 1, scale: 1 }}
-                                                        transition={{ delay: index * 0.05 + tagIndex * 0.03 }}
-                                                        className="px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold rounded-lg"
-                                                    >
-                                                        {tag}
-                                                    </motion.span>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        {/* Shine effect */}
-                                        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-shimmer transition-opacity duration-500" />
-                                    </div>
-                                </Link>
-                            )}
+                            </div>
                         </motion.div>
                                 );
                             })}

@@ -12,6 +12,7 @@ const Recursos = lazy(() => import('./Pages/Recursos'));
 // Lazy-load heavy home subcomponents
 const HeroSection = lazy(() => import('./Components/portfolio/HeroSection'));
 const AboutSection = lazy(() => import('./Components/portfolio/AboutSection'));
+const ProjectsSection = lazy(() => import('./Components/portfolio/ProjectsSection'));
 const ContactSection = lazy(() => import('./Components/portfolio/ContactSection'));
 const FAQSection = lazy(() => import('./Components/portfolio/FAQSection'));
 const MarqueeSection = lazy(() => import('./Components/portfolio/MarqueeSection'));

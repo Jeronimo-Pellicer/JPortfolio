@@ -78,9 +78,24 @@ export default function ProjectsSection() {
                         </h2>
                         <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
                             {language === 'en' 
-                                ? 'Real-world projects showcasing my expertise in digital strategy, customer experience, and data-driven marketing.' 
-                                : 'Proyectos del mundo real que demuestran mi experiencia en estrategia digital, experiencia del cliente y marketing basado en datos.'}
+                                ? 'A selection of projects that showcase my skills and passion for creating impactful digital solutions.' 
+                                : 'Una selección de proyectos que muestran mis habilidades y pasión por crear soluciones digitales impactantes.'}
                         </p>
+                        
+                        {/* Beta Message */}
+                        <div className="mt-8 max-w-3xl mx-auto bg-emerald-500/10 border border-emerald-500/30 rounded-2xl p-6 backdrop-blur-sm">
+                            <div className="flex items-start gap-3">
+                                <span className="px-3 py-1 bg-emerald-500 text-black text-xs font-bold rounded-lg uppercase tracking-wider">
+                                    Beta
+                                </span>
+                                <p className="text-zinc-300 text-sm leading-relaxed flex-1">
+                                    {language === 'en' 
+                                        ? 'Project viewing is temporarily limited. This section is currently in beta and under optimization to deliver a more complete and intuitive experience. For more information, please get in touch through the available contact channel.' 
+                                        : 'La visualización de los proyectos se encuentra temporalmente limitada. Esta sección está en fase beta y en proceso de optimización para brindar una experiencia más completa e intuitiva. Para más información, podés comunicarte a través del contacto disponible.'}
+                                </p>
+                            </div>
+                        </div>
+                        
                         <motion.div 
                             initial={{ width: 0 }}
                             whileInView={{ width: 80 }}
@@ -103,14 +118,16 @@ export default function ProjectsSection() {
                                     delay: index * 0.15,
                                     ease: [0.6, 0.05, 0.01, 0.9]
                                 }}
-                                whileHover={{ y: -12, scale: 1.02 }}
-                                className="group bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl overflow-hidden hover:border-emerald-500/50 transition-all duration-300 hover:shadow-[0_20px_60px_rgba(52,211,153,0.25)] cursor-pointer"
+                                className="group bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl overflow-hidden transition-all duration-300 relative opacity-60 cursor-not-allowed"
                             >
+                                {/* Beta Badge */}
+                                <div className="absolute top-4 right-4 z-10 px-3 py-1.5 bg-emerald-500 text-black text-xs font-bold rounded-lg uppercase tracking-wider shadow-lg">
+                                    Beta
+                                </div>
+                                
                                 {/* Image */}
                                 <div className="aspect-[4/3] overflow-hidden relative">
-                                    <motion.img
-                                        whileHover={{ scale: 1.1 }}
-                                        transition={{ duration: 0.6 }}
+                                    <img
                                         src={project.image}
                                         alt={project.title}
                                         className="w-full h-full object-cover"
