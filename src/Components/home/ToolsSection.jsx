@@ -24,8 +24,8 @@ export default function ToolsSection() {
       gradient: 'from-violet-600 to-purple-600',
       lightGradient: 'from-violet-500/20 to-purple-500/20',
       features: [
-        { icon: DollarSign, text: t.tools.roi.features.realTimeROI },
-        { icon: Target, text: t.tools.roi.features.cpaConversion },
+        { icon: DollarSign, text: t.tools.roi.features.realTime },
+        { icon: Target, text: t.tools.roi.features.cpa },
         { icon: TrendingUp, text: t.tools.roi.features.projections },
         { icon: BarChart3, text: t.tools.roi.features.detailedMetrics },
       ],
