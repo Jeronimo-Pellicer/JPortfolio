@@ -97,7 +97,7 @@ const AboutSection = React.memo(() => {
 
                         {/* CTA at the end of the section */}
                         <div className="col-span-3 mt-6 flex justify-end">
-                            <a href="#contact" className="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-full">VER MAS &gt;</a>
+                            <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }} className="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-full cursor-pointer">VER MAS &gt;</a>
                         </div>
                     </div>
                 </div>

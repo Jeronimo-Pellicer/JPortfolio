@@ -1,9 +1,73 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'; // Agregamos Outlet, useLocation y useNavigate
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import { LanguageProvider, useLanguage } from './Components/portfolio/LanguageContext';
 import LanguageSwitcher from './Components/portfolio/LanguageSwitcher';
+
+// Nested Menu Item Component - for submenu items that can expand vertically
+function NestedMenuItem({ item, onClose, timeoutRef }) {
+    const [showSubmenu, setShowSubmenu] = useState(false);
+    const hasSubItems = item.subItems && item.subItems.length > 0;
+
+    const handleMouseEnter = () => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        if (hasSubItems) setShowSubmenu(true);
+    };
+
+    const handleMouseLeave = () => {
+        if (hasSubItems) {
+            timeoutRef.current = setTimeout(() => setShowSubmenu(false), 150);
+        }
+    };
+
+    return (
+        <div
+            className="relative"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
+            {hasSubItems ? (
+                // Item con submenus - NO es clickeable, solo muestra el chevron
+                <div className="flex items-center justify-between px-4 py-3 text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-colors group cursor-default">
+                    <span>{item.label}</span>
+                    <ChevronDown className={`w-4 h-4 text-zinc-500 group-hover:text-emerald-400 transition-transform ${showSubmenu ? 'rotate-180' : ''}`} />
+                </div>
+            ) : (
+                // Item sin submenus - ES clickeable
+                <Link
+                    to={item.href}
+                    onClick={() => onClose()}
+                    className="flex items-center justify-between px-4 py-3 text-sm text-zinc-300 hover:text-white hover:bg-zinc-800/50 transition-colors group"
+                >
+                    <span>{item.label}</span>
+                </Link>
+            )}
+
+            {/* Vertical submenu - expands below */}
+            {hasSubItems && showSubmenu && (
+                <div
+                    className="relative bg-zinc-800/30 border-t border-b border-zinc-800/50 overflow-hidden"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                >
+                    <div className="py-1">
+                        {item.subItems.map((subItem, idx) => (
+                            <Link
+                                key={idx}
+                                to={subItem.href}
+                                onClick={() => onClose()}
+                                className="block px-4 py-2 pl-8 text-xs text-zinc-400 hover:text-emerald-300 hover:bg-zinc-800/80 transition-colors border-l-2 border-transparent hover:border-emerald-500"
+                            >
+                                {subItem.label}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
 
 // NavButton Component with elegant multicolor border effect
 function NavButton({ onClick, label }) {
@@ -65,15 +129,33 @@ function NavButton({ onClick, label }) {
 }
 
 // NavDropdown Component with elegant multicolor border effect
-function NavDropdown({ label, items, onNavigate }) {
+function NavDropdown({ label, items, nestedItems, onNavigate }) {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
+    const timeoutRef = useRef(null);
+
+    const handleMouseEnter = () => {
+        if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        setIsOpen(true);
+    };
+
+    const handleMouseLeave = () => {
+        timeoutRef.current = setTimeout(() => {
+            setIsOpen(false);
+        }, 150);
+    };
+
+    useEffect(() => {
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+    }, []);
 
     return (
         <div 
             className="relative"
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
             <motion.button
                 whileTap={{ scale: 0.95 }}
@@ -141,18 +223,40 @@ function NavDropdown({ label, items, onNavigate }) {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-2 bg-zinc-900/95 backdrop-blur-xl border border-zinc-800/50 rounded-xl overflow-hidden min-w-[200px] shadow-2xl z-50"
+                        className="absolute top-full left-0 mt-2 bg-zinc-900/95 backdrop-blur-xl border border-zinc-800/50 rounded-xl overflow-visible min-w-[240px] shadow-2xl z-50"
+                        style={{ overflow: 'visible' }}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
                     >
-                        {items.map((item, index) => (
-                            <Link
-                                key={index}
-                                to={item.href}
-                                onClick={() => setIsOpen(false)}
-                                className="block px-4 py-3 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors"
-                            >
-                                {item.label}
-                            </Link>
-                        ))}
+                        {/* Nested items (with submenus) */}
+                        {nestedItems && (
+                            <div className="py-2">
+                                {nestedItems.map((item, idx) => (
+                                    <NestedMenuItem
+                                        key={idx}
+                                        item={item}
+                                        onClose={() => setIsOpen(false)}
+                                        timeoutRef={timeoutRef}
+                                    />
+                                ))}
+                            </div>
+                        )}
+
+                        {/* Flat items (no submenus) */}
+                        {items && (
+                            <div className="py-2">
+                                {items.map((item, index) => (
+                                    <Link
+                                        key={index}
+                                        to={item.href}
+                                        onClick={() => setIsOpen(false)}
+                                        className="block px-4 py-3 text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -312,10 +416,32 @@ function LayoutContent({ children, currentPageName }) {
                             {/* RECURSOS with dropdown */}
                             <NavDropdown
                                 label={t.nav.resources || 'RECURSOS'}
-                                items={[
-                                    { label: 'Templates', href: '/recursos#templates' },
-                                    { label: 'Guías en PDF', href: '/recursos#guides' },
-                                    { label: 'Infografías', href: '/recursos#infographics' },
+                                nestedItems={[
+                                    { 
+                                        label: t.nav.resourcesMenu?.templates || 'Templates', 
+                                        href: '/recursos?filter=template',
+                                        subItems: []
+                                    },
+                                    { 
+                                        label: t.nav.resourcesMenu?.guides || 'Guías', 
+                                        href: '/recursos?filter=guide',
+                                        subItems: [
+                                            { label: t.nav.resourcesMenu?.cjmGuide || 'Cómo crear un Customer Journey Map', href: '/recursos?article=cjm-guide' },
+                                            { label: t.nav.resourcesMenu?.seoLocalGuide || 'Guía de SEO local', href: '/recursos?article=seo-local-guide' },
+                                            { label: t.nav.resourcesMenu?.linkedinStrategy || 'Estrategia de contenido en LinkedIn', href: '/recursos?article=linkedin-strategy' },
+                                            { label: t.nav.resourcesMenu?.cxMetrics || '10 métricas clave de CX', href: '/recursos?article=cx-metrics-guide' },
+                                        ]
+                                    },
+                                    { 
+                                        label: t.nav.resourcesMenu?.infographics || 'Infografías', 
+                                        href: '/recursos?filter=infographic',
+                                        subItems: [
+                                            { label: t.nav.resourcesMenu?.linkedinPostAnatomy || 'Anatomía de un buen post', href: '/recursos?article=linkedin-post-anatomy' },
+                                            { label: t.nav.resourcesMenu?.cxOptimization || 'Proceso de optimización de CX', href: '/recursos?article=cx-optimization-process' },
+                                            { label: t.nav.resourcesMenu?.keywordResearch || 'Cómo encontrar y usar keywords', href: '/recursos?article=keyword-research' },
+                                            { label: t.nav.resourcesMenu?.landingPageElements || 'Elementos clave de una landing page', href: '/recursos?article=landing-page-elements' },
+                                        ]
+                                    },
                                 ]}
                                 onNavigate={() => {
                                     navigate('/recursos');
@@ -407,7 +533,7 @@ function LayoutContent({ children, currentPageName }) {
             </motion.header>
 
             {/* Main content - Aquí es donde ocurre la magia */}
-            <main>
+            <main className="relative z-10 pt-24">
                 {/* Usamos children O Outlet para asegurarnos que se vea el contenido */}
                 {children || <Outlet />}
             </main>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { createPageUrl } from './utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
@@ -7,6 +7,7 @@ import { LanguageProvider, useLanguage } from './components/portfolio/LanguageCo
 
 function LayoutContent({ children, currentPageName }) {
     const { t } = useLanguage();
+    const location = useLocation();
     
     const navItems = [
         { label: 'ABOUT ME', href: '#about', type: 'scroll' },
@@ -31,6 +32,19 @@ function LayoutContent({ children, currentPageName }) {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Handle scroll to section when navigating from a tool page
+    useEffect(() => {
+        if (location.state?.scrollTo) {
+            const timeout = setTimeout(() => {
+                const element = document.getElementById(location.state.scrollTo);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+            return () => clearTimeout(timeout);
+        }
+    }, [location]);
 
     const scrollToSection = (href) => {
         const element = document.querySelector(href);
