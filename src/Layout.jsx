@@ -341,7 +341,6 @@ function LayoutContent({ children, currentPageName }) {
 
     return (
         <div className="min-h-screen bg-zinc-950 relative">
-            <LanguageSwitcher />
             {/* Noise Texture Overlay */}
             <div 
                 className="fixed inset-0 pointer-events-none z-0"
@@ -456,7 +455,12 @@ function LayoutContent({ children, currentPageName }) {
                             />
                         </div>
 
-                        {/* Mobile menu button */}
+                        {/* Language switcher (inline in header) */}
+                        <div className="flex items-center gap-2 md:gap-3">
+                            <div className="hidden md:block">
+                                <LanguageSwitcher className="relative z-10" />
+                            </div>
+                            {/* Mobile menu button */}
                         <motion.button
                             whileTap={{ scale: 0.9 }}
                             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -464,6 +468,10 @@ function LayoutContent({ children, currentPageName }) {
                         >
                             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                         </motion.button>
+                            <div className="md:hidden">
+                                <LanguageSwitcher className="relative z-10" />
+                            </div>
+                        </div>
                     </div>
                 </nav>
 

@@ -158,7 +158,7 @@ export default function ResourceCard({ resource, index, onPreview, onPurchase, o
 
                     {/* Footer */}
                     <div className="mt-auto pt-4 border-t border-slate-100">
-                        <div className="flex items-center justify-between">
+                        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                             {/* Price */}
                             <div>
                                 {isFree ? (
@@ -176,7 +176,7 @@ export default function ResourceCard({ resource, index, onPreview, onPurchase, o
                             </div>
 
                             {/* Actions */}
-                            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:justify-end">
+                            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto sm:justify-end">
                                 {isTemplate ? (
                                     isPremium ? (
                                         <>
