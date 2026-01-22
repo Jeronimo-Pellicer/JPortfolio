@@ -177,7 +177,7 @@ function ToolCard({ tool, index }) {
       initial={{ opacity: 0, y: 80 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${isEven ? '' : 'lg:grid-flow-dense'}`}
+      className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${isEven ? '' : 'lg:grid-flow-dense'}`}
     >
       {/* Content */}
       <div className={isEven ? '' : 'lg:col-start-2'}>
@@ -187,7 +187,7 @@ function ToolCard({ tool, index }) {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {/* Icon and title */}
-          <div className="flex items-center gap-4 mb-6">
+          <div className="flex items-center gap-4 mb-4">
             <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center shadow-lg`}>
               <tool.icon className="w-7 h-7 text-white" />
             </div>
@@ -198,12 +198,12 @@ function ToolCard({ tool, index }) {
           </div>
 
           {/* Description */}
-          <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+          <p className="text-lg text-slate-300 mb-6 leading-relaxed">
             {tool.description}
           </p>
 
           {/* Features grid */}
-          <div className="grid grid-cols-2 gap-4 mb-8">
+          <div className="grid grid-cols-2 gap-4 mb-6">
             {tool.features.map((feature, i) => (
               <motion.div
                 key={i}
@@ -219,7 +219,7 @@ function ToolCard({ tool, index }) {
           </div>
 
           {/* Benefits */}
-          <div className="mb-8">
+          <div className="mb-6">
             <h4 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">{tool.benefitsTitle || 'Key Benefits'}</h4>
             <ul className="space-y-2">
               {tool.benefits.map((benefit, i) => (

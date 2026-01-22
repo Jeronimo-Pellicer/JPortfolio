@@ -60,37 +60,37 @@ const AboutSection = React.memo(() => {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mt-6">
                         {/* Left large card (trust2 - Innovación de vanguardia) */}
-                        <div className="col-span-1 md:col-span-2 md:row-span-2 rounded-xl md:rounded-2xl overflow-hidden relative min-h-[350px] sm:min-h-[320px] md:min-h-[380px]">
-                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/trust2.jpg')` }} />
+                        <div className="col-span-1 md:col-span-2 md:row-span-2 rounded-xl md:rounded-2xl overflow-hidden relative min-h-auto sm:min-h-[320px] md:min-h-[380px]" style={{ willChange: 'transform', transform: 'translateZ(0)', contain: 'layout paint' }}>
+                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/trust2.jpg')`, willChange: 'transform' }} />
                             <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/85" />
                             <div className="relative p-5 sm:p-6 md:p-8 lg:p-10 border border-white/10 bg-transparent h-full flex flex-col justify-end">
                                 <h4 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white mb-2 sm:mb-3 md:mb-4 leading-snug">{t.about.trust1?.title}</h4>
-                                <p className="text-zinc-200 leading-relaxed text-xs sm:text-sm md:text-base line-clamp-4 md:line-clamp-none">{t.about.trust1?.description}</p>
+                                <p className="text-zinc-200 leading-relaxed text-xs sm:text-sm md:text-base">{t.about.trust1?.description}</p>
                             </div>
                         </div>
 
                         {/* Right top (trust3) */}
-                        <div className="col-span-1 rounded-xl md:rounded-2xl overflow-hidden relative min-h-[300px] sm:min-h-[280px] md:min-h-[180px]">
-                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/trust3.jpg')` }} />
+                        <div className="col-span-1 rounded-xl md:rounded-2xl overflow-hidden relative min-h-auto sm:min-h-[280px] md:min-h-[180px]" style={{ willChange: 'transform', transform: 'translateZ(0)', contain: 'layout paint' }}>
+                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/trust3.jpg')`, willChange: 'transform' }} />
                             <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/85" />
                             <div className="relative p-5 sm:p-6 lg:p-8 border border-white/10 bg-transparent h-full flex flex-col justify-end">
                                 <h4 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-2 leading-snug">{t.about.trust3?.title}</h4>
-                                <p className="text-zinc-200 text-xs sm:text-sm leading-relaxed line-clamp-3 md:line-clamp-none">{t.about.trust3?.description}</p>
+                                <p className="text-zinc-200 text-xs sm:text-sm leading-relaxed">{t.about.trust3?.description}</p>
                             </div>
                         </div>
 
                         {/* Right bottom (trust1 - texto de Certificación) */}
-                        <div className="col-span-1 rounded-xl md:rounded-2xl overflow-hidden relative min-h-[300px] sm:min-h-[280px] md:min-h-[180px]">
-                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/trust1.jpg')` }} />
+                        <div className="col-span-1 rounded-xl md:rounded-2xl overflow-hidden relative min-h-auto sm:min-h-[280px] md:min-h-[180px]" style={{ willChange: 'transform', transform: 'translateZ(0)', contain: 'layout paint' }}>
+                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/trust1.jpg')`, willChange: 'transform' }} />
                             <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/85" />
                             <div className="relative p-5 sm:p-6 lg:p-8 border border-white/10 bg-transparent h-full flex flex-col justify-end">
                                 <h4 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-2 leading-snug">{t.about.trust2?.title}</h4>
-                                <p className="text-zinc-200 text-xs sm:text-sm leading-relaxed line-clamp-3 md:line-clamp-none">{t.about.trust2?.description}</p>
+                                <p className="text-zinc-200 text-xs sm:text-sm leading-relaxed">{t.about.trust2?.description}</p>
                             </div>
                         </div>
 
                         {/* Full-width academic card without background (trust4 / faculty) */}
-                        <div className="col-span-3 mt-6 rounded-2xl p-8 lg:p-10 border border-white/10 bg-white/5">
+                        <div className="col-span-3 mt-6 rounded-2xl p-8 lg:p-10 border border-white/10 bg-white/5" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
                             <h4 className="text-lg md:text-xl lg:text-xl font-normal text-white mb-4 leading-tight">{t.about.trust4?.title}</h4>
                             <p className="text-zinc-300 leading-relaxed text-sm md:text-base text-justify">{t.about.trust4?.description}</p>
                         </div>

@@ -13,8 +13,8 @@ export default function HeroSection() {
 
     return (
         <section id="home" className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-zinc-950 via-zinc-900 to-black pt-6">
-            {/* Animated Background - Same as Projects */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none">
+            {/* Animated Background - Disabled on mobile for performance */}
+            <div className="fixed inset-0 overflow-hidden pointer-events-none hidden md:block">
                 <motion.div
                     animate={{
                         x: [0, 100, 0],
@@ -27,6 +27,7 @@ export default function HeroSection() {
                         ease: "linear"
                     }}
                     className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
                 />
                 <motion.div
                     animate={{
@@ -41,6 +42,7 @@ export default function HeroSection() {
                         delay: 1
                     }}
                     className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
                 />
             </div>
             

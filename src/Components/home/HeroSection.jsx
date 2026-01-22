@@ -94,7 +94,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col px-6 sm:px-10 lg:px-16">
         {/* Header */}
-        <header className="py-8 flex justify-between items-start">
+        <header className="py-6 flex justify-between items-start">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -121,7 +121,7 @@ export default function HeroSection() {
         </header>
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-12 py-12">
+        <div className="flex-1 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-12 py-0">
           {/* Left - Title */}
           <div className="flex-1 flex flex-col items-center lg:items-start justify-center">
             <motion.div

@@ -475,7 +475,7 @@ function LayoutContent({ children, currentPageName }) {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="md:hidden bg-zinc-900/60 backdrop-blur-2xl border-t border-zinc-800/50 overflow-hidden rounded-b-2xl"
+                            className="md:hidden bg-zinc-900/60 backdrop-blur-lg border-t border-zinc-800/50 overflow-hidden rounded-b-2xl"
                         >
                             <div className="container mx-auto px-6 py-6 space-y-2">
                                 {/* ABOUT ME */}

@@ -320,9 +320,9 @@ export const translations = {
             quiz: {
                 title: 'Digital Strategy Quiz',
                 subtitle: 'Evaluate and Improve Your Marketing',
-                description: 'Answer 10 strategic questions to get a complete diagnosis of your digital maturity. Receive personalized recommendations based on your answers to improve each area.',
+                description: 'Answer 20 strategic questions to get a complete diagnosis of your digital maturity. Receive personalized recommendations based on your answers to improve each area.',
                 features: {
-                    strategicQuestions: '10 strategic questions',
+                    strategicQuestions: '20 strategic questions',
                     detailedScore: 'Detailed scoring',
                     personalizedRecommendations: 'Personalized recommendations',
                     improvementPlan: 'Clear improvement plan'
@@ -1359,9 +1359,9 @@ export const translations = {
             quiz: {
                 title: 'Quiz de Estrategia Digital',
                 subtitle: 'Evalúa y Mejora tu Marketing',
-                description: 'Responde 10 preguntas estratégicas para obtener un diagnóstico completo de tu madurez digital. Recibe recomendaciones personalizadas basadas en tus respuestas para mejorar cada área.',
+                description: 'Responde 20 preguntas estratégicas para obtener un diagnóstico completo de tu madurez digital. Recibe recomendaciones personalizadas basadas en tus respuestas para mejorar cada área.',
                 features: {
-                    strategicQuestions: '10 preguntas estratégicas',
+                    strategicQuestions: '20 preguntas estratégicas',
                     detailedScore: 'Puntuación detallada',
                     personalizedRecommendations: 'Recomendaciones personalizadas',
                     improvementPlan: 'Plan de mejora claro'

@@ -156,8 +156,8 @@ function Projects() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
             
-            {/* Animated Background */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none">
+            {/* Animated Background - Disabled on mobile for performance */}
+            <div className="fixed inset-0 overflow-hidden pointer-events-none hidden md:block">
                 <motion.div
                     animate={{
                         x: [0, 100, 0],
@@ -170,6 +170,7 @@ function Projects() {
                         ease: "linear"
                     }}
                     className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
                 />
                 <motion.div
                     animate={{
@@ -184,6 +185,7 @@ function Projects() {
                         delay: 1
                     }}
                     className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"
+                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
                 />
             </div>
 
@@ -262,7 +264,7 @@ function Projects() {
                         animate={{ opacity: 1, y: 0 }}
                         className="max-w-4xl mx-auto"
                     >
-                        <div className="flex items-center justify-center gap-3 flex-wrap bg-zinc-900/50 backdrop-blur-xl border border-zinc-800/50 rounded-2xl p-4">
+                        <div className="flex items-center justify-center gap-3 flex-wrap bg-zinc-900/50 backdrop-blur-md md:backdrop-blur-xl border border-zinc-800/50 rounded-2xl p-4">
                             <Filter className="w-5 h-5 text-emerald-400" />
                             {filters.map((filter) => (
                                 <motion.button
@@ -315,7 +317,7 @@ function Projects() {
                             className="group relative"
                         >
                             <div className="relative h-full">
-                                <div className="relative h-full bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 backdrop-blur-xl border border-zinc-800/50 rounded-3xl overflow-hidden transition-all duration-500 shadow-2xl cursor-not-allowed opacity-75">
+                                <div className="relative h-full bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 backdrop-blur-md md:backdrop-blur-xl border border-zinc-800/50 rounded-3xl overflow-hidden transition-all duration-500 shadow-2xl cursor-not-allowed opacity-75">
                                     {/* Project Image */}
                                     <div className="relative h-64 overflow-hidden">
                                         <img
