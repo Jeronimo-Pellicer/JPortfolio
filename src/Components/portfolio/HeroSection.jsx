@@ -13,8 +13,8 @@ export default function HeroSection() {
 
     return (
         <section id="home" className="min-h-[80vh] md:min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-zinc-950 via-zinc-900 to-black pt-6">
-            {/* Animated Background - Disabled on mobile for performance */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none hidden md:block">
+            {/* Animated Background - Optimized for mobile performance */}
+            <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-0 md:opacity-100 transition-opacity duration-300">
                 <motion.div
                     animate={{
                         x: [0, 100, 0],
@@ -27,7 +27,7 @@ export default function HeroSection() {
                         ease: "linear"
                     }}
                     className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
-                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                    style={{ willChange: 'transform', transform: 'translateZ(0) translate3d(0,0,0)', backfaceVisibility: 'hidden' }}
                 />
                 <motion.div
                     animate={{
@@ -42,7 +42,7 @@ export default function HeroSection() {
                         delay: 1
                     }}
                     className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"
-                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                    style={{ willChange: 'transform', transform: 'translateZ(0) translate3d(0,0,0)', backfaceVisibility: 'hidden' }}
                 />
             </div>
             
@@ -59,7 +59,7 @@ export default function HeroSection() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
-                            className="text-4xl md:text-6xl lg:text-8xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-3 tracking-tight leading-none"
+                            className="text-5xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-3 tracking-tight leading-none"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.05em' }}
                         >
                             {t.hero.greeting.toUpperCase()} JERÓNIMO

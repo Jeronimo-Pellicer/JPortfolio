@@ -156,8 +156,8 @@ function Projects() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
             
-            {/* Animated Background - Disabled on mobile for performance */}
-            <div className="fixed inset-0 overflow-hidden pointer-events-none hidden md:block">
+            {/* Animated Background - Optimized for mobile performance */}
+            <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-0 md:opacity-100 transition-opacity duration-300">
                 <motion.div
                     animate={{
                         x: [0, 100, 0],
@@ -170,7 +170,7 @@ function Projects() {
                         ease: "linear"
                     }}
                     className="absolute top-0 left-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl"
-                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                    style={{ willChange: 'transform', transform: 'translateZ(0) translate3d(0,0,0)', backfaceVisibility: 'hidden' }}
                 />
                 <motion.div
                     animate={{
@@ -185,7 +185,7 @@ function Projects() {
                         delay: 1
                     }}
                     className="absolute bottom-0 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl"
-                    style={{ willChange: 'transform', transform: 'translateZ(0)' }}
+                    style={{ willChange: 'transform', transform: 'translateZ(0) translate3d(0,0,0)', backfaceVisibility: 'hidden' }}
                 />
             </div>
 
