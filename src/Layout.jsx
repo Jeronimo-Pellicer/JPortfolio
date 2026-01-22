@@ -348,8 +348,8 @@ function LayoutContent({ children, currentPageName }) {
                 transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.9] }}
                 className={`fixed top-4 left-4 right-4 z-50 transition-all duration-500 ${
                     isScrolled 
-                        ? 'bg-zinc-900/40 backdrop-blur-2xl border border-zinc-800/50' 
-                        : 'bg-zinc-900/20 backdrop-blur-xl border border-zinc-800/30'
+                        ? 'bg-zinc-900/40 md:backdrop-blur-2xl border border-zinc-800/50' 
+                        : 'bg-zinc-900/20 md:backdrop-blur-xl border border-zinc-800/30'
                 } rounded-2xl`}
             >
                 <style>{`
@@ -475,7 +475,7 @@ function LayoutContent({ children, currentPageName }) {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="md:hidden bg-zinc-900/60 backdrop-blur-lg border-t border-zinc-800/50 overflow-hidden rounded-b-2xl"
+                            className="md:hidden bg-zinc-900/60 md:backdrop-blur-lg border-t border-zinc-800/50 overflow-hidden rounded-b-2xl"
                         >
                             <div className="container mx-auto px-6 py-6 space-y-2">
                                 {/* ABOUT ME */}

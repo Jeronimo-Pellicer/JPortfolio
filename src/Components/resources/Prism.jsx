@@ -1,5 +1,16 @@
-import { useEffect, useRef } from 'react';
-import { Renderer, Triangle, Program, Mesh } from 'ogl';
+import { useEffect, useRef, useState } from 'react';
+
+// Lazy load OGL only when component mounts
+let Renderer, Triangle, Program, Mesh;
+
+const loadOGL = async () => {
+  if (Renderer) return;
+  const oglModule = await import('ogl');
+  Renderer = oglModule.Renderer;
+  Triangle = oglModule.Triangle;
+  Program = oglModule.Program;
+  Mesh = oglModule.Mesh;
+};
 
 const Prism = ({
   height = 3.5,
@@ -19,64 +30,69 @@ const Prism = ({
   timeScale = 0.5
 }) => {
   const containerRef = useRef(null);
+  const [iglLoaded, setOglLoaded] = useState(false);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    const H = Math.max(0.001, height);
-    const BW = Math.max(0.001, baseWidth);
-    const BASE_HALF = BW * 0.5;
-    const GLOW = Math.max(0.0, glow);
-    const NOISE = Math.max(0.0, noise);
-    const offX = offset?.x ?? 0;
-    const offY = offset?.y ?? 0;
-    const SAT = transparent ? 1.5 : 1;
-    const SCALE = Math.max(0.001, scale);
-    const HUE = hueShift || 0;
-    const CFREQ = Math.max(0.0, colorFrequency || 1);
-    const BLOOM = Math.max(0.0, bloom || 1);
-    const RSX = 1;
-    const RSY = 1;
-    const RSZ = 1;
-    const TS = Math.max(0, timeScale || 1);
-    const HOVSTR = Math.max(0, hoverStrength || 1);
-    const INERT = Math.max(0, Math.min(1, inertia || 0.12));
+    // Load OGL dynamically
+    loadOGL().then(() => {
+      setOglLoaded(true);
+      
+      const H = Math.max(0.001, height);
+      const BW = Math.max(0.001, baseWidth);
+      const BASE_HALF = BW * 0.5;
+      const GLOW = Math.max(0.0, glow);
+      const NOISE = Math.max(0.0, noise);
+      const offX = offset?.x ?? 0;
+      const offY = offset?.y ?? 0;
+      const SAT = transparent ? 1.5 : 1;
+      const SCALE = Math.max(0.001, scale);
+      const HUE = hueShift || 0;
+      const CFREQ = Math.max(0.0, colorFrequency || 1);
+      const BLOOM = Math.max(0.0, bloom || 1);
+      const RSX = 1;
+      const RSY = 1;
+      const RSZ = 1;
+      const TS = Math.max(0, timeScale || 1);
+      const HOVSTR = Math.max(0, hoverStrength || 1);
+      const INERT = Math.max(0, Math.min(1, inertia || 0.12));
 
-    const dpr = Math.min(2, window.devicePixelRatio || 1);
-    const renderer = new Renderer({
-      dpr,
-      alpha: transparent,
-      antialias: false
-    });
-    const gl = renderer.gl;
-    gl.disable(gl.DEPTH_TEST);
-    gl.disable(gl.CULL_FACE);
-    gl.disable(gl.BLEND);
+      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const renderer = new Renderer({
+        dpr,
+        alpha: transparent,
+        antialias: false
+      });
+      const gl = renderer.gl;
+      gl.disable(gl.DEPTH_TEST);
+      gl.disable(gl.CULL_FACE);
+      gl.disable(gl.BLEND);
 
-    Object.assign(gl.canvas.style, {
-      position: 'absolute',
-      inset: '0',
-      width: '100%',
-      height: '100%',
-      display: 'block'
-    });
-    container.appendChild(gl.canvas);
+      Object.assign(gl.canvas.style, {
+        position: 'absolute',
+        inset: '0',
+        width: '100%',
+        height: '100%',
+        display: 'block'
+      });
+      container.appendChild(gl.canvas);
 
-    const vertex = /* glsl */ `
-      attribute vec2 position;
-      void main() {
-        gl_Position = vec4(position, 0.0, 1.0);
-      }
-    `;
+      const vertex = /* glsl */ `
+        attribute vec2 position;
+        void main() {
+          gl_Position = vec4(position, 0.0, 1.0);
+        }
+      `;
 
-    const fragment = /* glsl */ `
-      precision highp float;
+      const fragment = /* glsl */ `
+        precision highp float;
 
-      uniform vec2  iResolution;
-      uniform float iTime;
+        uniform vec2  iResolution;
+        uniform float iTime;
 
-      uniform float uHeight;
+        uniform float uHeight;
       uniform float uBaseHalf;
       uniform mat3  uRot;
       uniform int   uUseBaseWobble;
@@ -409,7 +425,8 @@ const Prism = ({
         delete container.__prismIO;
       }
       if (gl.canvas.parentElement === container) container.removeChild(gl.canvas);
-    };
+      };
+    });
   }, [
     height,
     baseWidth,

@@ -71,7 +71,16 @@ const AboutSection = React.memo(() => {
 
                         {/* Right top (trust3) */}
                         <div className="col-span-1 rounded-xl md:rounded-2xl overflow-hidden relative min-h-auto sm:min-h-[280px] md:min-h-[180px]" style={{ willChange: 'transform', transform: 'translateZ(0)', contain: 'layout paint' }}>
-                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/trust3.jpg')`, willChange: 'transform' }} />
+                            <div 
+                                className="absolute inset-0 bg-cover bg-center" 
+                                style={{ 
+                                    backgroundImage: `url('/trust3-optimized.jpg')`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    willChange: 'transform',
+                                    contentVisibility: 'auto'
+                                }} 
+                            />
                             <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/85" />
                             <div className="relative p-5 sm:p-6 lg:p-8 border border-white/10 bg-transparent h-full flex flex-col justify-end">
                                 <h4 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-2 leading-snug">{t.about.trust3?.title}</h4>
