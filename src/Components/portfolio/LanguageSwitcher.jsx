@@ -6,7 +6,7 @@ export default function LanguageSwitcher({ className }) {
     const { language, toggleLanguage } = useLanguage();
 
     // Allow parent to control positioning; default to floating on desktop
-    const wrapperClass = className || 'fixed top-28 right-3 sm:top-24 sm:right-6 z-50';
+    const wrapperClass = className || 'fixed top-16 right-3 sm:top-14 sm:right-6 z-50';
 
     return (
         <div className={wrapperClass}>

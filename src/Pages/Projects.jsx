@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Filter, ArrowRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/Components/portfolio/LanguageContext';
-import LanguageSwitcher from '@/Components/portfolio/LanguageSwitcher';
 import { createProjectSlug } from '../utils/projectUtils';
 
 function Projects() {
@@ -156,7 +155,6 @@ function Projects() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
-            <LanguageSwitcher />
             
             {/* Animated Background */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -190,7 +188,7 @@ function Projects() {
             </div>
 
             {/* Hero Section */}
-            <section className="relative pt-32 pb-20">
+            <section className="relative pt-10 pb-20">
                 <div className="container mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -202,7 +200,7 @@ function Projects() {
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
                             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-                            className="inline-block mb-6"
+                            className="inline-block mb-3"
                         >
                             <Sparkles className="w-12 h-12 text-emerald-400" />
                         </motion.div>

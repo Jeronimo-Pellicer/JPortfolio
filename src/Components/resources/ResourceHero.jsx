@@ -89,7 +89,7 @@ export default function ResourceHero() {
     };
 
     return (
-        <section className="w-full relative overflow-hidden bg-transparent py-12 sm:py-16 lg:py-24 xl:py-32">
+        <section className="w-full relative overflow-hidden bg-transparent pt-30 pb-12 sm:pb-16 lg:pb-24 xl:pb-32">
 
 
             <div className="w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">

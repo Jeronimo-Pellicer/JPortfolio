@@ -61,9 +61,14 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">{t.tools.footer.sections.resources}</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#herramientas" className="text-slate-400 hover:text-white transition-colors">
+                <Link to="/herramientas" className="text-slate-400 hover:text-white transition-colors">
                   {t.tools.footer.links.allTools}
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/recursos" className="text-slate-400 hover:text-white transition-colors">
+                  Recursos
+                </Link>
               </li>
               <li>
                 <a href="#como-funciona" className="text-slate-400 hover:text-white transition-colors">
