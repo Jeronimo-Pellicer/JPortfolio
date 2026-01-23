@@ -1,15 +1,15 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, Suspense, lazy } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FileSpreadsheet, FileText, Image } from 'lucide-react';
 import { useLanguage } from '../Components/portfolio/LanguageContext';
 import { useSearchParams } from 'react-router-dom';
 
-import Prism from '../Components/resources/Prism';
+const Prism = lazy(() => import('../Components/resources/Prism'));
 import ResourceHero from '../Components/resources/ResourceHero';
 import ResourceFilter from '../Components/resources/ResourceFilter';
 import ResourceSection from '../Components/resources/ResourceSection';
-import ResourcePreviewModal from '../Components/resources/ResourcePreviewModal';
-import PaymentModal from '../Components/resources/PaymentModal';
+const ResourcePreviewModal = lazy(() => import('../Components/resources/ResourcePreviewModal'));
+const PaymentModal = lazy(() => import('../Components/resources/PaymentModal'));
 import ResourceCTA from '../Components/resources/ResourceCTA';
 import ResourceFAQ from '../Components/resources/ResourceFAQ';
 import ResourceArticle from '../Components/resources/ResourceArticle';
@@ -104,31 +104,33 @@ export default function Resources() {
 
             <div className="fixed inset-0 z-0 pointer-events-none">
 
-                <Prism
+                <Suspense fallback={<div />}>
+                    <Prism
 
-                    height={3.5}
+                        height={3.5}
 
-                    baseWidth={5.5}
+                        baseWidth={5.5}
 
-                    animationType="rotate"
+                        animationType="rotate"
 
-                    glow={0.8}
+                        glow={0.8}
 
-                    noise={0.3}
+                        noise={0.3}
 
-                    transparent={true}
+                        transparent={true}
 
-                    scale={3.6}
+                        scale={3.6}
 
-                    hueShift={0.5}
+                        hueShift={0.5}
 
-                    colorFrequency={1}
+                        colorFrequency={1}
 
-                    bloom={0.8}
+                        bloom={0.8}
 
-                    timeScale={0.3}
+                        timeScale={0.3}
 
-                />
+                    />
+                </Suspense>
 
                 {/* Overlay para mejorar legibilidad */}
 
@@ -327,41 +329,45 @@ export default function Resources() {
 
             {/* Preview Modal */}
 
-            <ResourcePreviewModal
+            <Suspense fallback={null}>
+                <ResourcePreviewModal
 
-                resource={selectedResource}
+                    resource={selectedResource}
 
-                isOpen={isPreviewOpen}
+                    isOpen={isPreviewOpen}
 
-                onClose={() => {
+                    onClose={() => {
 
-                    setIsPreviewOpen(false);
+                        setIsPreviewOpen(false);
 
-                    setSelectedResource(null);
+                        setSelectedResource(null);
 
-                }}
+                    }}
 
-            />
+                />
+            </Suspense>
 
 
 
             {/* Payment Modal */}
 
-            <PaymentModal
+            <Suspense fallback={null}>
+                <PaymentModal
 
-                resource={selectedResource}
+                    resource={selectedResource}
 
-                isOpen={isPaymentOpen}
+                    isOpen={isPaymentOpen}
 
-                onClose={() => {
+                    onClose={() => {
 
-                    setIsPaymentOpen(false);
+                        setIsPaymentOpen(false);
 
-                    setSelectedResource(null);
+                        setSelectedResource(null);
 
-                }}
+                    }}
 
-            />
+                />
+            </Suspense>
 
         </div>
 

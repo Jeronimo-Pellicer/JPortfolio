@@ -51,7 +51,7 @@ export default function ResourceCard({ resource, index, onPreview, onPurchase, o
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
+            transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.3) }}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             className="group relative h-full"
@@ -61,19 +61,12 @@ export default function ResourceCard({ resource, index, onPreview, onPurchase, o
 
                 {/* Header gradient */}
                 <div className={`relative h-32 bg-gradient-to-br ${typeColors[resource.type]} overflow-hidden`}>
-                    <motion.div 
-                        className="absolute inset-0 bg-black/10"
-                        animate={{ opacity: isHovered ? 0 : 0.1 }}
-                    />
+                    <div className="absolute inset-0 bg-black/10" />
                     
                     {/* Animated background pattern */}
                     <div className="absolute inset-0 opacity-20">
-                        <motion.div
-                            animate={{ 
-                                backgroundPosition: isHovered ? ['0% 0%', '100% 100%'] : '0% 0%'
-                            }}
-                            transition={{ duration: 3, ease: "linear" }}
-                            className="w-full h-full"
+                        <div
+                            className="w-full h-full transition-all duration-300"
                             style={{
                                 backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
                                 backgroundSize: '20px 20px'
@@ -93,16 +86,14 @@ export default function ResourceCard({ resource, index, onPreview, onPurchase, o
 
                     {/* Centered icon */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                        <motion.div
-                            animate={{ 
-                                scale: isHovered ? 1.1 : 1,
-                                y: isHovered ? -5 : 0
+                        <div
+                            className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl transition-transform duration-300"
+                            style={{
+                                transform: isHovered ? 'scale(1.1) translateY(-5px)' : 'scale(1) translateY(0)'
                             }}
-                            transition={{ duration: 0.3 }}
-                            className="p-4 bg-white/20 backdrop-blur-sm rounded-2xl"
                         >
                             <Icon className="w-10 h-10 text-white" />
-                        </motion.div>
+                        </div>
                     </div>
                 </div>
 
@@ -129,16 +120,17 @@ export default function ResourceCard({ resource, index, onPreview, onPurchase, o
                     {displayBenefits && displayBenefits.length > 0 && (
                         <div className="mb-5 space-y-2">
                             {displayBenefits.slice(0, 3).map((benefit, i) => (
-                                <motion.div 
+                                <div 
                                     key={i}
-                                    initial={{ opacity: 0, x: -10 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    transition={{ delay: 0.2 + i * 0.1 }}
                                     className="flex items-start gap-2"
+                                    style={{ 
+                                        opacity: 1,
+                                        transform: 'translateX(0)'
+                                    }}
                                 >
                                     <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 flex-shrink-0" />
                                     <span className="text-xs text-slate-600">{benefit}</span>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
                     )}
@@ -253,9 +245,9 @@ export default function ResourceCard({ resource, index, onPreview, onPurchase, o
                 </div>
 
                 {/* Hover glow effect */}
-                <motion.div
-                    className="absolute inset-0 pointer-events-none"
-                    animate={{
+                <div
+                    className="absolute inset-0 pointer-events-none transition-all duration-300"
+                    style={{
                         boxShadow: isHovered 
                             ? 'inset 0 0 60px rgba(139, 92, 246, 0.05)' 
                             : 'inset 0 0 0 rgba(139, 92, 246, 0)'

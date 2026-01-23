@@ -1,0 +1,38 @@
+/* Resources Page Critical Styles */
+
+/* Minimize CSS specificity and repaints */
+.resource-card {
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.resource-card-icon {
+  will-change: transform;
+}
+
+/* Reduce animations on mobile */
+@media (max-width: 768px) {
+  .resource-card {
+    transition-duration: 0.15s !important;
+  }
+  
+  .motion-reduce {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Optimize scrolling performance */
+.resource-section {
+  contain: layout style paint;
+}
+
+/* Prevent layout shift */
+.resource-hero {
+  contain-intrinsic-size: auto 400px;
+}
+
+/* CSS containment for cards */
+.resource-grid > * {
+  contain: content;
+}

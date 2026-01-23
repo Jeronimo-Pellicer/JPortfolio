@@ -12,6 +12,15 @@ const loadOGL = async () => {
   Mesh = oglModule.Mesh;
 };
 
+const shouldReduceAnimations = () => {
+  if (typeof window === 'undefined') return false;
+  // Check for prefers-reduced-motion or slow connection
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const effectiveType = (navigator.connection?.effectiveType || '4g');
+  const isSlow4G = effectiveType === '4g' && (navigator.connection?.saveData || false);
+  return prefersReduced || isSlow4G;
+};
+
 const Prism = ({
   height = 3.5,
   baseWidth = 5.5,
@@ -36,10 +45,14 @@ const Prism = ({
     const container = containerRef.current;
     if (!container) return;
 
+    // Skip loading on slow connections
+    if (shouldReduceAnimations()) {
+      return;
+    }
+
     // Load OGL dynamically
     loadOGL().then(() => {
       setOglLoaded(true);
-      
       const H = Math.max(0.001, height);
       const BW = Math.max(0.001, baseWidth);
       const BASE_HALF = BW * 0.5;
@@ -59,11 +72,13 @@ const Prism = ({
       const HOVSTR = Math.max(0, hoverStrength || 1);
       const INERT = Math.max(0, Math.min(1, inertia || 0.12));
 
-      const dpr = Math.min(2, window.devicePixelRatio || 1);
+      const dpr = Math.min(1.5, window.devicePixelRatio || 1);
       const renderer = new Renderer({
         dpr,
         alpha: transparent,
-        antialias: false
+        antialias: false,
+        depth: false,
+        stencil: false
       });
       const gl = renderer.gl;
       gl.disable(gl.DEPTH_TEST);

@@ -79,9 +79,9 @@ export default function ResourceHero() {
     // Continuous floating animation
     const floatingVariants = {
         floating: {
-            y: [0, -12, 0],
+            y: [0, -8, 0],
             transition: {
-                duration: 3.5,
+                duration: 3,
                 repeat: Infinity,
                 ease: 'easeInOut',
             },
@@ -142,65 +142,49 @@ export default function ResourceHero() {
                                 key={stat.label}
                                 ref={(el) => (cardRefs.current[index] = el)}
                                 variants={cardEntranceVariants}
-                                whileHover={{ scale: 1.08 }}
-                                onMouseMove={(e) => handleMouseMove(e, index)}
-                                onMouseEnter={() => handleMouseEnter(index)}
-                                onMouseLeave={handleMouseLeave}
+                                onMouseEnter={() => setHoveredCardIndex(index)}
+                                onMouseLeave={() => setHoveredCardIndex(null)}
                                 animate={
                                     hoveredCardIndex === index
-                                        ? {
-                                            rotateX: mousePosition.rotateX || 0,
-                                            rotateY: mousePosition.rotateY || 0,
-                                            z: 50,
-                                        }
+                                        ? { scale: 1.05 }
                                         : {
-                                            y: [0, -12, 0],
+                                            y: [0, -8, 0],
                                             transition: {
-                                                duration: 3.5,
+                                                duration: 3,
                                                 repeat: Infinity,
                                                 ease: 'easeInOut',
                                             },
                                         }
                                 }
-                                style={{
-                                    perspective: '1000px',
-                                    transformStyle: 'preserve-3d',
-                                }}
                                 className="relative w-full sm:w-auto flex items-center gap-3 px-6 py-5 bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-2xl shadow-lg shadow-black/20 border border-white/15 hover:border-white/30 transition-colors cursor-pointer"
                             >
                                 {/* Glow effect on hover */}
-                                <motion.div
-                                    className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/20 to-purple-500/10 blur-xl opacity-0"
-                                    animate={{
+                                <div
+                                    className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-500/20 to-purple-500/10 blur-xl opacity-0 transition-opacity duration-300"
+                                    style={{ 
                                         opacity: hoveredCardIndex === index ? 1 : 0,
+                                        zIndex: -1
                                     }}
-                                    transition={{ duration: 0.3 }}
-                                    style={{ zIndex: -1 }}
                                 />
 
                                 <motion.div
-                                    className="p-3 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl shadow-lg"
-                                    animate={{
-                                        scale: hoveredCardIndex === index ? 1.15 : 1,
-                                    }}
-                                    transition={{
-                                        type: 'spring',
-                                        stiffness: 120,
-                                        damping: 12,
+                                    className="p-3 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl shadow-lg transition-transform duration-300"
+                                    style={{
+                                        transform: hoveredCardIndex === index ? 'scale(1.15)' : 'scale(1)'
                                     }}
                                 >
                                     <stat.icon className="w-6 h-6 text-white" />
                                 </motion.div>
 
                                 <div className="text-left">
-                                    <motion.p
-                                        className="text-2xl font-bold text-white"
-                                        animate={{
-                                            scale: hoveredCardIndex === index ? 1.1 : 1,
+                                    <p
+                                        className="text-2xl font-bold text-white transition-transform duration-300"
+                                        style={{
+                                            transform: hoveredCardIndex === index ? 'scale(1.1)' : 'scale(1)'
                                         }}
                                     >
                                         {stat.count}
-                                    </motion.p>
+                                    </p>
                                     <p className="text-sm text-slate-300">{stat.label}</p>
                                 </div>
                             </motion.div>

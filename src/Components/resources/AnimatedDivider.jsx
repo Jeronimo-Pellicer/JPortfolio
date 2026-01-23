@@ -9,7 +9,7 @@ export default function AnimatedDivider() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.3 }}
             >
                 {/* Gradient line that draws from left to right */}
                 <motion.div
@@ -21,9 +21,9 @@ export default function AnimatedDivider() {
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{
-                        duration: 1.5,
+                        duration: 0.8,
                         ease: 'easeOut',
-                        delay: 0.2,
+                        delay: 0.1,
                     }}
                 />
                 
@@ -34,9 +34,9 @@ export default function AnimatedDivider() {
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true, amount: 0.5 }}
                     transition={{
-                        duration: 1.5,
+                        duration: 0.8,
                         ease: 'easeOut',
-                        delay: 0.2,
+                        delay: 0.1,
                     }}
                 />
             </motion.div>

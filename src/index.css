@@ -10,3 +10,40 @@ body {
   margin: 0;
   min-height: 100vh;
 }
+
+/* Performance optimizations */
+.motion-safe {
+  @apply motion-safe:transition-all;
+}
+
+.motion-reduce {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Containment for performance */
+.contain-layout {
+  contain: layout;
+}
+
+.contain-paint {
+  contain: paint;
+}
+
+/* Reduce motion for users with prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimize scrolling */
+.scroll-smooth-gpu {
+  scroll-behavior: smooth;
+  will-change: scroll-position;
+}
+
