@@ -25,18 +25,20 @@ export default function ResourceFilter({ activeFilter, onFilterChange }) {
 
     // Calculate bubble position and size
     useEffect(() => {
-        const activeIndex = filters.findIndex(f => f.id === activeFilter);
-        const activeElement = itemRefs.current[activeIndex];
-        
-        if (activeElement && containerRef.current) {
-            const containerRect = containerRef.current.getBoundingClientRect();
-            const activeRect = activeElement.getBoundingClientRect();
+        const timer = requestAnimationFrame(() => {
+            const activeIndex = filters.findIndex(f => f.id === activeFilter);
+            const activeElement = itemRefs.current[activeIndex];
             
-            setBubbleStyle({
-                width: activeRect.width,
-                left: activeRect.left - containerRect.left,
-            });
-        }
+            if (activeElement && containerRef.current) {
+                // Use offsetLeft for more reliable positioning in scrollable containers
+                setBubbleStyle({
+                    width: activeElement.offsetWidth,
+                    left: activeElement.offsetLeft,
+                });
+            }
+        });
+        
+        return () => cancelAnimationFrame(timer);
     }, [activeFilter]);
 
     const handleMouseMove = (e, filterId) => {
@@ -96,6 +98,7 @@ export default function ResourceFilter({ activeFilter, onFilterChange }) {
             >
                 {/* Floating Elastic Bubble Background */}
                 <motion.div
+                    key={`bubble-${activeFilter}`}
                     className="absolute rounded-full bg-gradient-to-r from-violet-500 to-purple-600"
                     style={{
                         height: 'calc(100% - 16px)',
@@ -104,9 +107,10 @@ export default function ResourceFilter({ activeFilter, onFilterChange }) {
                         willChange: 'width, left',
                         contain: 'layout paint',
                     }}
+                    initial={false}
                     animate={{
-                        width: bubbleStyle.width,
-                        left: bubbleStyle.left,
+                        width: bubbleStyle.width || 0,
+                        left: bubbleStyle.left || 0,
                     }}
                     transition={{
                         type: 'spring',

@@ -50,8 +50,8 @@ export default function ResourceCard({ resource, index, onPreview, onPurchase, o
         <motion.article
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: Math.min(index * 0.08, 0.3) }}
+            viewport={{ once: true, margin: "0px" }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             className="group relative h-full"
