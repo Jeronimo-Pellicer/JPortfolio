@@ -1,26 +1,37 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { Toaster } from 'sonner';
-import Layout from './Layout'; // Asegúrate de que se llame Layout.jsx
+import Layout from './Layout';
+import ResourceHints from './Components/shared/ResourceHints';
+
+// Defer non-critical toast notifications
+const Toaster = lazy(() => import('sonner').then(module => ({ default: module.Toaster })));
 
 // Lazy-load pages (route-level splitting)
-const Projects = lazy(() => import('./Pages/Projects'));
-const ProjectDetail = lazy(() => import('./Pages/ProjectDetail'));
-const Books = lazy(() => import('./Pages/Books'));
-const Herramientas = lazy(() => import('./Pages/Herramientas'));
-const Resources = lazy(() => import('./Pages/Resources'));
-const ROICalculator = lazy(() => import('./Pages/ROICalculator'));
-const BuyerPersona = lazy(() => import('./Pages/BuyerPersona'));
-const PriorityMatrix = lazy(() => import('./Pages/PriorityMatrix'));
-const StrategyQuiz = lazy(() => import('./Pages/StrategyQuiz'));
+const Projects = lazy(() => import(/* webpackChunkName: "projects" */ './Pages/Projects'));
+const ProjectDetail = lazy(() => import(/* webpackChunkName: "project-detail" */ './Pages/ProjectDetail'));
+const Books = lazy(() => import(/* webpackChunkName: "books" */ './Pages/Books'));
+const Herramientas = lazy(() => import(/* webpackChunkName: "herramientas" */ './Pages/Herramientas'));
+const Resources = lazy(() => import(/* webpackChunkName: "resources" */ './Pages/Resources'));
+const ROICalculator = lazy(() => import(/* webpackChunkName: "roi-calculator" */ './Pages/ROICalculator'));
+const BuyerPersona = lazy(() => import(/* webpackChunkName: "buyer-persona" */ './Pages/BuyerPersona'));
+const PriorityMatrix = lazy(() => import(/* webpackChunkName: "priority-matrix" */ './Pages/PriorityMatrix'));
+const StrategyQuiz = lazy(() => import(/* webpackChunkName: "strategy-quiz" */ './Pages/StrategyQuiz'));
 
-// Lazy-load heavy home subcomponents
-const HeroSection = lazy(() => import('./Components/portfolio/HeroSection'));
-const AboutSection = lazy(() => import('./Components/portfolio/AboutSection'));
-const ProjectsSection = lazy(() => import('./Components/portfolio/ProjectsSection'));
-const ContactSection = lazy(() => import('./Components/portfolio/ContactSection'));
-const FAQSection = lazy(() => import('./Components/portfolio/FAQSection'));
-const MarqueeSection = lazy(() => import('./Components/portfolio/MarqueeSection'));
+// Critical above-the-fold component - load immediately
+const HeroSection = lazy(() => import(/* webpackChunkName: "hero", webpackPrefetch: true */ './Components/portfolio/HeroSection'));
+const MarqueeSection = lazy(() => import(/* webpackChunkName: "marquee", webpackPrefetch: true */ './Components/portfolio/MarqueeSection'));
+
+// Below-the-fold components - defer loading
+const AboutSection = lazy(() => import(/* webpackChunkName: "about" */ './Components/portfolio/AboutSection'));
+const FAQSection = lazy(() => import(/* webpackChunkName: "faq" */ './Components/portfolio/FAQSection'));
+const ContactSection = lazy(() => import(/* webpackChunkName: "contact" */ './Components/portfolio/ContactSection'));
+
+// Lightweight loading skeleton
+const LoadingFallback = () => (
+  <div className="min-h-screen flex items-center justify-center bg-zinc-950">
+    <div className="text-white">Cargando...</div>
+  </div>
+);
 
 function HomeContent() {
   const location = useLocation();
@@ -38,21 +49,29 @@ function HomeContent() {
   }, [location.hash]);
 
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Cargando...</div>}>
+    <Suspense fallback={<LoadingFallback />}>
       <HeroSection />
       <MarqueeSection />
-      <AboutSection />
-      <FAQSection />
-      <ContactSection />
+      <Suspense fallback={null}>
+        <AboutSection />
+        <FAQSection />
+        <ContactSection />
+      </Suspense>
     </Suspense>
   );
 }
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true
+      }}
+    >
+      <ResourceHints />
       <Layout>
-        <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Cargando...</div>}>
+        <Suspense fallback={<LoadingFallback />}>
           <Routes>
             <Route path="/" element={<HomeContent />} />
             <Route path="/projects" element={<Projects />} />
@@ -67,7 +86,9 @@ function App() {
           </Routes>
         </Suspense>
       </Layout>
-      <Toaster richColors position="top-right" />
+      <Suspense fallback={null}>
+        <Toaster richColors position="top-right" />
+      </Suspense>
     </BrowserRouter>
   );
 }

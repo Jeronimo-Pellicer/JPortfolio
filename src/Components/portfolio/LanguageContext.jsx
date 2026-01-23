@@ -60,7 +60,7 @@ export const translations = {
             whyTrustMe: 'Why Trust Me?',
             trust1: {
                 title: 'Academic Excellence and Leadership in Global Initiatives',
-                description: 'Bachelor\'s in Internet Administration at UEAN, with a GPA of +8.66. Leading an optional International Finance Project and Green Bonds integration in Argentina, with projection to several congresses.',
+                description: 'Bachelor\'s in Internet Administration at UEAN, with a GPA of +8.66. Leading a university International Finance Project and Green Bonds integration in Argentina, with projection to several congresses.',
             },
             trust2: {
                 title: 'International Certification, Local Strategies',
@@ -1099,7 +1099,7 @@ export const translations = {
             whyTrustMe: '¿Por qué confiar en mí?',
             trust1: {
                 title: 'Excelencia académica y liderazgo en iniciativas globales',
-                description: 'Licenciatura en Administración en Internet en UEAN, con promedio de +8,66. Liderando un Proyecto facultativo de Finanzas Internacionales e inserción de Green Bonds en Argentina, con proyección a varios congresos.',
+                description: 'Licenciatura en Administración en Internet en UEAN, con promedio de +8,66. Liderando un Proyecto universitario de Finanzas Internacionales e inserción de Green Bonds en Argentina, con proyección a varios congresos.',
             },
             trust2: {
                 title: 'Certificación internacional, estrategias locales',

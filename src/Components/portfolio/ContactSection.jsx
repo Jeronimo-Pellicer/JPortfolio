@@ -43,10 +43,10 @@ export default function ContactSection() {
     };
 
     return (
-        <section id="contact" className="py-20 lg:py-32 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
-            <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        <section id="contact" className="py-12 lg:py-32 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
+            <div className="container mx-auto px-4 md:px-6 lg:px-12 relative z-10">
                 
-                <div className="grid lg:grid-cols-2 gap-16 items-start">
+                <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
                     
                     {/* --- COLUMNA IZQUIERDA (Texto Oscuro) --- */}
                     <motion.div
@@ -54,27 +54,27 @@ export default function ContactSection() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="space-y-12"
+                        className="space-y-6 md:space-y-12"
                     >
                         <div>
                             <span className="text-zinc-500 text-sm font-medium tracking-wider uppercase mb-4 block">/ {t.contact.title} /</span>
                             <motion.h2 
-                                className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
+                                className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight mb-4 md:mb-6"
                                 whileHover={{ scale: 1.02 }}
                                 transition={{ duration: 0.3 }}
                             >
                                 {t.contact.heading}
                             </motion.h2>
-                            <p className="text-zinc-400 text-lg leading-relaxed max-w-md">
+                            <p className="text-zinc-400 text-sm md:text-base lg:text-lg leading-relaxed max-w-md">
                                 {t.contact.description}
                             </p>
                         </div>
 
                         {/* Grid de información de contacto (Estilo limpio sin tarjetas) */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-10">
                             {contactInfo.map((item) => (
                                 <div key={item.label} className="space-y-2">
-                                    <h4 className="text-white font-semibold text-lg">{item.label}</h4>
+                                    <h4 className="text-white font-semibold text-sm md:text-base lg:text-lg">{item.label}</h4>
                                     {item.href ? (
                                         <a href={item.href} className="block text-zinc-400 hover:text-emerald-400 transition-colors">
                                             {item.value}
@@ -87,7 +87,7 @@ export default function ContactSection() {
                             
                             {/* Redes Sociales */}
                             <div className="space-y-4">
-                                <h4 className="text-white font-semibold text-lg">{t.contact.social}</h4>
+                                <h4 className="text-white font-semibold text-sm md:text-base lg:text-lg">{t.contact.social}</h4>
                                 <div className="flex gap-4">
                                     {socialLinks.map((item) => (
                                         <a 
@@ -121,7 +121,7 @@ export default function ContactSection() {
                                     link.click();
                                     document.body.removeChild(link);
                                 }}
-                                className="mt-8 w-full px-6 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium rounded-xl hover:from-emerald-400 hover:to-teal-400 transition-all duration-300 shadow-[0_10px_30px_rgba(52,211,153,0.4)] hover:shadow-[0_15px_40px_rgba(52,211,153,0.5)] cursor-pointer"
+                                className="mt-6 md:mt-8 w-full px-4 md:px-6 py-3 md:py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium text-sm md:text-base rounded-xl hover:from-emerald-400 hover:to-teal-400 transition-all duration-300 shadow-[0_10px_30px_rgba(52,211,153,0.4)] hover:shadow-[0_15px_40px_rgba(52,211,153,0.5)] cursor-pointer"
                             >
                                 {t.nav.resume}
                             </motion.button>
@@ -134,7 +134,7 @@ export default function ContactSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="bg-white rounded-[2.5rem] p-8 md:p-12 lg:p-14 shadow-2xl relative"
+                        className="bg-white rounded-2xl md:rounded-[2.5rem] p-5 md:p-8 lg:p-12 xl:p-14 shadow-2xl relative"
                     >
                         {isSubmitted ? (
                             <div className="flex flex-col items-center justify-center py-20 text-center space-y-6">
@@ -149,13 +149,13 @@ export default function ContactSection() {
                         ) : (
                             <>
                                 <div className="mb-10">
-                                    <h3 className="text-3xl font-bold text-zinc-900 mb-3">Contact</h3>
-                                    <p className="text-zinc-500">
+                                    <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-2">Contact</h3>
+                                    <p className="text-zinc-500 text-sm md:text-base">
                                         Identify your key objectives and explore the opportunities where our expertise can enhance your results.
                                     </p>
                                 </div>
 
-                                <form onSubmit={handleSubmit} className="space-y-8">
+                                <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
                                     {/* Input Name */}
                                     <div className="relative">
                                         <input

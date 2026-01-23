@@ -18,13 +18,13 @@ const techStack = [
 
 export default function MarqueeSection() {
     const { t } = useLanguage();
-    // Duplicate the array to create seamless loop
-    const duplicatedStack = [...techStack, ...techStack, ...techStack];
+    // Duplicate the array to create seamless loop (less repeats on mobile)
+    const duplicatedStack = [...techStack, ...techStack];
 
     return (
-        <section className="py-16 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border-y border-zinc-800/50 overflow-hidden">
-            <div className="mb-8 text-center">
-                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wide hover:text-emerald-400 transition-colors duration-300 cursor-default">
+        <section className="py-8 md:py-16 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border-y border-zinc-800/50 overflow-hidden min-h-[140px] md:min-h-[240px]" style={{ contain: 'layout paint' }}>
+            <div className="mb-4 md:mb-8 text-center px-4">
+                <h3 className="text-xs md:text-sm font-semibold text-zinc-500 uppercase tracking-wide hover:text-emerald-400 transition-colors duration-300 cursor-default">
                     {t.marquee.toolsTechnologies}
                 </h3>
             </div>
@@ -33,13 +33,24 @@ export default function MarqueeSection() {
                 <style>{`
                     @keyframes marquee {
                         0% { transform: translateX(0); }
-                        100% { transform: translateX(calc(-${techStack.length * 208}px)); }
+                        100% { transform: translateX(calc(-${techStack.length * 176}px)); }
+                    }
+                    @media (max-width: 768px) {
+                        @keyframes marquee {
+                            0% { transform: translateX(0); }
+                            100% { transform: translateX(calc(-${techStack.length * 120}px)); }
+                        }
                     }
                     .marquee-container {
                         display: flex;
-                        gap: 48px;
+                        gap: 24px;
                         animation: marquee 40s linear infinite;
                         will-change: transform;
+                    }
+                    @media (max-width: 768px) {
+                        .marquee-container {
+                            gap: 16px;
+                        }
                     }
                     .marquee-container:hover {
                         animation-play-state: paused;
@@ -49,20 +60,23 @@ export default function MarqueeSection() {
                     {duplicatedStack.map((tech, index) => (
                         <div
                             key={`${tech.name}-${index}`}
-                            className="flex-shrink-0 w-40 flex flex-col items-center justify-center gap-3 cursor-pointer group relative"
+                            className="flex-shrink-0 w-28 md:w-40 flex flex-col items-center justify-center gap-2 md:gap-3 cursor-pointer group relative"
                         >
-                            <div className="w-20 h-20 rounded-2xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center group-hover:border-emerald-400/50 group-hover:bg-zinc-800 transition-all duration-300 p-3 overflow-visible">
+                            <div className="w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center group-hover:border-emerald-400/50 group-hover:bg-zinc-800 transition-all duration-300 p-2 md:p-3 overflow-visible" style={{ aspectRatio: '1/1' }}>
                                 <img 
                                     src={tech.logo} 
                                     alt={tech.name}
+                                    width="80"
+                                    height="80"
                                     loading="lazy"
                                     decoding="async"
                                     className="w-full h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all duration-300"
+                                    style={{ aspectRatio: '1/1' }}
                                 />
                             </div>
                             <div className="text-center w-full">
-                                <p className="text-sm font-medium text-white whitespace-nowrap">{tech.name}</p>
-                                <p className="text-xs text-zinc-500 whitespace-nowrap">{tech.category}</p>
+                                <p className="text-xs md:text-sm font-medium text-white whitespace-nowrap">{tech.name}</p>
+                                <p className="hidden md:block text-xs text-zinc-500 whitespace-nowrap">{tech.category}</p>
                             </div>
                         </div>
                     ))}

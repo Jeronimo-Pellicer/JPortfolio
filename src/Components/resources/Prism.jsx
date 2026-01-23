@@ -14,11 +14,19 @@ const loadOGL = async () => {
 
 const shouldReduceAnimations = () => {
   if (typeof window === 'undefined') return false;
-  // Check for prefers-reduced-motion or slow connection
+
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const effectiveType = (navigator.connection?.effectiveType || '4g');
-  const isSlow4G = effectiveType === '4g' && (navigator.connection?.saveData || false);
-  return prefersReduced || isSlow4G;
+
+  const connection = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
+  const effectiveType = connection?.effectiveType; // e.g. 'slow-2g','2g','3g','4g','wifi'
+  const saveData = connection?.saveData;
+  const downlink = connection?.downlink; // Mbps
+
+  // Treat any mobile/limited connection as slow to avoid loading OGL on Lighthouse 4G
+  const isLimitedType = effectiveType && effectiveType !== 'wifi' && effectiveType !== 'ethernet';
+  const isLowBandwidth = typeof downlink === 'number' && downlink < 5; // conservative threshold
+
+  return prefersReduced || saveData || isLimitedType || isLowBandwidth;
 };
 
 const Prism = ({

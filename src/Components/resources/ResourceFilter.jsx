@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, memo, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../portfolio/LanguageContext';
 import { 
@@ -48,13 +48,13 @@ export default function ResourceFilter({ activeFilter, onFilterChange }) {
         const centerY = rect.top + rect.height / 2;
         
         const distance = Math.hypot(e.clientX - centerX, e.clientY - centerY);
-        const magnetRange = 80;
+        const magnetRange = 60;
 
         if (distance < magnetRange) {
             const angle = Math.atan2(e.clientY - centerY, e.clientX - centerX);
             const magnetStrength = (magnetRange - distance) / magnetRange;
-            const magnetX = Math.cos(angle) * magnetStrength * 8;
-            const magnetY = Math.sin(angle) * magnetStrength * 8;
+            const magnetX = Math.cos(angle) * magnetStrength * 4;
+            const magnetY = Math.sin(angle) * magnetStrength * 4;
 
             setMagnetPos(prev => ({
                 ...prev,
@@ -87,18 +87,22 @@ export default function ResourceFilter({ activeFilter, onFilterChange }) {
             {/* Glassmorphic Container - Scroll horizontal en mobile si es necesario */}
             <div 
                 ref={containerRef}
-                className="relative inline-flex items-center gap-1 p-1.5 sm:p-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl overflow-x-auto max-w-full"
+                className="relative inline-flex items-center gap-1 p-1.5 sm:p-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 overflow-x-auto max-w-full"
                 style={{
-                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.1)'
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.1)',
+                    contain: 'layout paint',
+                    willChange: 'auto',
                 }}
             >
                 {/* Floating Elastic Bubble Background */}
                 <motion.div
-                    className="absolute rounded-full bg-gradient-to-r from-violet-500 to-purple-600 shadow-lg"
+                    className="absolute rounded-full bg-gradient-to-r from-violet-500 to-purple-600"
                     style={{
                         height: 'calc(100% - 16px)',
                         top: '8px',
-                        boxShadow: '0 0 30px rgba(139, 92, 246, 0.6), 0 0 60px rgba(139, 92, 246, 0.3)',
+                        boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)',
+                        willChange: 'width, left',
+                        contain: 'layout paint',
                     }}
                     animate={{
                         width: bubbleStyle.width,
@@ -106,9 +110,9 @@ export default function ResourceFilter({ activeFilter, onFilterChange }) {
                     }}
                     transition={{
                         type: 'spring',
-                        stiffness: 200,
-                        damping: 25,
-                        mass: 0.8,
+                        stiffness: 250,
+                        damping: 30,
+                        mass: 0.5,
                     }}
                 />
 
@@ -129,8 +133,9 @@ export default function ResourceFilter({ activeFilter, onFilterChange }) {
                             className="relative z-10 px-3 sm:px-5 py-2 sm:py-2.5 flex items-center gap-1.5 sm:gap-2 rounded-full cursor-pointer transition-all whitespace-nowrap"
                             style={{
                                 color: isActive ? '#ffffff' : 'rgba(255, 255, 255, 0.7)',
+                                willChange: 'transform',
                             }}
-                            whileHover={{ scale: 1.05 }}
+                            whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                         >
                             {/* Magnetic Text & Icon */}
@@ -142,22 +147,23 @@ export default function ResourceFilter({ activeFilter, onFilterChange }) {
                                 }}
                                 transition={{
                                     type: 'spring',
-                                    stiffness: 150,
-                                    damping: 15,
+                                    stiffness: 200,
+                                    damping: 20,
                                 }}
+                                style={{ willChange: 'transform' }}
                             >
                                 <Icon 
                                     className="w-3.5 sm:w-4 h-3.5 sm:h-4" 
                                     style={{
-                                        filter: isActive ? 'drop-shadow(0 0 4px rgba(255, 255, 255, 0.8))' : 'none'
+                                        filter: isActive ? 'drop-shadow(0 0 3px rgba(139, 92, 246, 0.6))' : 'none'
                                     }}
                                 />
                                 <span 
-                                    className={`text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
+                                    className={`text-xs sm:text-sm font-semibold whitespace-nowrap transition-colors ${
                                         isActive ? 'text-white' : 'text-white/70'
                                     }`}
                                     style={{
-                                        textShadow: isActive ? '0 0 8px rgba(255, 255, 255, 0.5)' : 'none',
+                                        textShadow: isActive ? '0 0 4px rgba(139, 92, 246, 0.3)' : 'none',
                                         fontWeight: isActive ? 700 : 600,
                                     }}
                                 >

@@ -19,9 +19,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-slate-950 border-t border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="bg-slate-950 border-t border-slate-800 min-h-[400px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16" style={{ willChange: 'auto' }}>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 min-h-[250px]">
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
@@ -85,14 +85,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-slate-500">
-            {t.tools.footer.copyright}
-          </p>
-          <div className="flex items-center gap-6">
-            <span className="text-sm text-slate-500">
-              {t.tools.footer.taglineBottom}
-            </span>
+        <div className="mt-12 pt-8 border-t border-slate-800 min-h-[60px]">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-slate-500">
+              {t.tools.footer.copyright}
+            </p>
+            <div className="flex items-center gap-6">
+              <span className="text-sm text-slate-500">
+                {t.tools.footer.taglineBottom}
+              </span>
+            </div>
           </div>
         </div>
       </div>

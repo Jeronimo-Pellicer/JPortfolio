@@ -126,11 +126,16 @@ export default function ProjectsSection() {
                                 </div>
                                 
                                 {/* Image */}
-                                <div className="aspect-[4/3] overflow-hidden relative">
+                                <div className="aspect-[4/3] overflow-hidden relative bg-zinc-800/50">
                                     <img
                                         src={project.image}
                                         alt={project.title}
+                                        width="800"
+                                        height="600"
+                                        loading="lazy"
+                                        decoding="async"
                                         className="w-full h-full object-cover"
+                                        style={{ aspectRatio: '4/3' }}
                                     />
                                 </div>
                                 

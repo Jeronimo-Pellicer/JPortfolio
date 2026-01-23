@@ -13,7 +13,7 @@ export default function FAQSection() {
     };
 
     return (
-        <section id="insights" className="py-32 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
+        <section id="insights" className="py-16 md:py-32 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
             {/* Schema.org JSON-LD for SEO */}
             <script 
                 type="application/ld+json"
@@ -46,18 +46,18 @@ export default function FAQSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="text-center mb-16"
+                        className="text-center mb-8 md:mb-16"
                     >
-                        <div className="flex items-center justify-center gap-2 mb-4">
-                            <Sparkles className="w-5 h-5 text-emerald-400" />
-                            <span className="text-emerald-400 font-medium tracking-wide text-sm uppercase">
+                        <div className="flex items-center justify-center gap-2 mb-3 md:mb-4">
+                            <Sparkles className="w-4 h-4 md:w-5 md:h-5 text-emerald-400" />
+                            <span className="text-emerald-400 font-medium tracking-wide text-xs md:text-sm uppercase">
                                 {t.faq.title}
                             </span>
                         </div>
-                        <h2 className="text-4xl md:text-6xl font-bold text-white mt-4 mb-6">
+                        <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold text-white mt-3 md:mt-4 mb-3 md:mb-6">
                             {t.faq.heading}
                         </h2>
-                        <p className="text-zinc-400 max-w-2xl mx-auto text-lg">
+                        <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base lg:text-lg">
                             {t.faq.description}
                         </p>
                         <motion.div 
@@ -65,12 +65,12 @@ export default function FAQSection() {
                             whileInView={{ width: 80 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.2, duration: 0.8 }}
-                            className="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full mt-6" 
+                            className="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto rounded-full mt-4 md:mt-6" 
                         />
                     </motion.div>
 
                     {/* FAQ Accordion */}
-                    <div className="space-y-4">
+                    <div className="space-y-2 md:space-y-4">
                         {faqs.map((faq, index) => (
                             <motion.div
                                 key={index}
@@ -82,15 +82,14 @@ export default function FAQSection() {
                             >
                                 <button
                                     onClick={() => toggleFAQ(index)}
-                                    className="w-full px-6 md:px-8 py-6 flex items-start justify-between gap-4 text-left group"
-                                >
+                                    className="w-full px-4 md:px-8 py-3 md:py-6 flex items-start justify-between gap-3 md:gap-4 text-left group">
                                     <div className="flex-1">
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <span className="text-emerald-400 font-bold text-sm">
+                                        <div className="flex items-center gap-2 md:gap-3 mb-1 md:mb-2">
+                                            <span className="text-emerald-400 font-bold text-xs md:text-sm">
                                                 {String(index + 1).padStart(2, '0')}
                                             </span>
                                         </div>
-                                        <h3 className="text-lg md:text-xl font-semibold text-white group-hover:text-emerald-400 transition-colors">
+                                        <h3 className="text-sm md:text-lg lg:text-xl font-semibold text-white group-hover:text-emerald-400 transition-colors">
                                             {faq.q}
                                         </h3>
                                     </div>
@@ -99,7 +98,7 @@ export default function FAQSection() {
                                         transition={{ duration: 0.3 }}
                                         className="flex-shrink-0 mt-1"
                                     >
-                                        <ChevronDown className="w-6 h-6 text-emerald-400" />
+                                        <ChevronDown className="w-5 h-5 md:w-6 md:h-6 text-emerald-400" />
                                     </motion.div>
                                 </button>
 
@@ -112,9 +111,9 @@ export default function FAQSection() {
                                             transition={{ duration: 0.3 }}
                                             className="overflow-hidden"
                                         >
-                                            <div className="px-6 md:px-8 pb-6 pt-2">
-                                                <div className="pl-8 border-l-2 border-emerald-500/30">
-                                                    <p className="text-zinc-400 leading-relaxed">
+                                            <div className="px-4 md:px-8 pb-4 md:pb-6 pt-2">
+                                                <div className="pl-4 md:pl-8 border-l-2 border-emerald-500/30">
+                                                    <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">
                                                         {faq.a}
                                                     </p>
                                                 </div>

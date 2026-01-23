@@ -25,14 +25,14 @@ const AboutSection = React.memo(() => {
                     </div>
 
                     {/* Long description with scroll reveal */}
-                    <div className="w-full mx-auto mb-10 px-6 md:px-12">
+                    <div className="w-full mx-auto mb-8 md:mb-10 px-4 md:px-12">
                         <ScrollReveal 
                             enableBlur={true}
                             baseOpacity={0.15}
-                            baseRotation={2}
-                            blurStrength={3}
+                            baseRotation={1}
+                            blurStrength={2}
                             containerClassName=""
-                            textClassName="text-[27px] md:text-[43px] lg:text-[53px] font-bold leading-relaxed text-emerald-400"
+                            textClassName="text-[16px] md:text-[38px] lg:text-[53px] font-bold leading-snug md:leading-relaxed text-emerald-400"
                             rotationEnd="bottom bottom"
                             wordAnimationEnd="bottom bottom"
                         >
@@ -44,12 +44,12 @@ const AboutSection = React.memo(() => {
                     <div className="w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent my-16"></div>
 
                     {/* Why Trust Me title with decrypted effect */}
-                    <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold italic uppercase text-white mb-4 md:mb-6 text-left leading-tight">
+                    <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold italic uppercase text-white mb-4 md:mb-6 text-left leading-tight" style={{ contain: 'layout style paint' }}>
                         <DecryptedText 
                             key={trustTitle}
                             text={trustTitle}
-                            speed={40}
-                            maxIterations={15}
+                            speed={50}
+                            maxIterations={12}
                             sequential={true}
                             revealDirection="start"
                             animateOn="view"
@@ -58,56 +58,77 @@ const AboutSection = React.memo(() => {
                         />
                     </h3>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-8 mt-6">
-                        {/* Left large card (trust2 - Innovación de vanguardia) */}
-                        <div className="col-span-1 md:col-span-2 md:row-span-2 rounded-xl md:rounded-2xl overflow-hidden relative min-h-auto sm:min-h-[320px] md:min-h-[380px]" style={{ willChange: 'transform', transform: 'translateZ(0)', contain: 'layout paint' }}>
-                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/trust2.jpg')`, willChange: 'transform' }} />
-                            <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/85" />
-                            <div className="relative p-5 sm:p-6 md:p-8 lg:p-10 border border-white/10 bg-transparent h-full flex flex-col justify-end">
-                                <h4 className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white mb-2 sm:mb-3 md:mb-4 leading-snug">{t.about.trust1?.title}</h4>
-                                <p className="text-zinc-200 leading-relaxed text-xs sm:text-sm md:text-base">{t.about.trust1?.description}</p>
+                    {/* Trust cards - Minimalista layout */}
+                    <div className="space-y-1 md:space-y-0 md:grid md:grid-cols-3 md:gap-6 mt-8">
+                        {/* Card 1 - Excelencia académica */}
+                        <div className="p-2 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-transparent backdrop-blur-sm hover:border-emerald-500/40 transition-colors duration-300">
+                            <div className="flex items-start gap-2 md:gap-4">
+                                <div className="flex-shrink-0 w-6 h-6 md:w-10 md:h-10 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
+                                    <svg className="w-3 h-3 md:w-5 md:h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                    </svg>
+                                </div>
+                                <div className="flex-1">
+                                    <h4 className="text-xs md:text-base lg:text-lg font-bold text-white mb-0.5 md:mb-2">{t.about.trust1?.title}</h4>
+                                    <p className="text-zinc-400 text-xs md:text-sm leading-tight md:leading-relaxed">{t.about.trust1?.description}</p>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Right top (trust3) */}
-                        <div className="col-span-1 rounded-xl md:rounded-2xl overflow-hidden relative min-h-auto sm:min-h-[280px] md:min-h-[180px]" style={{ willChange: 'transform', transform: 'translateZ(0)', contain: 'layout paint' }}>
-                            <div 
-                                className="absolute inset-0 bg-cover bg-center" 
-                                style={{ 
-                                    backgroundImage: `url('/trust3-optimized.jpg')`,
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
-                                    willChange: 'transform',
-                                    contentVisibility: 'auto'
-                                }} 
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/85" />
-                            <div className="relative p-5 sm:p-6 lg:p-8 border border-white/10 bg-transparent h-full flex flex-col justify-end">
-                                <h4 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-2 leading-snug">{t.about.trust3?.title}</h4>
-                                <p className="text-zinc-200 text-xs sm:text-sm leading-relaxed">{t.about.trust3?.description}</p>
+                        {/* Card 2 - Innovación */}
+                        <div className="p-2 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-transparent backdrop-blur-sm hover:border-emerald-500/40 transition-colors duration-300">
+                            <div className="flex items-start gap-2 md:gap-4">
+                                <div className="flex-shrink-0 w-6 h-6 md:w-10 md:h-10 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
+                                    <svg className="w-3 h-3 md:w-5 md:h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                    </svg>
+                                </div>
+                                <div className="flex-1">
+                                    <h4 className="text-xs md:text-base lg:text-lg font-bold text-white mb-0.5 md:mb-2">{t.about.trust3?.title}</h4>
+                                    <p className="text-zinc-400 text-xs md:text-sm leading-tight md:leading-relaxed">{t.about.trust3?.description}</p>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Right bottom (trust1 - texto de Certificación) */}
-                        <div className="col-span-1 rounded-xl md:rounded-2xl overflow-hidden relative min-h-auto sm:min-h-[280px] md:min-h-[180px]" style={{ willChange: 'transform', transform: 'translateZ(0)', contain: 'layout paint' }}>
-                            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url('/trust1.jpg')`, willChange: 'transform' }} />
-                            <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-black/85" />
-                            <div className="relative p-5 sm:p-6 lg:p-8 border border-white/10 bg-transparent h-full flex flex-col justify-end">
-                                <h4 className="text-sm sm:text-base md:text-lg font-semibold text-white mb-2 leading-snug">{t.about.trust2?.title}</h4>
-                                <p className="text-zinc-200 text-xs sm:text-sm leading-relaxed">{t.about.trust2?.description}</p>
+                        {/* Card 3 - Certificación */}
+                        <div className="p-2 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-transparent backdrop-blur-sm hover:border-emerald-500/40 transition-colors duration-300">
+                            <div className="flex items-start gap-2 md:gap-4">
+                                <div className="flex-shrink-0 w-6 h-6 md:w-10 md:h-10 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
+                                    <svg className="w-3 h-3 md:w-5 md:h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <div className="flex-1">
+                                    <h4 className="text-xs md:text-base lg:text-lg font-bold text-white mb-0.5 md:mb-2">{t.about.trust2?.title}</h4>
+                                    <p className="text-zinc-400 text-xs md:text-sm leading-tight md:leading-relaxed">{t.about.trust2?.description}</p>
+                                </div>
                             </div>
                         </div>
+                    </div>
 
-                        {/* Full-width academic card without background (trust4 / faculty) */}
-                        <div className="col-span-3 mt-6 rounded-2xl p-8 lg:p-10 border border-white/10 bg-white/5" style={{ willChange: 'transform', transform: 'translateZ(0)' }}>
-                            <h4 className="text-lg md:text-xl lg:text-xl font-normal text-white mb-4 leading-tight">{t.about.trust4?.title}</h4>
-                            <p className="text-zinc-300 leading-relaxed text-sm md:text-base text-justify">{t.about.trust4?.description}</p>
+                    {/* Full-width academic card */}
+                    <div className="mt-6 md:mt-8 p-4 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 backdrop-blur-sm hover:border-emerald-500/50 transition-colors duration-300">
+                        <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
+                            <div className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-lg bg-emerald-500/30 border border-emerald-400/40 flex items-center justify-center">
+                                <svg className="w-5 h-5 md:w-7 md:h-7 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                </svg>
+                            </div>
+                            <div className="flex-1">
+                                <h4 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust4?.title}</h4>
+                                <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust4?.description}</p>
+                            </div>
                         </div>
+                    </div>
 
-                        {/* CTA at the end of the section */}
-                        <div className="col-span-3 mt-6 flex justify-end">
-                            <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }} className="inline-block bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-6 py-3 rounded-full cursor-pointer">VER MAS &gt;</a>
-                        </div>
+                    {/* CTA at the end of the section */}
+                    <div className="mt-10 flex justify-center md:justify-end">
+                        <a href="#contact" onClick={(e) => { e.preventDefault(); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' }); }} className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-8 py-3 rounded-lg cursor-pointer transition-all duration-300">
+                            <span>VER MÁS</span>
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
             </div>

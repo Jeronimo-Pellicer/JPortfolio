@@ -1,10 +1,11 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, memo, useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 const styles = {
   wrapper: {
     display: 'inline-block',
-    whiteSpace: 'pre-wrap'
+    whiteSpace: 'pre-wrap',
+    willChange: 'auto'
   },
   srOnly: {
     position: 'absolute',
@@ -18,7 +19,7 @@ const styles = {
   }
 };
 
-export default function DecryptedText({
+export default memo(function DecryptedText({
   text,
   speed = 50,
   maxIterations = 10,
@@ -187,16 +188,26 @@ export default function DecryptedText({
         }
       : {};
 
+  // Memoize character splits to reduce re-renders
+  const textChars = useMemo(() => displayText.split(''), [displayText]);
+
   return (
     <motion.span className={parentClassName} ref={containerRef} style={styles.wrapper} {...hoverProps} {...props}>
       <span style={styles.srOnly}>{displayText}</span>
 
-      <span aria-hidden="true">
-        {displayText.split('').map((char, index) => {
+      <span aria-hidden="true" style={{ contain: 'layout style' }}>
+        {textChars.map((char, index) => {
           const isRevealedOrDone = revealedIndices.has(index) || !isScrambling || !isHovering;
 
           return (
-            <span key={index} className={isRevealedOrDone ? className : encryptedClassName}>
+            <span 
+              key={`${index}-${char}`} 
+              className={isRevealedOrDone ? className : encryptedClassName}
+              style={{ 
+                display: 'inline-block',
+                willChange: isScrambling ? 'contents' : 'auto'
+              }}
+            >
               {char}
             </span>
           );
@@ -204,4 +215,4 @@ export default function DecryptedText({
       </span>
     </motion.span>
   );
-}
+});

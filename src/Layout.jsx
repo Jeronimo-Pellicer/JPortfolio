@@ -539,61 +539,61 @@ function LayoutContent({ children, currentPageName }) {
             </main>
 
             {/* Footer */}
-            <footer className="bg-zinc-950 border-t border-zinc-800/50 text-white py-16">
-                <div className="container mx-auto px-6">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <footer className="bg-zinc-950 border-t border-zinc-800/50 text-white py-8 md:py-16">
+                <div className="container mx-auto px-4 md:px-6">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-6">
                         <div className="text-center md:text-left">
-                            <p className="text-2xl font-bold mb-2">
+                            <p className="text-lg md:text-2xl font-bold mb-1 md:mb-2">
                                 Jerónimo<span className="text-emerald-400">.</span>
                             </p>
-                            <p className="text-zinc-500 text-sm">
+                            <p className="text-zinc-500 text-xs md:text-sm">
                                 Digital Business & UX Professional
                             </p>
                         </div>
-                        <div className="flex items-center gap-6">
+                        <div className="flex flex-wrap items-center justify-center md:justify-end gap-2 md:gap-6">
                             <button
                                 onClick={() => handleNavClick({ type: 'scroll', href: '#about' })}
-                                className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                                className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
                             >
                                 {t.nav.aboutMe}
                             </button>
                             <Link to="/projects">
                                 <button
-                                    className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                                    className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
                                 >
                                     {t.nav.projects}
                                 </button>
                             </Link>
                             <Link to="/herramientas">
                                 <button
-                                    className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                                    className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
                                 >
                                     {t.nav.tools || 'HERRAMIENTAS'}
                                 </button>
                             </Link>
                             <Link to="/recursos">
                                 <button
-                                    className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                                    className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
                                 >
                                     {t.nav.resources || 'RECURSOS'}
                                 </button>
                             </Link>
                             <button
                                 onClick={handleContactClick}
-                                className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                                className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
                             >
                                 {t.nav.contactMe}
                             </button>
                         </div>
                     </div>
-                    <div className="border-t border-zinc-800/50 mt-10 pt-8">
-                        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-                            <p className="text-zinc-600 text-sm">
+                    <div className="border-t border-zinc-800/50 mt-6 md:mt-10 pt-4 md:pt-8">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4">
+                            <p className="text-zinc-600 text-xs md:text-sm">
                                 © {new Date().getFullYear()} Jerónimo Pellicer. {t.footer.copyright}
                             </p>
                             <Link 
                                 to="/books"
-                                className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors flex items-center gap-2 group"
+                                className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors flex items-center gap-2 group"
                             >
                                 <span className="font-medium">{t.footer.booksRecommend}</span>
                                 <svg 

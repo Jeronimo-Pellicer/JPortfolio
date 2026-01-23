@@ -25,7 +25,11 @@ export default function LanguageSwitcher({ className }) {
                     <img 
                         src="https://flagcdn.com/es.svg"
                         alt="Spanish Flag"
+                        width="32"
+                        height="32"
+                        loading="eager"
                         className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg object-cover"
+                        style={{ aspectRatio: '1/1' }}
                     />
                 </motion.button>
                 
@@ -43,7 +47,11 @@ export default function LanguageSwitcher({ className }) {
                     <img 
                         src="https://flagcdn.com/us.svg"
                         alt="US Flag"
+                        width="32"
+                        height="32"
+                        loading="eager"
                         className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg object-cover"
+                        style={{ aspectRatio: '1/1' }}
                     />
                 </motion.button>
             </div>

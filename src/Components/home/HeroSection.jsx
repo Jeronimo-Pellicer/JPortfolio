@@ -26,7 +26,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#030712]">
+    <section className="relative min-h-screen overflow-hidden bg-[#030712]" style={{ contain: 'layout paint' }}>
       {/* Gradual blur overlay at bottom */}
       <div 
         className="absolute bottom-0 left-0 right-0 h-40 z-20 pointer-events-none"
@@ -52,6 +52,8 @@ export default function HeroSection() {
           style={{
             background: 'radial-gradient(circle, rgba(249, 115, 22, 0.4) 0%, transparent 70%)',
             filter: 'blur(80px)',
+            willChange: 'transform',
+            contain: 'layout style'
           }}
         />
         
@@ -66,6 +68,8 @@ export default function HeroSection() {
           style={{
             background: 'radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, transparent 70%)',
             filter: 'blur(100px)',
+            willChange: 'transform',
+            contain: 'layout style'
           }}
         />
 
@@ -78,6 +82,8 @@ export default function HeroSection() {
           style={{
             background: 'radial-gradient(circle, rgba(236, 72, 153, 0.4) 0%, transparent 70%)',
             filter: 'blur(60px)',
+            willChange: 'transform',
+            contain: 'layout style'
           }}
         />
 

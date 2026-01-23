@@ -87,7 +87,7 @@ export default function HeroSection() {
                         />
 
                         {/* KPI Cards - Minimalist, below title */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-3">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 mt-2">
                             {/* 2+ Years */}
                             <KPICard
                                 value="2+"
@@ -124,13 +124,13 @@ export default function HeroSection() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 1.3, duration: 0.8 }}
-                            className="flex flex-wrap items-center justify-center gap-3 md:gap-4 mt-4 opacity-30"
+                            className="flex flex-nowrap items-center justify-center gap-1.5 md:gap-4 mt-4 overflow-x-auto opacity-30 pb-2"
                         >
                             <Link to="/herramientas">
                                 <motion.button
                                     whileHover={{ scale: 1.05, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="px-6 py-3 md:px-8 md:py-4 bg-orange-500/10 border border-orange-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-orange-500/20 hover:border-orange-400/50 transition-all duration-300 shadow-lg shadow-orange-500/10 hover:shadow-xl hover:shadow-orange-500/20 cursor-pointer"
+                                    className="px-2 md:px-8 py-1.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-orange-500/10 border border-orange-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-orange-500/20 hover:border-orange-400/50 transition-all duration-300 shadow-lg shadow-orange-500/10 hover:shadow-xl hover:shadow-orange-500/20 cursor-pointer"
                                 >
                                     {language === 'es' ? 'Productos' : 'Products'}
                                 </motion.button>
@@ -139,7 +139,7 @@ export default function HeroSection() {
                                 <motion.button
                                     whileHover={{ scale: 1.05, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="px-6 py-3 md:px-8 md:py-4 bg-violet-500/10 border border-violet-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-violet-500/20 hover:border-violet-400/50 transition-all duration-300 shadow-lg shadow-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20 cursor-pointer"
+                                    className="px-2 md:px-8 py-1.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-violet-500/10 border border-violet-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-violet-500/20 hover:border-violet-400/50 transition-all duration-300 shadow-lg shadow-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20 cursor-pointer"
                                 >
                                     {language === 'es' ? 'Recursos' : 'Resources'}
                                 </motion.button>
@@ -148,7 +148,7 @@ export default function HeroSection() {
                                 <motion.button
                                     whileHover={{ scale: 1.05, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="px-6 py-3 md:px-8 md:py-4 bg-emerald-500/10 border border-emerald-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-emerald-500/20 hover:border-emerald-400/50 transition-all duration-300 shadow-lg shadow-emerald-500/10 hover:shadow-xl hover:shadow-emerald-500/20 cursor-pointer"
+                                    className="px-2 md:px-8 py-1.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-emerald-500/10 border border-emerald-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-emerald-500/20 hover:border-emerald-400/50 transition-all duration-300 shadow-lg shadow-emerald-500/10 hover:shadow-xl hover:shadow-emerald-500/20 cursor-pointer"
                                 >
                                     {t.hero.viewWork}
                                 </motion.button>
@@ -157,7 +157,7 @@ export default function HeroSection() {
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => scrollToSection('contact')}
-                                className="px-6 py-3 md:px-8 md:py-4 bg-zinc-900/20 backdrop-blur-sm text-white font-medium rounded-lg md:rounded-xl border border-zinc-800/30 hover:bg-zinc-900/30 hover:border-emerald-500/30 transition-all duration-300 cursor-pointer"
+                                className="px-2 md:px-8 py-1.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-zinc-900/20 backdrop-blur-sm text-white font-medium rounded-lg md:rounded-xl border border-zinc-800/30 hover:bg-zinc-900/30 hover:border-emerald-500/30 transition-all duration-300 cursor-pointer"
                             >
                                 {t.hero.getInTouch}
                             </motion.button>
@@ -177,10 +177,10 @@ export default function HeroSection() {
                     onClick={() => scrollToSection('about')}
                     animate={{ y: [0, 8, 0] }}
                     transition={{ repeat: Infinity, duration: 2 }}
-                    className="p-2 md:p-3 text-zinc-500 hover:text-emerald-400 transition-colors bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-full cursor-pointer"
+                    className="p-1 md:p-2 text-zinc-500 hover:text-emerald-400 transition-colors bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-full cursor-pointer"
                     aria-label="Scroll down"
                 >
-                    <ArrowDown className="w-4 h-4 md:w-5 md:h-5" />
+                    <ArrowDown className="w-2.5 h-2.5 md:w-4 md:h-4" />
                 </motion.button>
             </motion.div>
         </section>
@@ -194,9 +194,9 @@ function KPICard({ value, label, delay }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay, duration: 0.6, ease: [0.6, 0.05, 0.01, 0.9] }}
-            className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-xl md:rounded-2xl p-4 md:p-6 group hover:border-emerald-500/30 transition-all duration-300 text-center"
+            className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-lg md:rounded-xl lg:rounded-2xl p-3 md:p-6 group hover:border-emerald-500/30 transition-all duration-300 text-center"
         >
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-2 md:mb-3 font-variant-numeric tabular-nums" style={{ letterSpacing: '-0.02em' }}>
+            <h3 className="text-2xl md:text-3xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-1 md:mb-3 font-variant-numeric tabular-nums" style={{ letterSpacing: '-0.02em' }}>
                 {value}
             </h3>
             <p className="text-zinc-400 text-xs md:text-sm leading-relaxed">{label}</p>
@@ -253,9 +253,9 @@ function AnimatedKPICard({ target, suffix, label, delay }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay, duration: 0.6, ease: [0.6, 0.05, 0.01, 0.9] }}
-            className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-xl md:rounded-2xl p-4 md:p-6 group hover:border-emerald-500/30 transition-all duration-300 text-center"
+            className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-lg md:rounded-xl lg:rounded-2xl p-3 md:p-6 group hover:border-emerald-500/30 transition-all duration-300 text-center"
         >
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-2 md:mb-3 font-variant-numeric tabular-nums" style={{ letterSpacing: '-0.02em' }}>
+            <h3 className="text-2xl md:text-3xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-1 md:mb-3 font-variant-numeric tabular-nums" style={{ letterSpacing: '-0.02em' }}>
                 {displayValue}{suffix}
             </h3>
             <p className="text-zinc-400 text-xs md:text-sm leading-relaxed">{label}</p>
