@@ -59,7 +59,7 @@ export default function HeroSection() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.3 }}
-                            className="text-5xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-3 tracking-tight leading-none"
+                            className="text-7xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-3 tracking-tight leading-none"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.05em' }}
                         >
                             {t.hero.greeting.toUpperCase()} JERÓNIMO
@@ -86,8 +86,56 @@ export default function HeroSection() {
                             className="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto mb-6 rounded-full"
                         />
 
-                        {/* KPI Cards - Minimalist, below title */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 mt-2">
+                        <div className="md:flex md:flex-col">
+                            {/* CTA Buttons - Shown first on mobile, last on desktop */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 1.3, duration: 0.8 }}
+                                className="flex flex-nowrap items-center justify-center gap-1.5 md:gap-4 mb-4 md:mb-0 md:mt-4 overflow-x-auto opacity-30 pb-2 md:order-2"
+                            >
+                            <Link to="/herramientas">
+                                <motion.button
+                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="px-2 md:px-8 py-2.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-orange-500/10 border border-orange-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-orange-500/20 hover:border-orange-400/50 transition-all duration-300 shadow-lg shadow-orange-500/10 hover:shadow-xl hover:shadow-orange-500/20 cursor-pointer"
+                                >
+                                    {language === 'es' ? 'Productos' : 'Products'}
+                                </motion.button>
+                            </Link>
+                            <Link to="/recursos">
+                                <motion.button
+                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="px-2 md:px-8 py-2.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-violet-500/10 border border-violet-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-violet-500/20 hover:border-violet-400/50 transition-all duration-300 shadow-lg shadow-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20 cursor-pointer"
+                                >
+                                    {language === 'es' ? 'Recursos' : 'Resources'}
+                                </motion.button>
+                            </Link>
+                            <Link to="/projects">
+                                <motion.button
+                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="px-2 md:px-8 py-2.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-emerald-500/10 border border-emerald-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-emerald-500/20 hover:border-emerald-400/50 transition-all duration-300 shadow-lg shadow-emerald-500/10 hover:shadow-xl hover:shadow-emerald-500/20 cursor-pointer"
+                                >
+                                    {language === 'es' ? 'Ver Mi Trabajo' : 'View My Work'}
+                                </motion.button>
+                            </Link>
+                            <motion.button
+                                whileHover={{ scale: 1.05, y: -2 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                }}
+                                className="px-2 md:px-8 py-2.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-zinc-900/20 backdrop-blur-sm text-white font-medium rounded-lg md:rounded-xl border border-zinc-800/30 hover:bg-zinc-900/30 hover:border-emerald-500/30 transition-all duration-300 cursor-pointer"
+                            >
+                                {language === 'es' ? 'Contactar' : 'Contact'}
+                            </motion.button>
+                        </motion.div>
+
+                        {/* KPI Cards - Below buttons on mobile */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 md:order-1">
                             {/* 2+ Years */}
                             <KPICard
                                 value="2+"
@@ -118,50 +166,7 @@ export default function HeroSection() {
                                 delay={1.2}
                             />
                         </div>
-
-                        {/* CTA Buttons */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 1.3, duration: 0.8 }}
-                            className="flex flex-nowrap items-center justify-center gap-1.5 md:gap-4 mt-4 overflow-x-auto opacity-30 pb-2"
-                        >
-                            <Link to="/herramientas">
-                                <motion.button
-                                    whileHover={{ scale: 1.05, y: -2 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-2 md:px-8 py-1.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-orange-500/10 border border-orange-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-orange-500/20 hover:border-orange-400/50 transition-all duration-300 shadow-lg shadow-orange-500/10 hover:shadow-xl hover:shadow-orange-500/20 cursor-pointer"
-                                >
-                                    {language === 'es' ? 'Productos' : 'Products'}
-                                </motion.button>
-                            </Link>
-                            <Link to="/recursos">
-                                <motion.button
-                                    whileHover={{ scale: 1.05, y: -2 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-2 md:px-8 py-1.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-violet-500/10 border border-violet-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-violet-500/20 hover:border-violet-400/50 transition-all duration-300 shadow-lg shadow-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20 cursor-pointer"
-                                >
-                                    {language === 'es' ? 'Recursos' : 'Resources'}
-                                </motion.button>
-                            </Link>
-                            <Link to="/projects">
-                                <motion.button
-                                    whileHover={{ scale: 1.05, y: -2 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-2 md:px-8 py-1.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-emerald-500/10 border border-emerald-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-emerald-500/20 hover:border-emerald-400/50 transition-all duration-300 shadow-lg shadow-emerald-500/10 hover:shadow-xl hover:shadow-emerald-500/20 cursor-pointer"
-                                >
-                                    {t.hero.viewWork}
-                                </motion.button>
-                            </Link>
-                            <motion.button
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => scrollToSection('contact')}
-                                className="px-2 md:px-8 py-1.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-zinc-900/20 backdrop-blur-sm text-white font-medium rounded-lg md:rounded-xl border border-zinc-800/30 hover:bg-zinc-900/30 hover:border-emerald-500/30 transition-all duration-300 cursor-pointer"
-                            >
-                                {t.hero.getInTouch}
-                            </motion.button>
-                        </motion.div>
+                        </div>
                     </motion.div>
                 </div>
             </section>

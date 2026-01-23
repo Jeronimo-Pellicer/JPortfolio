@@ -103,28 +103,6 @@ export default function ContactSection() {
                                     ))}
                                 </div>
                             </div>
-                            
-                            {/* CV Download Button - Single CTA */}
-                            <motion.button
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={() => {
-                                    const link = document.createElement('a');
-                                    if (language === 'es') {
-                                        link.href = '/assets/cv-es.pdf';
-                                        link.download = 'CV-Jeronimo-Pellicer-ES.pdf';
-                                    } else {
-                                        link.href = '/assets/cv-en.pdf';
-                                        link.download = 'CV-Jeronimo-Pellicer-EN.pdf';
-                                    }
-                                    document.body.appendChild(link);
-                                    link.click();
-                                    document.body.removeChild(link);
-                                }}
-                                className="mt-6 md:mt-8 w-full px-4 md:px-6 py-3 md:py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-medium text-sm md:text-base rounded-xl hover:from-emerald-400 hover:to-teal-400 transition-all duration-300 shadow-[0_10px_30px_rgba(52,211,153,0.4)] hover:shadow-[0_15px_40px_rgba(52,211,153,0.5)] cursor-pointer"
-                            >
-                                {t.nav.resume}
-                            </motion.button>
                         </div>
                     </motion.div>
 

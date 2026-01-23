@@ -22,8 +22,8 @@ export default function MarqueeSection() {
     const duplicatedStack = [...techStack, ...techStack];
 
     return (
-        <section className="py-8 md:py-16 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border-y border-zinc-800/50 overflow-hidden min-h-[140px] md:min-h-[240px]" style={{ contain: 'layout paint' }}>
-            <div className="mb-4 md:mb-8 text-center px-4">
+        <section className="py-3 md:py-6 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border-y border-zinc-800/50 overflow-hidden min-h-[60px] md:min-h-[100px]" style={{ contain: 'layout paint' }}>
+            <div className="mb-2 md:mb-3 text-center px-4">
                 <h3 className="text-xs md:text-sm font-semibold text-zinc-500 uppercase tracking-wide hover:text-emerald-400 transition-colors duration-300 cursor-default">
                     {t.marquee.toolsTechnologies}
                 </h3>
@@ -60,9 +60,9 @@ export default function MarqueeSection() {
                     {duplicatedStack.map((tech, index) => (
                         <div
                             key={`${tech.name}-${index}`}
-                            className="flex-shrink-0 w-28 md:w-40 flex flex-col items-center justify-center gap-2 md:gap-3 cursor-pointer group relative"
+                            className="flex-shrink-0 w-32 md:w-44 flex flex-col items-center justify-center gap-2 md:gap-3 cursor-pointer group relative"
                         >
-                            <div className="w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center group-hover:border-emerald-400/50 group-hover:bg-zinc-800 transition-all duration-300 p-2 md:p-3 overflow-visible" style={{ aspectRatio: '1/1' }}>
+                            <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center group-hover:border-emerald-400/50 group-hover:bg-zinc-800 transition-all duration-300 p-2 md:p-3 overflow-visible" style={{ aspectRatio: '1/1' }}>
                                 <img 
                                     src={tech.logo} 
                                     alt={tech.name}
@@ -75,8 +75,8 @@ export default function MarqueeSection() {
                                 />
                             </div>
                             <div className="text-center w-full">
-                                <p className="text-xs md:text-sm font-medium text-white whitespace-nowrap">{tech.name}</p>
-                                <p className="hidden md:block text-xs text-zinc-500 whitespace-nowrap">{tech.category}</p>
+                                <p className="text-[10px] md:text-xs font-medium text-white whitespace-nowrap">{tech.name}</p>
+                                <p className="hidden md:block text-[9px] text-zinc-500 whitespace-nowrap">{tech.category}</p>
                             </div>
                         </div>
                     ))}

@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import Magnet from '@/Components/ui/Magnet';
@@ -10,12 +10,13 @@ import { useLanguage } from '@/Components/portfolio/LanguageContext';
 export default function HeroSection() {
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const [showToolsDropdown, setShowToolsDropdown] = useState(false);
 
   const tools = [
-    { name: t.tools.roi.title, page: 'ROICalculator' },
-    { name: t.tools.persona.title, page: 'BuyerPersona' },
-    { name: t.tools.matrix.title, page: 'PriorityMatrix' },
-    { name: t.tools.quiz.title, page: 'StrategyQuiz' },
+    { name: t.tools.roi.title, page: 'ROICalculator', id: 'roi' },
+    { name: t.tools.persona.title, page: 'BuyerPersona', id: 'persona' },
+    { name: t.tools.matrix.title, page: 'PriorityMatrix', id: 'matrix' },
+    { name: t.tools.quiz.title, page: 'StrategyQuiz', id: 'quiz' },
   ];
 
   const handleScrollToTools = () => {
@@ -23,6 +24,20 @@ export default function HeroSection() {
     if (toolsSection) {
       toolsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  };
+
+  const handleScrollToTool = (toolId) => {
+    const toolsSection = document.getElementById('herramientas');
+    if (toolsSection) {
+      toolsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(() => {
+        const tool = document.getElementById(toolId);
+        if (tool) {
+          tool.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 500);
+    }
+    setShowToolsDropdown(false);
   };
 
   return (

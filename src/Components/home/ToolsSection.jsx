@@ -149,10 +149,16 @@ export default function ToolsSection() {
           </p>
         </motion.div>
 
-        {/* Tools grid */}
-        <div className="space-y-32">
+        {/* Tools grid - 2x2 on mobile, alternating on desktop */}
+        <div className="grid grid-cols-2 gap-4 lg:hidden">
           {tools.map((tool, index) => (
             <ToolCard key={tool.id} tool={tool} index={index} />
+          ))}
+        </div>
+        
+        <div className="hidden lg:block space-y-32">
+          {tools.map((tool, index) => (
+            <ToolCard key={tool.id} tool={tool} index={index} isDesktop />
           ))}
         </div>
       </div>
@@ -160,7 +166,7 @@ export default function ToolsSection() {
   );
 }
 
-function ToolCard({ tool, index }) {
+function ToolCard({ tool, index, isDesktop = false }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const isEven = index % 2 === 0;
@@ -177,48 +183,49 @@ function ToolCard({ tool, index }) {
       initial={{ opacity: 0, y: 80 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${isEven ? '' : 'lg:grid-flow-dense'}`}
+      className={isDesktop ? `grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${isEven ? '' : 'lg:grid-flow-dense'}` : 'flex flex-col'}
     >
       {/* Content */}
-      <div className={isEven ? '' : 'lg:col-start-2'}>
+      <div className={isDesktop ? (isEven ? '' : 'lg:col-start-2') : ''}>
         <motion.div
-          initial={{ opacity: 0, x: isEven ? -30 : 30 }}
+          initial={{ opacity: 0, x: isDesktop ? (isEven ? -30 : 30) : -30 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {/* Icon and title */}
-          <div className="flex items-center gap-4 mb-4">
-            <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center shadow-lg`}>
-              <tool.icon className="w-7 h-7 text-white" />
+          <div className={`flex items-center ${isDesktop ? 'gap-4 mb-4' : 'gap-2 mb-2'}`}>
+            <div className={`${isDesktop ? 'w-14 h-14' : 'w-10 h-10'} rounded-2xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center shadow-lg`}>
+              <tool.icon className={`${isDesktop ? 'w-7 h-7' : 'w-5 h-5'} text-white`} />
             </div>
             <div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white">{tool.title}</h3>
-              <p className="text-slate-400">{tool.subtitle}</p>
+              <h3 className={`${isDesktop ? 'text-2xl sm:text-3xl' : 'text-sm'} font-bold text-white leading-tight`}>{tool.title}</h3>
+              <p className={`${isDesktop ? 'text-slate-400' : 'text-[10px] text-slate-500'} leading-tight`}>{tool.subtitle}</p>
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+          <p className={`${isDesktop ? 'text-lg mb-6' : 'text-[10px] mb-3'} text-slate-300 leading-relaxed`}>
             {tool.description}
           </p>
 
           {/* Features grid */}
-          <div className="grid grid-cols-2 gap-4 mb-6">
-            {tool.features.map((feature, i) => (
+          <div className={`grid grid-cols-${isDesktop ? '2' : '1'} ${isDesktop ? 'gap-4 mb-6' : 'gap-2 mb-3'}`}>
+            {tool.features.slice(0, isDesktop ? 4 : 2).map((feature, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3 + i * 0.1 }}
-                className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50"
+                className={`flex items-center ${isDesktop ? 'gap-3 p-3' : 'gap-1.5 p-1.5'} rounded-xl bg-slate-800/50 border border-slate-700/50`}
               >
-                <feature.icon className={`w-5 h-5 text-transparent bg-gradient-to-r ${tool.gradient} bg-clip-text`} style={{ color: index === 0 ? '#8b5cf6' : index === 1 ? '#3b82f6' : index === 2 ? '#10b981' : '#f97316' }} />
-                <span className="text-sm text-slate-300">{feature.text}</span>
+                <feature.icon className={`${isDesktop ? 'w-5 h-5' : 'w-3 h-3'} text-transparent bg-gradient-to-r ${tool.gradient} bg-clip-text`} style={{ color: index === 0 ? '#8b5cf6' : index === 1 ? '#3b82f6' : index === 2 ? '#10b981' : '#f97316' }} />
+                <span className={`${isDesktop ? 'text-sm' : 'text-[9px]'} text-slate-300`}>{feature.text}</span>
               </motion.div>
             ))}
           </div>
 
-          {/* Benefits */}
+          {/* Benefits - Only on desktop */}
+          {isDesktop && (
           <div className="mb-6">
             <h4 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">{tool.benefitsTitle || 'Key Benefits'}</h4>
             <ul className="space-y-2">
@@ -236,18 +243,20 @@ function ToolCard({ tool, index }) {
               ))}
             </ul>
           </div>
+          )}
 
           {/* Stats and CTA */}
-          <div className="flex flex-wrap items-center gap-6">
+          <div className={`flex ${isDesktop ? 'flex-wrap items-center gap-6' : 'flex-col gap-2'}`}>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleUseTool}
-              className={`group px-6 py-3 rounded-xl bg-gradient-to-r ${tool.gradient} text-white font-semibold flex items-center gap-2 shadow-lg`}
+              className={`group ${isDesktop ? 'px-6 py-3' : 'px-3 py-1.5'} rounded-xl bg-gradient-to-r ${tool.gradient} text-white font-semibold flex items-center ${isDesktop ? 'gap-2' : 'gap-1'} shadow-lg ${isDesktop ? 'text-base' : 'text-[10px]'}`}
             >
               {tool.ctaText || 'Use Tool'}
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className={`${isDesktop ? 'w-5 h-5' : 'w-3 h-3'} group-hover:translate-x-1 transition-transform`} />
             </motion.button>
+            {isDesktop && (
             <div className="flex items-center gap-6 text-sm text-slate-400">
               <span className="flex items-center gap-1">
                 <Users className="w-4 h-4" />
@@ -258,18 +267,20 @@ function ToolCard({ tool, index }) {
                 {tool.stats.time}
               </span>
             </div>
+            )}
           </div>
         </motion.div>
       </div>
 
-      {/* Visual */}
-      <div className={isEven ? '' : 'lg:col-start-1 lg:row-start-1'}>
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, x: isEven ? 30 : -30 }}
-          animate={isInView ? { opacity: 1, scale: 1, x: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="relative"
-        >
+      {/* Visual - Only on desktop */}
+      {isDesktop && (
+        <div className={isEven ? '' : 'lg:col-start-1 lg:row-start-1'}>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: isEven ? 30 : -30 }}
+            animate={isInView ? { opacity: 1, scale: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative"
+          >
           {/* Glow effect */}
           <div className={`absolute inset-0 bg-gradient-to-br ${tool.lightGradient} rounded-3xl blur-3xl opacity-50`} />
           
@@ -348,7 +359,8 @@ function ToolCard({ tool, index }) {
             <span className="text-emerald-400 text-sm font-medium">{tool.freeBadge || '✓ 100% Free'}</span>
           </motion.div>
         </motion.div>
-      </div>
+        </div>
+      )}
     </motion.div>
   );
 }

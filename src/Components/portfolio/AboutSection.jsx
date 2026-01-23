@@ -32,7 +32,7 @@ const AboutSection = React.memo(() => {
                             baseRotation={1}
                             blurStrength={2}
                             containerClassName=""
-                            textClassName="text-[16px] md:text-[38px] lg:text-[53px] font-bold leading-snug md:leading-relaxed text-emerald-400"
+                            textClassName="text-[26px] md:text-[38px] lg:text-[53px] font-bold leading-snug md:leading-relaxed text-emerald-400"
                             rotationEnd="bottom bottom"
                             wordAnimationEnd="bottom bottom"
                         >
@@ -44,7 +44,7 @@ const AboutSection = React.memo(() => {
                     <div className="w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent my-16"></div>
 
                     {/* Why Trust Me title with decrypted effect */}
-                    <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold italic uppercase text-white mb-4 md:mb-6 text-left leading-tight" style={{ contain: 'layout style paint' }}>
+                    <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold italic uppercase text-white mb-4 md:mb-6 text-left leading-tight pt-2 md:pt-4 pl-2 pb-2 md:pl-3 md:pb-3" style={{ contain: 'layout style paint' }}>
                         <DecryptedText 
                             key={trustTitle}
                             text={trustTitle}
@@ -59,48 +59,48 @@ const AboutSection = React.memo(() => {
                     </h3>
 
                     {/* Trust cards - Minimalista layout */}
-                    <div className="space-y-1 md:space-y-0 md:grid md:grid-cols-3 md:gap-6 mt-8">
+                    <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-3 md:gap-6 mt-8">
                         {/* Card 1 - Excelencia académica */}
-                        <div className="p-2 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-transparent backdrop-blur-sm hover:border-emerald-500/40 transition-colors duration-300">
-                            <div className="flex items-start gap-2 md:gap-4">
-                                <div className="flex-shrink-0 w-6 h-6 md:w-10 md:h-10 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
-                                    <svg className="w-3 h-3 md:w-5 md:h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="p-4 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 backdrop-blur-sm hover:border-emerald-500/50 transition-colors duration-300">
+                            <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
+                                <div className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-lg bg-emerald-500/30 border border-emerald-400/40 flex items-center justify-center">
+                                    <svg className="w-5 h-5 md:w-7 md:h-7 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                                     </svg>
                                 </div>
                                 <div className="flex-1">
-                                    <h4 className="text-xs md:text-base lg:text-lg font-bold text-white mb-0.5 md:mb-2">{t.about.trust1?.title}</h4>
-                                    <p className="text-zinc-400 text-xs md:text-sm leading-tight md:leading-relaxed">{t.about.trust1?.description}</p>
+                                    <h4 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust1?.title}</h4>
+                                    <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust1?.description}</p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Card 2 - Innovación */}
-                        <div className="p-2 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-transparent backdrop-blur-sm hover:border-emerald-500/40 transition-colors duration-300">
-                            <div className="flex items-start gap-2 md:gap-4">
-                                <div className="flex-shrink-0 w-6 h-6 md:w-10 md:h-10 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
-                                    <svg className="w-3 h-3 md:w-5 md:h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="p-4 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 backdrop-blur-sm hover:border-emerald-500/50 transition-colors duration-300">
+                            <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
+                                <div className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-lg bg-emerald-500/30 border border-emerald-400/40 flex items-center justify-center">
+                                    <svg className="w-5 h-5 md:w-7 md:h-7 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                                     </svg>
                                 </div>
                                 <div className="flex-1">
-                                    <h4 className="text-xs md:text-base lg:text-lg font-bold text-white mb-0.5 md:mb-2">{t.about.trust3?.title}</h4>
-                                    <p className="text-zinc-400 text-xs md:text-sm leading-tight md:leading-relaxed">{t.about.trust3?.description}</p>
+                                    <h4 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust3?.title}</h4>
+                                    <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust3?.description}</p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Card 3 - Certificación */}
-                        <div className="p-2 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/20 bg-gradient-to-br from-emerald-500/5 to-transparent backdrop-blur-sm hover:border-emerald-500/40 transition-colors duration-300">
-                            <div className="flex items-start gap-2 md:gap-4">
-                                <div className="flex-shrink-0 w-6 h-6 md:w-10 md:h-10 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
-                                    <svg className="w-3 h-3 md:w-5 md:h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <div className="p-4 md:p-8 rounded-lg md:rounded-xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-emerald-500/5 backdrop-blur-sm hover:border-emerald-500/50 transition-colors duration-300">
+                            <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-6">
+                                <div className="flex-shrink-0 w-10 h-10 md:w-14 md:h-14 rounded-lg bg-emerald-500/30 border border-emerald-400/40 flex items-center justify-center">
+                                    <svg className="w-5 h-5 md:w-7 md:h-7 text-emerald-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
                                 </div>
                                 <div className="flex-1">
-                                    <h4 className="text-xs md:text-base lg:text-lg font-bold text-white mb-0.5 md:mb-2">{t.about.trust2?.title}</h4>
-                                    <p className="text-zinc-400 text-xs md:text-sm leading-tight md:leading-relaxed">{t.about.trust2?.description}</p>
+                                    <h4 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust2?.title}</h4>
+                                    <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust2?.description}</p>
                                 </div>
                             </div>
                         </div>

@@ -23,16 +23,16 @@ export default function TechStackMarquee() {
     const duplicatedStack = [...techStack, ...techStack, ...techStack];
 
     return (
-        <section className="py-16 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border-y border-zinc-800/50 overflow-hidden">
+        <section className="w-[380px] h-[178px] md:w-full md:h-auto py-2 md:py-4 bg-gradient-to-br from-zinc-950 via-zinc-900 to-black border-y border-zinc-800/50 overflow-hidden min-h-[80px] md:min-h-[120px]">
             <motion.div 
-                className="mb-8 text-center"
+                className="mb-1 md:mb-2 text-center px-1"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
             >
                 <motion.h3 
-                    className="text-sm font-semibold text-zinc-500 uppercase tracking-wide"
+                    className="text-[4px] md:text-[5px] font-semibold text-zinc-500 uppercase tracking-wide"
                     whileHover={{ scale: 1.05, color: '#10b981' }}
                     transition={{ duration: 0.3 }}
                 >
@@ -42,9 +42,9 @@ export default function TechStackMarquee() {
             
             <div className="relative overflow-hidden">
                 <motion.div
-                    className="flex gap-12"
+                    className="flex gap-0.5 md:gap-1"
                     animate={{
-                        x: [0, -(techStack.length * (160 + 48))], // w-40 (160px) + gap-12 (48px)
+                        x: [0, -(techStack.length * (72 + 10))], // w-16/w-20 + gap
                     }}
                     transition={{
                         x: {
@@ -58,10 +58,10 @@ export default function TechStackMarquee() {
                     {duplicatedStack.map((tech, index) => (
                         <motion.div
                             key={`${tech.name}-${index}`}
-                            className="flex-shrink-0 w-40 flex flex-col items-center justify-center gap-3 cursor-pointer group relative"
+                            className="flex-shrink-0 w-20 md:w-28 flex flex-col items-center justify-center gap-0 cursor-pointer group relative"
                             whileHover={{ scale: 1.1 }}
                         >
-                            <div className="w-20 h-20 rounded-2xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center group-hover:border-emerald-400/50 group-hover:bg-zinc-800 transition-all duration-300 p-3 overflow-visible">
+                            <div className="w-10 h-10 md:w-14 md:h-14 rounded-sm bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center group-hover:border-emerald-400/50 group-hover:bg-zinc-800 transition-all duration-300 p-0 md:p-0.5 overflow-visible">
                                 <img 
                                     src={tech.logo} 
                                     alt={tech.name}
@@ -71,8 +71,8 @@ export default function TechStackMarquee() {
                                 />
                             </div>
                             <div className="text-center w-full">
-                                <p className="text-sm font-medium text-white whitespace-nowrap">{tech.name}</p>
-                                <p className="text-xs text-zinc-500 whitespace-nowrap">{tech.category}</p>
+                                <p className="text-[4px] md:text-[5px] font-medium text-white whitespace-nowrap">{tech.name}</p>
+                                <p className="hidden md:block text-[3px] text-zinc-500 whitespace-nowrap">{tech.category}</p>
                             </div>
                         </motion.div>
                     ))}
