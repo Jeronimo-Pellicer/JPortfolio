@@ -26,12 +26,8 @@ const AboutSection = lazy(() => import(/* webpackChunkName: "about" */ './Compon
 const FAQSection = lazy(() => import(/* webpackChunkName: "faq" */ './Components/portfolio/FAQSection'));
 const ContactSection = lazy(() => import(/* webpackChunkName: "contact" */ './Components/portfolio/ContactSection'));
 
-// Lightweight loading skeleton
-const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-zinc-950">
-    <div className="text-white">Cargando...</div>
-  </div>
-);
+// No loading fallback - instantaneous render
+const LoadingFallback = () => null;
 
 function HomeContent() {
   const location = useLocation();
