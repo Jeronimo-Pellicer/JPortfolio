@@ -26,14 +26,8 @@ export default defineConfig({
     },
     // Optimize chunk size warnings
     chunkSizeWarningLimit: 1000,
-    // Minify for production
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-      },
-    },
+    // Minify for production using esbuild (built-in, no dependencies needed)
+    minify: 'esbuild',
   },
   // Optimize dependencies
   optimizeDeps: {
