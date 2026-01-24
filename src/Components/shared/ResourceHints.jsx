@@ -11,6 +11,13 @@ export default function ResourceHints() {
   useEffect(() => {
     // Only prefetch on homepage
     if (location.pathname === '/') {
+      // Preconnect to Supabase asset CDN (logos/images)
+      const linkSupabase = document.createElement('link');
+      linkSupabase.rel = 'preconnect';
+      linkSupabase.href = 'https://qtrypzzcjebvfcihiynt.supabase.co';
+      linkSupabase.crossOrigin = 'anonymous';
+      document.head.appendChild(linkSupabase);
+
       // Prefetch likely next pages
       const linkHerramientas = document.createElement('link');
       linkHerramientas.rel = 'prefetch';
@@ -25,6 +32,7 @@ export default function ResourceHints() {
       document.head.appendChild(linkRecursos);
 
       return () => {
+        document.head.removeChild(linkSupabase);
         document.head.removeChild(linkHerramientas);
         document.head.removeChild(linkRecursos);
       };

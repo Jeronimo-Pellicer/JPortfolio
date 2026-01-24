@@ -2,6 +2,8 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './Layout';
 import ResourceHints from './Components/shared/ResourceHints';
+import HeroSection from './Components/portfolio/HeroSection';
+import MarqueeSection from './Components/portfolio/MarqueeSection';
 
 // Defer non-critical toast notifications
 const Toaster = lazy(() => import('sonner').then(module => ({ default: module.Toaster })));
@@ -17,17 +19,15 @@ const BuyerPersona = lazy(() => import(/* webpackChunkName: "buyer-persona" */ '
 const PriorityMatrix = lazy(() => import(/* webpackChunkName: "priority-matrix" */ './Pages/PriorityMatrix'));
 const StrategyQuiz = lazy(() => import(/* webpackChunkName: "strategy-quiz" */ './Pages/StrategyQuiz'));
 
-// Critical above-the-fold component - load immediately
-const HeroSection = lazy(() => import(/* webpackChunkName: "hero", webpackPrefetch: true */ './Components/portfolio/HeroSection'));
-const MarqueeSection = lazy(() => import(/* webpackChunkName: "marquee", webpackPrefetch: true */ './Components/portfolio/MarqueeSection'));
-
 // Below-the-fold components - defer loading
 const AboutSection = lazy(() => import(/* webpackChunkName: "about" */ './Components/portfolio/AboutSection'));
 const FAQSection = lazy(() => import(/* webpackChunkName: "faq" */ './Components/portfolio/FAQSection'));
 const ContactSection = lazy(() => import(/* webpackChunkName: "contact" */ './Components/portfolio/ContactSection'));
 
-// No loading fallback - instantaneous render
-const LoadingFallback = () => null;
+// Minimal loading fallback to avoid flashing header/footer during lazy load
+const LoadingFallback = () => (
+  <div className="min-h-screen bg-zinc-950" aria-hidden="true" />
+);
 
 function HomeContent() {
   const location = useLocation();
@@ -45,7 +45,7 @@ function HomeContent() {
   }, [location.hash]);
 
   return (
-    <Suspense fallback={<LoadingFallback />}>
+    <>
       <HeroSection />
       <MarqueeSection />
       <Suspense fallback={null}>
@@ -53,7 +53,7 @@ function HomeContent() {
         <FAQSection />
         <ContactSection />
       </Suspense>
-    </Suspense>
+    </>
   );
 }
 

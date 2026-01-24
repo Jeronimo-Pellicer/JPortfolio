@@ -56,9 +56,9 @@ export default function HeroSection() {
                         className="max-w-5xl mx-auto text-center"
                     >
                         <motion.h1 
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
+                            initial={{ opacity: 0, x: -40 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.2, duration: 0.7 }}
                             className="text-7xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-3 tracking-tight leading-none"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.05em' }}
                         >
@@ -66,16 +66,16 @@ export default function HeroSection() {
                         </motion.h1>
                         
                         <motion.p 
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.4, duration: 0.8 }}
+                            initial={{ opacity: 0, x: 40 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3, duration: 0.6 }}
                             className="text-sm md:text-base lg:text-lg text-zinc-400 max-w-3xl mx-auto leading-relaxed mb-3"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
                         >
                             {language === 'es' ? (
-                                <>Plataforma exclusiva para estudiantes y apasionados del negocio digital: Accede a productos y recursos digitales premium de manera asequible, diseñados para resolver desafíos laborales y educativos con eficiencia y resultados inmediatos.</>
+                                <>Diseñé esta plataforma pensando en estudiantes y apasionados del negocio digital: Accede a productos y recursos digitales premium de manera asequible, diseñados para resolver desafíos laborales y educativos con eficiencia y resultados inmediatos.</>
                             ) : (
-                                <>Exclusive platform for students and digital business enthusiasts: Access premium digital products and resources affordably, designed to efficiently solve professional and educational challenges with immediate results.</>
+                                <>I designed this platform with students and digital business enthusiasts in mind: Access premium digital products and resources affordably, designed to solve work and educational challenges with efficiency and immediate results.</>
                             )}
                         </motion.p>
 
