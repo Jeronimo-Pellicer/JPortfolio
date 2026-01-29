@@ -39,12 +39,11 @@ export default function TechStackMarquee() {
                     {t.marquee.toolsTechnologies}
                 </motion.h3>
             </motion.div>
-            
             <div className="relative overflow-hidden">
                 <motion.div
                     className="flex gap-0.5 md:gap-1"
                     animate={{
-                        x: [0, -(techStack.length * (72 + 10))], // w-16/w-20 + gap
+                        x: [0, -(techStack.length * (72 + 10))],
                     }}
                     transition={{
                         x: {
@@ -62,13 +61,17 @@ export default function TechStackMarquee() {
                             whileHover={{ scale: 1.1 }}
                         >
                             <div className="w-10 h-10 md:w-14 md:h-14 rounded-sm bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center group-hover:border-emerald-400/50 group-hover:bg-zinc-800 transition-all duration-300 p-0 md:p-0.5 overflow-visible">
-                                <img 
-                                    src={tech.logo} 
-                                    alt={tech.name}
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="w-full h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all duration-300"
-                                />
+                                <picture>
+                                    <source srcSet={tech.logo.replace('.png', '.webp')} type="image/webp" />
+                                    <source srcSet={tech.logo.replace('.png', '.avif')} type="image/avif" />
+                                    <img 
+                                        src={tech.logo} 
+                                        alt={tech.name}
+                                        loading="lazy"
+                                        decoding="async"
+                                        className="w-full h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all duration-300"
+                                    />
+                                </picture>
                             </div>
                             <div className="text-center w-full">
                                 <p className="text-[4px] md:text-[5px] font-medium text-white whitespace-nowrap">{tech.name}</p>

@@ -28,7 +28,6 @@ export default function MarqueeSection() {
                     {t.marquee.toolsTechnologies}
                 </h3>
             </div>
-            
             <div className="relative overflow-hidden">
                 <style>{`
                     @keyframes marquee {
@@ -63,16 +62,20 @@ export default function MarqueeSection() {
                             className="flex-shrink-0 w-32 md:w-44 flex flex-col items-center justify-center gap-2 md:gap-3 cursor-pointer group relative"
                         >
                             <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-zinc-800/50 border border-zinc-700/50 flex items-center justify-center group-hover:border-emerald-400/50 group-hover:bg-zinc-800 transition-all duration-300 p-2 md:p-3 overflow-visible" style={{ aspectRatio: '1/1' }}>
-                                <img 
-                                    src={tech.logo} 
-                                    alt={tech.name}
-                                    width="80"
-                                    height="80"
-                                    loading="lazy"
-                                    decoding="async"
-                                    className="w-full h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all duration-300"
-                                    style={{ aspectRatio: '1/1' }}
-                                />
+                                <picture>
+                                    <source srcSet={tech.logo.replace('.png', '.webp')} type="image/webp" />
+                                    <source srcSet={tech.logo.replace('.png', '.avif')} type="image/avif" />
+                                    <img 
+                                        src={tech.logo} 
+                                        alt={tech.name}
+                                        width="80"
+                                        height="80"
+                                        loading="lazy"
+                                        decoding="async"
+                                        className="w-full h-full object-contain grayscale group-hover:grayscale-0 opacity-70 group-hover:opacity-100 transition-all duration-300"
+                                        style={{ aspectRatio: '1/1' }}
+                                    />
+                                </picture>
                             </div>
                             <div className="text-center w-full">
                                 <p className="text-[10px] md:text-xs font-medium text-white whitespace-nowrap">{tech.name}</p>
