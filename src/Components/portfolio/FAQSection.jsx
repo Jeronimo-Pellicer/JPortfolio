@@ -116,6 +116,21 @@ export default function FAQSection() {
                                                     <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">
                                                         {faq.a}
                                                     </p>
+                                                    {/* Video de YouTube solo para la definición de AX */}
+                                                    {faq.q.includes('Artificial Experience') && (
+                                                        <div className="mt-4 flex justify-center">
+                                                            <iframe
+                                                                width="360"
+                                                                height="203"
+                                                                src="https://www.youtube.com/embed/019x3c-4WfA"
+                                                                title="YouTube video player"
+                                                                frameBorder="0"
+                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                allowFullScreen
+                                                                className="rounded-xl shadow-lg border border-emerald-500/20"
+                                                            ></iframe>
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
                                         </motion.div>

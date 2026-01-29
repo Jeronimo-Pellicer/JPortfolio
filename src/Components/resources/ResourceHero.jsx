@@ -108,14 +108,14 @@ export default function ResourceHero() {
                     </motion.div>
 
                     {/* Main heading - Responsive text with clamp() via Tailwind */}
-                    <div className="w-full mb-6 sm:mb-8 flex justify-center">
+                    <div className="w-full mb-6 sm:mb-8 flex justify-center items-center">
                         <BlurText
                             text={t.resources.hero.subtitle}
                             delay={400}
                             animateBy="words"
                             direction="top"
                             onAnimationComplete={handleAnimationComplete}
-                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white text-center leading-tight px-4"
+                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-white text-center leading-tight px-4 w-full flex flex-wrap justify-center items-center"
                         />
                     </div>
 

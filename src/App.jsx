@@ -79,6 +79,7 @@ function App() {
             <Route path="/herramientas/matriz-priorizacion" element={<PriorityMatrix />} />
             <Route path="/herramientas/quiz-estrategia" element={<StrategyQuiz />} />
             <Route path="/recursos" element={<Resources />} />
+            <Route path="/glosario-marketing" element={React.createElement(lazy(() => import("./Pages/GlosarioMarketing")))} />
           </Routes>
         </Suspense>
       </Layout>

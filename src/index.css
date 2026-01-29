@@ -1,6 +1,92 @@
+/* --- GLOSARIO APP CUSTOM STYLES --- */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --background: 250 30% 8%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 100%;
+  --card-foreground: 250 30% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 250 30% 10%;
+  --primary: 270 80% 65%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 330 70% 70%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 250 20% 20%;
+  --muted-foreground: 250 10% 70%;
+  --accent: 190 90% 60%;
+  --accent-foreground: 250 30% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 0 0% 100%;
+  --input: 0 0% 100%;
+  --ring: 270 80% 65%;
+  --radius: 1rem;
+  --glass-bg: 0 0% 100% / 0.08;
+  --glass-bg-strong: 0 0% 100% / 0.15;
+  --glass-border: 0 0% 100% / 0.2;
+  --glass-border-strong: 0 0% 100% / 0.3;
+  --glass-shadow: 250 50% 5% / 0.3;
+  --gradient-purple: 270 80% 50%;
+  --gradient-pink: 330 80% 60%;
+  --gradient-blue: 220 90% 55%;
+  --gradient-cyan: 190 90% 50%;
+  --category-metrics: 45 90% 55%;
+  --category-strategy: 160 70% 45%;
+  --category-advertising: 350 80% 60%;
+  --category-channels: 220 80% 60%;
+  --category-technology: 270 70% 60%;
+  --category-ai: 190 90% 50%;
+}
+
+.glass {
+  background: hsl(var(--glass-bg));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsl(var(--glass-border));
+  box-shadow: 0 8px 32px hsl(var(--glass-shadow)), inset 0 1px 0 hsl(var(--glass-border-strong));
+}
+.glass-strong {
+  background: hsl(var(--glass-bg-strong));
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid hsl(var(--glass-border-strong));
+  box-shadow: 0 12px 40px hsl(var(--glass-shadow)), inset 0 1px 0 hsl(var(--glass-border-strong));
+}
+.glass-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-hover:hover {
+  background: hsl(var(--glass-bg-strong));
+  border-color: hsl(var(--glass-border-strong));
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px hsl(var(--glass-shadow)), inset 0 1px 0 hsl(var(--glass-border-strong));
+}
+.category-metrics { background: hsl(var(--category-metrics) / 0.2); color: hsl(var(--category-metrics)); border-color: hsl(var(--category-metrics) / 0.3); }
+.category-strategy { background: hsl(var(--category-strategy) / 0.2); color: hsl(var(--category-strategy)); border-color: hsl(var(--category-strategy) / 0.3); }
+.category-advertising { background: hsl(var(--category-advertising) / 0.2); color: hsl(var(--category-advertising)); border-color: hsl(var(--category-advertising) / 0.3); }
+.category-channels { background: hsl(var(--category-channels) / 0.2); color: hsl(var(--category-channels)); border-color: hsl(var(--category-channels) / 0.3); }
+.category-technology { background: hsl(var(--category-technology) / 0.2); color: hsl(var(--category-technology)); border-color: hsl(var(--category-technology) / 0.3); }
+.category-ai { background: hsl(var(--category-ai) / 0.2); color: hsl(var(--category-ai)); border-color: hsl(var(--category-ai) / 0.3); }
+.text-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+/* --- END GLOSARIO APP CUSTOM STYLES --- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -51,4 +137,66 @@ body {
   scroll-behavior: smooth;
   will-change: scroll-position;
 }
+
+/* --- GLOSARIO BACKGROUND & ORBS (copied from Glosario/src/index.css) --- */
+.gradient-bg {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--gradient-purple)) 0%,
+    hsl(var(--gradient-blue)) 25%,
+    hsl(var(--gradient-pink)) 50%,
+    hsl(var(--gradient-cyan)) 75%,
+    hsl(var(--gradient-purple)) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+  animation: float 20s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 600px;
+  height: 600px;
+  background: hsl(var(--gradient-purple));
+  top: -200px;
+  left: -100px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: hsl(var(--gradient-pink));
+  top: 40%;
+  right: -150px;
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  width: 400px;
+  height: 400px;
+  background: hsl(var(--gradient-cyan));
+  bottom: -100px;
+  left: 30%;
+  animation-delay: -10s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -30px) scale(1.05); }
+  50% { transform: translate(-20px, 20px) scale(0.95); }
+  75% { transform: translate(20px, 30px) scale(1.02); }
+}
+/* --- END GLOSARIO BACKGROUND & ORBS --- */
 

@@ -440,6 +440,13 @@ function LayoutContent({ children, currentPageName }) {
                                 }}
                             />
                             
+                                {/* CTA GLOSARIO - between Recursos and Contactame */}
+                                <NavButton
+                                    onClick={() => navigate('/glosario-marketing')}
+                                    label={t.nav.glossary || 'GLOSARIO'}
+                                    className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold shadow-lg hover:from-emerald-400 hover:to-teal-400 transition-all duration-300"
+                                />
+                            
                             {/* CONTACT ME */}
                             <NavButton
                                 onClick={handleContactClick}
@@ -516,6 +523,16 @@ function LayoutContent({ children, currentPageName }) {
                                         className="block w-full text-left px-4 py-3 text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors font-medium rounded-lg"
                                     >
                                         {t.nav.resources || 'RECURSOS'}
+                                    </button>
+                                </Link>
+                                
+                                {/* GLOSARIO */}
+                                <Link to="/glosario-marketing" className="block">
+                                    <button
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block w-full text-left px-4 py-3 text-zinc-400 hover:text-white hover:bg-zinc-800/50 transition-colors font-medium rounded-lg"
+                                    >
+                                        {t.nav.glossary || 'GLOSARIO'}
                                     </button>
                                 </Link>
                                 

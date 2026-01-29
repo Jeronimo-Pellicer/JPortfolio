@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { setCurrentLanguage } from '../../Glosario/src/data/glossaryData';
 
 const LanguageContext = createContext();
 
@@ -20,6 +21,7 @@ export const translations = {
             resume: 'RESUME',
             tools: 'TOOLS',
             resources: 'RESOURCES',
+            glossary: 'GLOSSARY',
             resourcesMenu: {
                 templates: 'Templates',
                 guides: 'Guides',
@@ -2092,11 +2094,29 @@ export const translations = {
 };
 
 export function LanguageProvider({ children }) {
-    const [language, setLanguage] = useState('es'); // Idioma por defecto: español
+    // Read initial language from localStorage if available
+    const getInitialLanguage = () => {
+        if (typeof window !== 'undefined' && window.localStorage) {
+            const lang = window.localStorage.getItem('language');
+            if (lang === 'en' || lang === 'es') return lang;
+        }
+        return 'es';
+    };
+    const [language, setLanguage] = useState(getInitialLanguage);
+
 
     const toggleLanguage = () => {
-        setLanguage(prev => prev === 'en' ? 'es' : 'en');
+        setLanguage(prev => {
+            const next = prev === 'en' ? 'es' : 'en';
+            setCurrentLanguage(next);
+            return next;
+        });
     };
+
+    // Keep localStorage in sync if language changes elsewhere
+    useEffect(() => {
+        setCurrentLanguage(language);
+    }, [language]);
 
     const t = translations[language];
 

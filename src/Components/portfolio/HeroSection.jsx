@@ -69,7 +69,7 @@ export default function HeroSection() {
                             initial={{ opacity: 0, x: 40 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.3, duration: 0.6 }}
-                            className="text-sm md:text-base lg:text-lg text-zinc-400 max-w-3xl mx-auto leading-relaxed mb-3"
+                            className="text-sm md:text-base lg:text-lg text-white max-w-3xl mx-auto leading-relaxed mb-3"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
                         >
                             {language === 'es' ? (
