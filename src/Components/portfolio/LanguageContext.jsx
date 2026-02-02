@@ -23,7 +23,6 @@ export const translations = {
             resources: 'RESOURCES',
             glossary: 'GLOSSARY',
             resourcesMenu: {
-                templates: 'Templates',
                 guides: 'Guides',
                 infographics: 'Infographics',
                 cjmGuide: 'How to create a Customer Journey Map',
@@ -65,8 +64,8 @@ export const translations = {
                 description: 'Bachelor\'s in Internet Administration at UEAN, with a GPA of +8.66. Leading a university International Finance Project and Green Bonds integration in Argentina, with projection to several congresses.',
             },
             trust2: {
-                title: 'International Certification, Local Strategies',
-                description: 'With certifications in Digital Marketing from The University of Manchester, I combine analytical skills with strategic thinking. I specialize in SEO, content marketing, social media strategies, and analytics, all focused on driving business success.',
+                title: 'Web positioning that converts',
+                description: 'I help brands scale not only in conventional search engines, but also on AI-powered platforms. My SEO strategies include technical audits, content optimization, advanced keyword research, and building digital authority. I combine creativity with data analysis to generate visibility, attract quality traffic, and turn visits into real customers.',
             },
             trust3: {
                 title: 'Cutting-Edge Innovation Applied to Your Business',
@@ -1104,8 +1103,8 @@ export const translations = {
                 description: 'Licenciatura en Administración en Internet en UEAN, con promedio de +8,66. Liderando un Proyecto universitario de Finanzas Internacionales e inserción de Green Bonds en Argentina, con proyección a varios congresos.',
             },
             trust2: {
-                title: 'Certificación internacional, estrategias locales',
-                description: 'Con certificaciones en Marketing Digital de The University of Manchester, combino habilidades analíticas con pensamiento estratégico. Me especializo en SEO, marketing de contenido, estrategias en redes sociales y analítica, todo enfocado en impulsar el éxito empresarial.',
+                title: 'Posicionamiento web que convierte',
+                description: 'Ayudo a marcas a escalar no solo en buscadores convencionales, sino también en plataformas impulsadas por inteligencia artificial. Mis estrategias SEO incluyen auditorías técnicas, optimización de contenido, investigación avanzada de palabras clave y construcción de autoridad digital. Combino creatividad con análisis de datos para generar visibilidad, atraer tráfico de calidad y transformar visitas en clientes reales.',
             },
             trust3: {
                 title: 'Innovación de vanguardia aplicada a tu negocio',

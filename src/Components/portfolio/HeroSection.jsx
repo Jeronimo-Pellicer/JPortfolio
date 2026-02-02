@@ -92,7 +92,7 @@ export default function HeroSection() {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 1.3, duration: 0.8 }}
-                                className="flex flex-nowrap items-center justify-center gap-1.5 md:gap-4 mb-4 md:mb-0 md:mt-4 overflow-x-auto opacity-30 pb-2 md:order-2"
+                                className="flex flex-nowrap items-center justify-center gap-1.5 md:gap-4 mb-4 md:mb-0 md:mt-4 overflow-x-auto overflow-y-visible md:overflow-visible opacity-30 pb-2 py-1 md:order-2"
                             >
                             <Link to="/herramientas">
                                 <motion.button

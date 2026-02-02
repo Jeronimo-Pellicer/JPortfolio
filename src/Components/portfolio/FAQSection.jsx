@@ -131,6 +131,20 @@ export default function FAQSection() {
                                                             ></iframe>
                                                         </div>
                                                     )}
+                                                    {faq.q.includes('Customer Effort Score') && (
+                                                        <div className="mt-4 flex justify-center">
+                                                            <iframe
+                                                                width="360"
+                                                                height="203"
+                                                                src="https://www.youtube.com/embed/8rInjjV6OZw"
+                                                                title="YouTube video player"
+                                                                frameBorder="0"
+                                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                                allowFullScreen
+                                                                className="rounded-xl shadow-lg border border-emerald-500/20"
+                                                            ></iframe>
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
                                         </motion.div>

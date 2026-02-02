@@ -7,6 +7,43 @@ let gsap = null;
 let ScrollTrigger = null;
 
 const loadGSAP = async () => {
+  if (gsap !== null) return gsap;
+  const gsapModule = await import('gsap');
+  gsap = gsapModule.default;
+  ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
+  gsap.registerPlugin(ScrollTrigger);
+  return gsap;
+};
+
+const ScrollReveal = ({
+  text = '',
+  splitBy = 'word',
+  baseRotation = -5,
+  baseOpacity = 0.3,
+  rotationEnd = '200px',
+  wordAnimationEnd = '150px',
+  enableBlur = true,
+  blurStrength = 10,
+  containerClassName = '',
+  textClassName = '',
+  scrollContainerRef = null
+}) => {
+  const containerRef = useRef(null);
+  const [gsapLoaded, setGsapLoaded] = useState(false);
+
+  const splitText = useMemo(() => {
+    if (!text) return '';
+    if (splitBy === 'word') {
+      return text.split(' ').map((word, i) => (
+        <span key={i} className="word">{word}</span>
+      )).reduce((acc, el, i, arr) => (
+        i < arr.length - 1 ? [...acc, el, ' '] : [...acc, el]
+      ), []);
+    }
+    return text;
+  }, [text, splitBy]);
+
+  useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
 
@@ -82,44 +119,14 @@ const loadGSAP = async () => {
           }
         );
       }
-
-      // Cleanup triggers on unmount
-      return () => {
-        if (ScrollTrigger) {
-          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        }
-      };
     });
-            start: 'top bottom-=20%',
-            end: wordAnimationEnd,
-            scrub: true
-          }
-        }
-      );
 
-      if (enableBlur) {
-        gsap.fromTo(
-          wordElements,
-          { filter: `blur(${blurStrength}px)` },
-          {
-            ease: 'none',
-            filter: 'blur(0px)',
-            stagger: 0.05,
-            scrollTrigger: {
-              trigger: el,
-              scroller,
-              start: 'top bottom-=20%',
-              end: wordAnimationEnd,
-              scrub: true
-            }
-          }
-        );
-      }
-
-      return () => {
+    // Cleanup triggers on unmount
+    return () => {
+      if (ScrollTrigger) {
         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      };
-    });
+      }
+    };
   }, [scrollContainerRef, enableBlur, baseRotation, baseOpacity, rotationEnd, wordAnimationEnd, blurStrength]);
 
   return (

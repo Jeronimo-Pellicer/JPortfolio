@@ -368,7 +368,7 @@ function LayoutContent({ children, currentPageName }) {
                             whileTap={{ scale: 0.95 }}
                             className="text-xl font-bold text-white tracking-tight relative group"
                         >
-                            Jerónimo
+                            JP Studio
                             <span className="inline-block w-1.5 h-1.5 bg-emerald-400 rounded-full ml-1 group-hover:animate-pulse"></span>
                         </motion.button>
 

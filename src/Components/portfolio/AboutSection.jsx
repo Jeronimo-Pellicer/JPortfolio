@@ -27,6 +27,7 @@ const AboutSection = React.memo(() => {
                     {/* Long description with scroll reveal */}
                     <div className="w-full mx-auto mb-8 md:mb-10 px-4 md:px-12">
                         <ScrollReveal 
+                            text={longParagraphText}
                             enableBlur={true}
                             baseOpacity={0.15}
                             baseRotation={1}
@@ -35,9 +36,7 @@ const AboutSection = React.memo(() => {
                             textClassName="text-[26px] md:text-[38px] lg:text-[53px] font-bold leading-snug md:leading-relaxed text-emerald-400"
                             rotationEnd="bottom bottom"
                             wordAnimationEnd="bottom bottom"
-                        >
-                            {longParagraphText}
-                        </ScrollReveal>
+                        />
                     </div>
 
                     {/* Divider line */}
