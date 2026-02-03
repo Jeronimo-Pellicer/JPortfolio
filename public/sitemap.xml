@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://my-jpportfolio-nu.vercel.app/</loc>
+    <loc>https://jpstudio.app/</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://my-jpportfolio-nu.vercel.app/projects</loc>
+    <loc>https://jpstudio.app/projects</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://my-jpportfolio-nu.vercel.app/books</loc>
+    <loc>https://jpstudio.app/books</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://my-jpportfolio-nu.vercel.app/herramientas</loc>
+    <loc>https://jpstudio.app/herramientas</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://my-jpportfolio-nu.vercel.app/recursos</loc>
+    <loc>https://jpstudio.app/recursos</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://my-jpportfolio-nu.vercel.app/sitemap.xml
+Sitemap: https://jpstudio.app/sitemap.xml
