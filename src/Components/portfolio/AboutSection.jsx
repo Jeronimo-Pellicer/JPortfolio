@@ -20,7 +20,7 @@ const AboutSection = React.memo(() => {
                 <div className="mb-12">
                     <div className="text-center mb-8">
                         <div className="text-xs md:text-sm uppercase text-emerald-400 font-semibold tracking-widest">{t.about.title}</div>
-                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-white mt-4 tracking-tight leading-tight">{t.about.heading}</h1>
+                        <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-emerald-400 mt-4 tracking-tight leading-tight">{t.about.heading}</h1>
                         <div className="w-24 h-1.5 bg-emerald-500 mx-auto my-4 rounded"></div>
                     </div>
 
@@ -33,7 +33,7 @@ const AboutSection = React.memo(() => {
                             baseRotation={1}
                             blurStrength={2}
                             containerClassName=""
-                            textClassName="text-[26px] md:text-[38px] lg:text-[53px] font-bold leading-snug md:leading-relaxed text-emerald-400"
+                            textClassName="text-[26px] md:text-[38px] lg:text-[53px] font-bold leading-snug md:leading-relaxed text-white"
                             rotationEnd="bottom bottom"
                             wordAnimationEnd="bottom bottom"
                         />
