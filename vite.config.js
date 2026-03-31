@@ -8,13 +8,22 @@ export default defineConfig({
     react(),
     sitemap({
       hostname: 'https://jpstudio.app',
-      dynamicRoutes: [
-        '/',
-        '/herramientas',
-        '/projects',
-        '/recursos',
-        '/books',
-      ],
+        dynamicRoutes: [
+          '/',
+          '/herramientas',
+          '/projects',
+          '/recursos',
+          '/books',
+          // Guías
+          '/recursos?article=guia-customer-journey-map',
+          '/recursos?article=guia-seo-local',
+          '/recursos?article=guia-estrategia-linkedin',
+          // Infografías
+          '/recursos?article=infografia-anatomia-post-linkedin',
+          '/recursos?article=infografia-optimizacion-atencion-cliente',
+          '/recursos?article=infografia-palabras-clave',
+          '/recursos?article=infografia-elementos-landing-page',
+        ],
     }),
   ],
   resolve: {

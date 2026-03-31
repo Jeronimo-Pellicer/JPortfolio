@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Filter, ArrowRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/Components/portfolio/LanguageContext';
 import { createProjectSlug } from '../utils/projectUtils';
+import { getProjectDetails } from '../data/projectDetails';
 
 function Projects() {
     const { t, language } = useLanguage();
@@ -23,11 +24,12 @@ function Projects() {
         {
             title: t.projects.project2.title,
             description: t.projects.project2.description,
-            image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=1200&h=800&fit=crop',
+            image: '/topper/topper-0001.jpg',
             tags: ['Marketing Strategy', 'Mobile Growth', 'Paid Media'],
             category: 'marketing',
             liveUrl: '#',
             githubUrl: '#',
+            detailSlug: 'topper-plan-mobile-first',
         },
         {
             title: t.projects.project3.title,
@@ -315,35 +317,60 @@ function Projects() {
                         >
                             {filteredProjects.map((project, index) => {
                                 const projectSlug = createProjectSlug(project.title);
+                                const hasDetail = !!project.detailSlug;
+                                const cardSlug = project.detailSlug || projectSlug;
+
+                                const CardWrapper = ({ children }) => hasDetail ? (
+                                    <Link to={`/projects/${cardSlug}`} className="block h-full">{children}</Link>
+                                ) : (
+                                    <div className="h-full">{children}</div>
+                                );
+
                                 return (
                         <motion.div
                             key={project.title}
                             variants={itemVariants}
                             className="group relative"
                         >
+                            <CardWrapper>
                             <div className="relative h-full">
-                                <div className="relative h-full bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 backdrop-blur-md md:backdrop-blur-xl border border-zinc-800/50 rounded-3xl overflow-hidden transition-all duration-500 shadow-2xl cursor-not-allowed opacity-75">
+                                <div className={`relative h-full bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 backdrop-blur-md md:backdrop-blur-xl border rounded-3xl overflow-hidden transition-all duration-500 shadow-2xl ${
+                                    hasDetail
+                                        ? 'border-zinc-800/50 hover:border-emerald-500/40 cursor-pointer opacity-100 hover:shadow-emerald-500/10 hover:-translate-y-1'
+                                        : 'border-zinc-800/50 cursor-not-allowed opacity-75'
+                                }`}>
                                     {/* Project Image */}
                                     <div className="relative h-64 overflow-hidden">
                                         <img
                                             src={project.image}
                                             alt={project.title}
-                                            className="w-full h-full object-cover"
+                                            className={`w-full h-full object-cover transition-transform duration-500 ${hasDetail ? 'group-hover:scale-105' : ''}`}
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
                                         
-                                        {/* BETA Banner */}
+                                        {/* BETA Banner - only for projects without detail */}
+                                        {!hasDetail && (
                                         <div className="absolute top-0 right-0 w-32 h-32 overflow-hidden">
                                             <div className="absolute top-2 -right-8 w-32 h-12 bg-emerald-500 backdrop-blur-md flex items-center justify-center transform rotate-45 shadow-lg">
                                                 <span className="text-black font-bold text-sm tracking-widest">BETA</span>
                                             </div>
                                         </div>
+                                        )}
+
+                                        {/* "View Project" indicator for clickable cards */}
+                                        {hasDetail && (
+                                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                            <span className="px-3 py-1.5 bg-emerald-500 text-black text-xs font-bold rounded-lg shadow-lg">
+                                                Ver Proyecto →
+                                            </span>
+                                        </div>
+                                        )}
                                     </div>
 
                                     {/* Project Content */}
                                     <div className="p-6 space-y-4">
                                         <div>
-                                            <h3 className="text-2xl font-bold text-white mb-3 transition-colors"
+                                            <h3 className={`text-2xl font-bold mb-3 transition-colors ${hasDetail ? 'text-white group-hover:text-emerald-400' : 'text-white'}`}
                                                 style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.02em' }}
                                             >
                                                 {project.title}
@@ -372,6 +399,7 @@ function Projects() {
                                     </div>
                                 </div>
                             </div>
+                            </CardWrapper>
                         </motion.div>
                                 );
                             })}

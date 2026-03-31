@@ -3,24 +3,36 @@ import { Button } from "../ui/button";
 import { Download, Lock, ArrowRight } from 'lucide-react';
 import { toast } from "sonner";
 
-// URLs de descarga para recursos gratuitos
-const FREE_DOWNLOAD_URLS = {
+// URLs de descarga para todos los recursos
+const RESOURCE_DOWNLOAD_URLS = {
     'cjm-template': 'https://docs.google.com/spreadsheets/d/1example-cjm/export?format=xlsx',
     'foda-kit': 'https://docs.google.com/spreadsheets/d/1example-foda/export?format=xlsx',
-    'cjm-guide': '/downloads/customer-journey-guide.pdf',
-    'seo-local-guide': '/downloads/seo-local-guide.pdf',
-    'linkedin-strategy': '/downloads/linkedin-strategy.pdf',
-    'linkedin-post-anatomy': '/downloads/linkedin-anatomy.pdf',
-    'cx-optimization-process': '/downloads/cx-optimization.pdf',
-    'keyword-research': '/downloads/keyword-research.pdf',
-    'landing-page-elements': '/downloads/landing-page-elements.pdf',
+    'guia-customer-journey-map': '/downloads/customer-journey-guide.pdf',
+    'guia-seo-local': '/downloads/seo-local-guide.pdf',
+    'guia-estrategia-linkedin': '/downloads/linkedin-strategy.pdf',
+    'infografia-anatomia-post-linkedin': '/downloads/linkedin-anatomy.pdf',
+    'infografia-optimizacion-atencion-cliente': '/downloads/cx-optimization.pdf',
+    'infografia-palabras-clave': '/downloads/keyword-research.pdf',
+    'infografia-elementos-landing-page': '/downloads/landing-page-elements.pdf',
+    // Recursos pagos (requieren bypass o pago)
+    'content-calendar': 'https://docs.google.com/spreadsheets/d/1example-calendar/export?format=xlsx',
+    'nps-template': 'https://docs.google.com/spreadsheets/d/1example-nps/export?format=xlsx',
+    'content-strategy': 'https://docs.google.com/spreadsheets/d/1example-strategy/export?format=xlsx',
+    'cx-metrics-guide': '/downloads/cx-metrics-guide.pdf',
 };
 
 export default function DownloadButton({ resource, onPurchase, size = "sm", labelFree = "Descargar Gratis", labelPaid = "Obtener" }) {
+    // Check for Admin Bypass (URL param or LocalStorage)
+    const isAdmin = typeof window !== 'undefined' && (
+        new URLSearchParams(window.location.search).get('preview') === 'admin' ||
+        localStorage.getItem('jp_admin') === 'true'
+    );
+
     const isFree = resource.price === 0;
+    const isUnlocked = isFree || isAdmin;
 
     const handleDownload = () => {
-        const url = FREE_DOWNLOAD_URLS[resource.id];
+        const url = RESOURCE_DOWNLOAD_URLS[resource.id];
         
         if (url) {
             // Simular descarga - en producción esto abriría el archivo real
@@ -52,7 +64,7 @@ export default function DownloadButton({ resource, onPurchase, size = "sm", labe
         }
     };
 
-    if (isFree) {
+    if (isUnlocked) {
         return (
             <Button
                 size={size}
@@ -60,7 +72,7 @@ export default function DownloadButton({ resource, onPurchase, size = "sm", labe
                 className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-lg transition-all duration-300"
             >
                 <Download className="w-4 h-4 mr-1.5" />
-                {labelFree}
+                {isAdmin && !isFree ? "Descarga Admin" : labelFree}
             </Button>
         );
     }

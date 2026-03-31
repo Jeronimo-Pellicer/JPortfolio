@@ -21,21 +21,19 @@ import { resourcesData } from '../data/resourcesData';
 
 export default function Resources() {
   const { t, language } = useLanguage();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedResource, setSelectedResource] = useState(null);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [isPaymentOpen, setIsPaymentOpen] = useState(false);
-  const [selectedArticleId, setSelectedArticleId] = useState(null);
   const [activeLetter, setActiveLetter] = useState(null);
 
-  // Handle direct navigation from menu links
+  // Derive state from searchParams
+  const selectedArticleId = searchParams.get('article');
+
+  // Handle filter changes from URL
   useEffect(() => {
-    const articleParam = searchParams.get('article');
     const filterParam = searchParams.get('filter');
-    if (articleParam) {
-      setSelectedArticleId(articleParam);
-    }
     if (filterParam && ['template', 'guide', 'infographic', 'all'].includes(filterParam)) {
       setActiveFilter(filterParam);
     }
@@ -61,12 +59,17 @@ export default function Resources() {
   };
 
   const handleReadArticle = (resource) => {
-    setSelectedArticleId(resource.id);
+    // Only update searchParams, React will re-render and selectedArticleId will be updated
+    const newParams = new URLSearchParams(searchParams);
+    newParams.set('article', resource.id);
+    setSearchParams(newParams);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleBackToResources = () => {
-    setSelectedArticleId(null);
+    const newParams = new URLSearchParams(searchParams);
+    newParams.delete('article');
+    setSearchParams(newParams);
   };
 
   return (

@@ -60,19 +60,19 @@ const heroVisuals = {
         type: 'template',
         typeLabel: 'Estrategia de Contenidos'
     },
-    'cjm-guide': {
+    'guia-customer-journey-map': {
         image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80',
         icon: Route,
         type: 'guide',
         typeLabel: 'Guía CJM'
     },
-    'seo-local-guide': {
+    'guia-seo-local': {
         image: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=1600&q=80',
         icon: MapPin,
         type: 'guide',
         typeLabel: 'Guía SEO Local'
     },
-    'linkedin-strategy': {
+    'guia-estrategia-linkedin': {
         image: 'https://images.unsplash.com/photo-1611944212129-29977ae1398c?w=1600&q=80',
         icon: Linkedin,
         type: 'guide',
@@ -84,25 +84,25 @@ const heroVisuals = {
         type: 'guide',
         typeLabel: 'Métricas de CX'
     },
-    'linkedin-post-anatomy': {
+    'infografia-anatomia-post-linkedin': {
         image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1600&q=80',
         icon: PenTool,
         type: 'infographic',
         typeLabel: 'Infografía de Post'
     },
-    'cx-optimization-process': {
+    'infografia-optimizacion-atencion-cliente': {
         image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1600&q=80',
         icon: Headset,
         type: 'infographic',
         typeLabel: 'Proceso CX'
     },
-    'keyword-research': {
+    'infografia-palabras-clave': {
         image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1600&q=80',
         icon: Search,
         type: 'infographic',
         typeLabel: 'Infografía Keywords'
     },
-    'landing-page-elements': {
+    'infografia-elementos-landing-page': {
         image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&q=80',
         icon: LayoutPanelTop,
         type: 'infographic',
@@ -384,7 +384,7 @@ En esta guía, te enseñaremos a realizar un análisis FODA que realmente impuls
             }
         ]
     },
-    'cjm-guide': {
+    'guia-customer-journey-map': {
         title: 'Cómo crear un Customer Journey Map en 5 pasos',
         subtitle: 'Guía paso a paso para construir tu primer Customer Journey Map',
         readTime: '10 min',
@@ -516,7 +516,7 @@ Lo mejor: no necesitas ser un experto en UX ni tener herramientas costosas. Solo
             }
         ]
     },
-    'seo-local-guide': {
+    'guia-seo-local': {
         title: 'Guía de SEO local para negocios de servicios',
         subtitle: 'Posiciona tu negocio local en Google y atrae clientes de tu zona',
         readTime: '14 min',
@@ -650,7 +650,7 @@ Esta guía te enseñará exactamente cómo aparecer en el "map pack" de Google y
             }
         ]
     },
-    'linkedin-strategy': {
+    'guia-estrategia-linkedin': {
         title: 'Estrategia de contenido en LinkedIn para profesionales',
         subtitle: 'Construye tu marca personal y genera oportunidades de negocio',
         readTime: '11 min',
@@ -774,7 +774,7 @@ Si eres profesional, emprendedor o líder de negocio, una estrategia de contenid
             }
         ]
     },
-    'linkedin-post-anatomy': {
+    'infografia-anatomia-post-linkedin': {
         title: 'Anatomía de un buen post en LinkedIn/Instagram',
         subtitle: 'Desglose visual de los elementos que hacen viral un post',
         readTime: '8 min',
@@ -895,7 +895,7 @@ En esta guía desglosamos la anatomía completa de un post efectivo, tanto para 
             }
         ]
     },
-    'cx-optimization-process': {
+    'infografia-optimizacion-atencion-cliente': {
         title: 'Proceso de optimización de atención al cliente en 6 etapas',
         subtitle: 'El ciclo completo de mejora continua en servicio al cliente',
         readTime: '13 min',
@@ -1056,7 +1056,7 @@ Esta guía presenta un framework de 6 etapas para optimizar sistemáticamente tu
             }
         ]
     },
-    'keyword-research': {
+    'infografia-palabras-clave': {
         title: 'Palabras clave: cómo encontrarlas y usarlas',
         subtitle: 'Guía completa de investigación de keywords para SEO',
         readTime: '12 min',
@@ -1191,7 +1191,7 @@ Esta guía te enseña el proceso completo de investigación de keywords: desde e
             }
         ]
     },
-    'landing-page-elements': {
+    'infografia-elementos-landing-page': {
         title: 'Elementos clave de una landing page que convierte',
         subtitle: 'Anatomía completa de una página de aterrizaje optimizada',
         readTime: '10 min',
@@ -1357,6 +1357,310 @@ En esta guía desglosamos cada elemento de una landing page efectiva, desde el h
                 title: '¿Listo para crear landing pages que conviertan?',
                 description: 'Aplica estos principios en tu próxima página y mide los resultados.',
                 buttonText: 'Ver más recursos de marketing'
+            }
+        ]
+    },
+    'cx-metrics-guide': {
+        title: '10 métricas clave de experiencia del cliente y cómo interpretarlas',
+        subtitle: 'Domina los indicadores que realmente importan para el crecimiento de tu negocio',
+        readTime: '15 min',
+        date: '2024',
+        author: 'Equipo de Estrategia de CX',
+        heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
+        sections: [
+            {
+                type: 'intro',
+                content: `En la era del cliente, lo que no se mide no se puede mejorar. Pero medir por medir es una pérdida de tiempo. La clave está en elegir las métricas que realmente reflejen la salud de tu relación con los clientes y, sobre todo, que tengan un impacto directo en el crecimiento de tu negocio.
+
+Esta guía desglosa las 10 métricas fundamentales que toda estrategia de Customer Experience (CX) debe seguir de cerca, clasificadas por su propósito y nivel de impacto.`
+            },
+            {
+                type: 'stats',
+                items: [
+                    { value: '+15%', label: 'Crecimiento en ingresos con buen CX' },
+                    { value: '5-25x', label: 'Más caro adquirir que retener' },
+                    { value: '80%', label: 'De clientes cambian tras mala experiencia' }
+                ]
+            },
+            {
+                type: 'heading',
+                content: 'Las métricas de percepción: ¿Qué sienten tus clientes?'
+            },
+            {
+                type: 'paragraph',
+                content: `Las métricas de percepción nos dicen "qué" piensan los clientes sobre nosotros en momentos específicos o de forma relacional.`
+            },
+            {
+                type: 'numbered-list',
+                items: [
+                    {
+                        title: 'NPS (Net Promoter Score)',
+                        content: 'Mide la lealtad a largo plazo. "¿Qué tan probable es que nos recomiendes?". Se divide en Promotores (9-10), Pasivos (7-8) y Detractores (0-6).'
+                    },
+                    {
+                        title: 'CSAT (Customer Satisfaction Score)',
+                        content: 'Mide la satisfacción puntual con una interacción o producto. "¿Qué tan satisfecho estás con este servicio?". Ideal para evaluar procesos específicos.'
+                    },
+                    {
+                        title: 'CES (Customer Effort Score)',
+                        content: 'Mide qué tan fácil fue para el cliente resolver su problema. "La empresa me facilitó resolver mi solicitud". Es el mejor predictor de recompra.'
+                    }
+                ]
+            },
+            {
+                type: 'table',
+                headers: ['Métrica', 'Momento ideal', 'Benchmark objetivo', 'Ventaja principal'],
+                rows: [
+                    ['NPS', 'Relacional (cada 6 meses)', '>50 (Excelente)', 'Predictor de crecimiento orgánico'],
+                    ['CSAT', 'Transaccional (post-ticket)', '>85%', 'Identifica fallos en procesos'],
+                    ['CES', 'Post-soporte o onboarding', '>80% acuerdo', 'Reduce la probabilidad de abandono']
+                ]
+            },
+            {
+                type: 'heading',
+                content: 'Métricas operativas y de impacto económico'
+            },
+            {
+                type: 'paragraph',
+                content: `No todo es sentimiento; los datos duros de comportamiento validan si el CX está funcionando financieramente.`
+            },
+            {
+                type: 'numbered-list',
+                items: [
+                    {
+                        title: 'Churn Rate (Tasa de Abandono)',
+                        content: 'El porcentaje de clientes que dejan de usar tu servicio en un periodo. Un CX deficiente es la causa #1 de un churn alto.'
+                    },
+                    {
+                        title: 'Retention Rate (Tasa de Retención)',
+                        content: 'El reverso del churn. Mide cuántos clientes mantienes activos mes a mes.'
+                    },
+                    {
+                        title: 'CLV (Customer Lifetime Value)',
+                        content: 'Cuánto dinero genera un cliente durante toda su relación con tu marca. Un mejor CX extiende la vida del cliente y su ticket.'
+                    },
+                    {
+                        title: 'FRT (First Response Time)',
+                        content: 'Tiempo de primera respuesta. En soporte, la velocidad es una de las mayores fuentes de frustración o satisfacción.'
+                    },
+                    {
+                        title: 'AHT (Average Handling Time)',
+                        content: 'Tiempo promedio de resolución. ¿Cuánto tardamos en cerrar un caso con éxito?'
+                    },
+                    {
+                        title: 'Cost to Serve (Costo de Servir)',
+                        content: 'Cuánto te cuesta atender a cada cliente. Un CX proactivo reduce los contactos innecesarios y baja este costo.'
+                    },
+                    {
+                        title: 'Referral Rate (Tasa de Referidos)',
+                        content: '% de nuevos clientes que vienen por recomendación de clientes actuales. Es el "NPS hecho realidad".'
+                    }
+                ]
+            },
+            {
+                type: 'tip',
+                content: 'No intentes medir las 10 a la vez desde el día 1. Empieza con NPS y Churn Rate para tener una visión 360 clara de lealtad y pérdida.'
+            },
+            {
+                type: 'warning',
+                items: [
+                    'Ignorar los comentarios cualitativos asociados a la nota',
+                    'Medir solo a los clientes felices (sesgo de selección)',
+                    'No cerrar el feedback loop (no contactar al cliente tras su queja)',
+                    'Obsesionarse con el número y no con la mejora del proceso'
+                ]
+            },
+            {
+                type: 'quote',
+                content: 'Tus métricas de CX deben ser el tablero de control de tu negocio, no solo un reporte de marketing.',
+                author: 'Customer Experience Professionals Association'
+            },
+            {
+                type: 'cta',
+                title: '¿Quieres optimizar tus métricas de CX?',
+                description: 'Usa nuestro dashboard de NPS gratuito para empezar a medir la lealtad de tus clientes hoy mismo.',
+                buttonText: 'Descargar Dashboard NPS'
+            }
+        ]
+    },
+    'content-calendar': {
+        title: 'Calendario de Contenidos 2024: Domina tu Presencia Digital',
+        subtitle: 'La herramienta definitiva para organizar, planificar y ejecutar tu estrategia en redes sociales',
+        readTime: '10 min',
+        date: '2024',
+        author: 'Equipo de Estrategia de Contenidos',
+        heroImage: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200&q=80',
+        sections: [
+            {
+                type: 'intro',
+                content: `La consistencia es el factor #1 del éxito en redes sociales. Pero es imposible ser consistente sin organización. El Calendario de Contenidos 2024 es más que una simple agenda; es el mapa que te permite saber qué publicar, cuándo hacerlo y por qué.
+
+Con este recurso, eliminarás el estrés del "qué publico hoy" y empezarás a crear contenido con intención estratégica.`
+            },
+            {
+                type: 'heading',
+                content: '¿Por qué necesitas un calendario de contenidos?'
+            },
+            {
+                type: 'paragraph',
+                content: `Un calendario te permite tener una visión global de tu comunicación y evitar baches de silencio que matan tu alcance orgánico.`
+            },
+            {
+                type: 'checklist',
+                items: [
+                    'Ahorra tiempo agrupando la creación de contenido (Batching)',
+                    'Garantiza la variedad temática y evita la repetición',
+                    'Alinea tus publicaciones con fechas comerciales importantes',
+                    'Mejora la calidad visual al planificar con antelación',
+                    'Reduce el estrés y la improvisación de último minuto'
+                ]
+            },
+            {
+                type: 'heading',
+                content: 'Frecuencia recomendada por plataforma'
+            },
+            {
+                type: 'table',
+                headers: ['Plataforma', 'Frecuencia Ideal', 'Mejor Formato'],
+                rows: [
+                    ['LinkedIn', '2-3 veces por semana', 'Carruseles y Texto'],
+                    ['Instagram', '3-5 veces por semana', 'Reels y Carruseles'],
+                    ['Threads', 'Diario (1-2 veces)', 'Threads de texto cortos'],
+                    ['YouTube', '1 vez por semana', 'Video largo > 8 min'],
+                    ['Newsletter', 'Semanal o Quincenal', 'Texto profundo con valor']
+                ]
+            },
+            {
+                type: 'tip',
+                content: 'Usa la regla de los 3 pilares: Contenido Educativo, Contenido de Autoridad y Contenido Humano. Alterna entre ellos para mantener a tu audiencia comprometida.'
+            },
+            {
+                type: 'cta',
+                title: '¿Listo para organizar tu contenido?',
+                description: 'Descarga nuestro template de calendario y empieza a planificar tu éxito hoy mismo.',
+                buttonText: 'Descargar Calendario Gratis'
+            }
+        ]
+    },
+    'nps-template': {
+        title: 'Dashboard de NPS: Mide la Lealtad Real de tus Clientes',
+        subtitle: 'Implementa el sistema de medición de satisfacción más usado en el mundo',
+        readTime: '12 min',
+        date: '2024',
+        author: 'Equipo de CX Strategy',
+        heroImage: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
+        sections: [
+            {
+                type: 'intro',
+                content: `El Net Promoter Score (NPS) es la "Métrica del Norte" para la mayoría de las empresas Fortune 500. ¿Por qué? Porque es simple de medir y tiene una correlación directa con el crecimiento del negocio.
+
+Un Dashboard de NPS bien implementado no solo te da un número, sino que te revela qué partes de tu experiencia están fallando y quiénes son tus verdaderos embajadores.`
+            },
+            {
+                type: 'stats',
+                items: [
+                    { value: '+50', label: 'NPS considerado "Excelente"' },
+                    { value: '3x', label: 'Más probabilidad de recompra en promotores' },
+                    { value: '70%', label: 'De detractors cambian de marca en un año' }
+                ]
+            },
+            {
+                type: 'heading',
+                content: 'Cómo leer tu Dashboard de NPS'
+            },
+            {
+                type: 'numbered-list',
+                items: [
+                    {
+                        title: 'Promotores (9-10)',
+                        content: 'Tus clientes más leales. No solo compran de nuevo, sino que te recomiendan activamente.'
+                    },
+                    {
+                        title: 'Pasivos (7-8)',
+                        content: 'Clientes satisfechos pero no entusiastas. Podrían irse con la competencia por un mejor precio.'
+                    },
+                    {
+                        title: 'Detractores (0-6)',
+                        content: 'Clientes insatisfechos. Representan un riesgo de reputación y pérdida de ingresos.'
+                    }
+                ]
+            },
+            {
+                type: 'warning',
+                items: [
+                    'Enviar la encuesta demasiado pronto o demasiado tarde',
+                    'Ignorar a los "Pasivos" (son los más fáciles de convertir en promotores)',
+                    'No preguntar "¿Por qué?" tras la nota numérica',
+                    'No reaccionar a una nota baja en menos de 24 horas'
+                ]
+            },
+            {
+                type: 'quote',
+                content: 'Lo que importa no es el número del NPS, sino lo que haces con el feedback cualitativo que recibes.',
+                author: 'Fred Reichheld, Creador del NPS'
+            },
+            {
+                type: 'cta',
+                title: '¿Quieres automatizar tu medición de lealtad?',
+                description: 'Descarga nuestro template visual de Dashboard NPS y visualiza tus datos al instante.',
+                buttonText: 'Descargar Dashboard NPS'
+            }
+        ]
+    },
+    'content-strategy': {
+        title: 'Planificador de Estrategia de Contenidos B2B',
+        subtitle: 'Define el rumbo de tu comunicación antes de crear una sola pieza de contenido',
+        readTime: '14 min',
+        date: '2024',
+        author: 'Equipo de Estrategia Digital',
+        heroImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1200&q=80',
+        sections: [
+            {
+                type: 'intro',
+                content: `Crear contenido sin estrategia es como gritar en una habitación vacía. En el mundo B2B, donde los ciclos de venta son largos y las decisiones son racionales, necesitas un plan que mueva al cliente a través del funnel.
+
+Este planificador te ayudará a definir tus audiencias, tus temas clave y tus objetivos de negocio para transformar tu presencia digital en un motor de ventas.`
+            },
+            {
+                type: 'heading',
+                content: 'Los 4 pilares de tu estrategia'
+            },
+            {
+                type: 'table',
+                headers: ['Pilar', 'Enfoque B2B', 'Objetivo'],
+                rows: [
+                    ['Autoridad', 'Whitepapers, Casos de éxito', 'Generar confianza'],
+                    ['Educación', 'Guías paso a paso, Webinars', 'Resolver dudas del prospecto'],
+                    ['Humanización', 'Behind-the-scenes, Equipo', 'Crear conexión personal'],
+                    ['Conversión', 'Demos, Pruebas gratuitas', 'Captar leads cualificados']
+                ]
+            },
+            {
+                type: 'numbered-list',
+                items: [
+                    {
+                        title: 'Define tu ICP (Ideal Customer Profile)',
+                        content: '¿A quién le hablas exactamente? No solo a una empresa, sino al tomador de decisión dentro de ella.'
+                    },
+                    {
+                        title: 'Mapea tus Líneas Editoriales',
+                        content: 'Elige 3-4 temas sobre los que serás un referente. No hables de todo, habla de lo que dominas.'
+                    },
+                    {
+                        title: 'Establece tu Sistema de Distribución',
+                        content: '¿Dónde vive tu audiencia? LinkedIn, Email, Google SEO. Enfócate donde está tu pez.'
+                    }
+                ]
+            },
+            {
+                type: 'tip',
+                content: 'En B2B, la calidad siempre triunfa sobre la cantidad. Es mejor un post semanal profundo que 5 posts genéricos que no aportan valor real.'
+            },
+            {
+                type: 'cta',
+                title: '¿Listo para liderar tu industria con contenido?',
+                description: 'Descarga nuestro planificador estratégico y empieza a construir tu autoridad hoy mismo.',
+                buttonText: 'Descargar Planificador Gratis'
             }
         ]
     }

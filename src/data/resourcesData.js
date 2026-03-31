@@ -1,4 +1,4 @@
-﻿// Datos de recursos - Single source of truth
+// Datos de recursos - Single source of truth
 export const resourcesData = [
     // TEMPLATES
     {
@@ -79,7 +79,7 @@ export const resourcesData = [
         title: 'Template de Calendario de Contenidos para RRSS',
         titleEn: 'Social Media Content Calendar Template',
         format: 'Excel/Sheets',
-        price: 4.99,
+        price: 0,
         description: 'Planifica tu contenido mensual para todas las redes sociales. Incluye columnas para copy, hashtags, horarios óptimos y métricas de seguimiento.',
         descriptionEn: 'Plan your monthly content for all social media platforms. Includes columns for copy, hashtags, optimal posting times and tracking metrics.',
         benefits: [
@@ -121,7 +121,7 @@ export const resourcesData = [
         title: 'Plantilla para medir NPS y Satisfacción del Cliente',
         titleEn: 'NPS and Customer Satisfaction Template',
         format: 'Excel con fórmulas',
-        price: 14.99,
+        price: 0,
         description: 'Sistema completo para medir Net Promoter Score y satisfacción. Dashboard automático, segmentación de promotores/detractores y seguimiento temporal.',
         descriptionEn: 'Complete system to measure Net Promoter Score and satisfaction. Automatic dashboard, promoters/detractors segmentation and temporal tracking.',
         benefits: [
@@ -165,7 +165,7 @@ export const resourcesData = [
         title: 'Template de Estrategia de Contenido',
         titleEn: 'Content Strategy Template',
         format: 'Excel/Notion',
-        price: 0.99,
+        price: 0,
         description: 'Define tu estrategia de contenido de principio a fin: buyer personas, pilares de contenido, funnel de conversión y KPIs.',
         descriptionEn: 'Define your content strategy from start to finish: buyer personas, content pillars, conversion funnel and KPIs.',
         benefits: [
@@ -200,7 +200,7 @@ export const resourcesData = [
 
     // GUÍAS PDF
     {
-        id: 'cjm-guide',
+        id: 'guia-customer-journey-map',
         type: 'guide',
         title: 'Cómo crear un Customer Journey Map en 5 pasos',
         titleEn: 'How to Create a Customer Journey Map in 5 Steps',
@@ -238,7 +238,7 @@ export const resourcesData = [
         ]
     },
     {
-        id: 'seo-local-guide',
+        id: 'guia-seo-local',
         type: 'guide',
         title: 'Guía de SEO local para negocios de servicios',
         titleEn: 'Local SEO Guide for Service Businesses',
@@ -274,7 +274,7 @@ export const resourcesData = [
         ]
     },
     {
-        id: 'linkedin-strategy',
+        id: 'guia-estrategia-linkedin',
         type: 'guide',
         title: 'Estrategia de contenido en LinkedIn para profesionales',
         titleEn: 'LinkedIn Content Strategy for Professionals',
@@ -315,7 +315,7 @@ export const resourcesData = [
         title: '10 métricas clave de experiencia del cliente y cómo interpretarlas',
         titleEn: '10 Key Customer Experience Metrics and How to Interpret Them',
         format: 'PDF',
-        price: 0.99,
+        price: 0,
         description: 'Domina las métricas de CX: NPS, CSAT, CES, y más. Aprende qué medir, cómo interpretar resultados y qué acciones tomar.',
         descriptionEn: 'Master CX metrics: NPS, CSAT, CES, and more. Learn what to measure, how to interpret results and what actions to take.',
         benefits: [
@@ -354,7 +354,7 @@ export const resourcesData = [
 
     // INFOGRAFÍAS
     {
-        id: 'linkedin-post-anatomy',
+        id: 'infografia-anatomia-post-linkedin',
         type: 'infographic',
         title: 'Anatomía de un buen post en LinkedIn/Instagram',
         titleEn: 'Anatomy of a Good LinkedIn/Instagram Post',
@@ -388,7 +388,7 @@ export const resourcesData = [
         ]
     },
     {
-        id: 'cx-optimization-process',
+        id: 'infografia-optimizacion-atencion-cliente',
         type: 'infographic',
         title: 'Proceso de optimización de atención al cliente en 6 etapas',
         titleEn: '6-Stage Customer Service Optimization Process',
@@ -422,7 +422,7 @@ export const resourcesData = [
         ]
     },
     {
-        id: 'keyword-research',
+        id: 'infografia-palabras-clave',
         type: 'infographic',
         title: 'Palabras clave: cómo encontrarlas y usarlas',
         titleEn: 'Keywords: How to Find and Use Them',
@@ -456,7 +456,7 @@ export const resourcesData = [
         ]
     },
     {
-        id: 'landing-page-elements',
+        id: 'infografia-elementos-landing-page',
         type: 'infographic',
         title: 'Elementos clave de una landing page que convierte',
         titleEn: 'Key Elements of a Converting Landing Page',

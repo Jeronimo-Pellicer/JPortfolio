@@ -1,261 +1,457 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, ExternalLink, ChevronLeft, ChevronRight, X, Target, TrendingUp, Users, BarChart3, Megaphone, Settings, Smartphone, MonitorSpeaker } from 'lucide-react';
 import { LanguageProvider, useLanguage } from '@/Components/portfolio/LanguageContext';
-import { findProjectBySlug, createProjectSlug } from '../utils/projectUtils';
+import { getProjectDetails } from '../data/projectDetails';
 
-// Esta función debe ser la misma que en Projects.jsx para mantener consistencia
-function getAllProjects(t) {
-    return [
-        {
-            title: t.projects.project1.title,
-            description: t.projects.project1.description,
-            image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
-            tags: ['React', 'Node.js', 'PostgreSQL', 'Stripe'],
-            category: 'web',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
-            title: t.projects.project2.title,
-            description: t.projects.project2.description,
-            image: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop',
-            tags: ['Next.js', 'TypeScript', 'MongoDB'],
-            category: 'web',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
-            title: t.projects.project3.title,
-            description: t.projects.project3.description,
-            image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop',
-            tags: ['Python', 'FastAPI', 'React', 'OpenAI'],
-            category: 'ai',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
-            title: t.projects.project4.title,
-            description: t.projects.project4.description,
-            image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&h=600&fit=crop',
-            tags: ['React Native', 'Firebase', 'Redux'],
-            category: 'mobile',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
-            title: t.projects.project5.title,
-            description: t.projects.project5.description,
-            image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop',
-            tags: ['Vue.js', 'Django', 'PostgreSQL'],
-            category: 'web',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
-            title: t.projects.project6.title,
-            description: t.projects.project6.description,
-            image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop',
-            tags: ['React', 'GraphQL', 'Node.js'],
-            category: 'web',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
-            title: 'Weather App',
-            description: 'Beautiful weather forecast application with location-based predictions and interactive maps.',
-            image: 'https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=600&fit=crop',
-            tags: ['React', 'Weather API', 'Maps'],
-            category: 'web',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
-            title: 'Portfolio CMS',
-            description: 'Content management system specifically designed for creatives to showcase their work beautifully.',
-            image: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&h=600&fit=crop',
-            tags: ['Next.js', 'Sanity', 'TailwindCSS'],
-            category: 'web',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
-            title: 'Expense Tracker',
-            description: 'Personal finance management app with budget tracking, expense categorization, and visual reports.',
-            image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&h=600&fit=crop',
-            tags: ['Flutter', 'SQLite', 'Charts'],
-            category: 'mobile',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
-            title: 'Recipe Finder',
-            description: 'Discover new recipes based on ingredients you have at home with AI-powered suggestions.',
-            image: 'https://images.unsplash.com/photo-1556910096-6f5e72db6803?w=800&h=600&fit=crop',
-            tags: ['React', 'AI', 'Recipe API'],
-            category: 'ai',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
-            title: 'Language Learning App',
-            description: 'Interactive language learning platform with gamification, progress tracking, and speech recognition.',
-            image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&h=600&fit=crop',
-            tags: ['React Native', 'Speech API', 'Gamification'],
-            category: 'mobile',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
-            title: 'Markdown Editor',
-            description: 'Clean and distraction-free markdown editor with live preview and export to multiple formats.',
-            image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop',
-            tags: ['Electron', 'React', 'Markdown'],
-            category: 'other',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-    ];
+// Section icon mapping
+const sectionIcons = {
+    'intro': Target,
+    'diagnostico': BarChart3,
+    'buyer-persona': Users,
+    'objetivos': TrendingUp,
+    'campanas': Megaphone,
+    'control': Settings,
+    'ads-meta-premium': Smartphone,
+    'ads-meta-captacion': Smartphone,
+    'ads-google': MonitorSpeaker,
+};
+
+// Lightbox component for full-screen image viewing
+function ImageLightbox({ images, currentIndex, onClose, onPrev, onNext }) {
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'Escape') onClose();
+            if (e.key === 'ArrowLeft') onPrev();
+            if (e.key === 'ArrowRight') onNext();
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        document.body.style.overflow = 'hidden';
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            document.body.style.overflow = '';
+        };
+    }, [onClose, onPrev, onNext]);
+
+    return createPortal(
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/95 backdrop-blur-xl flex items-center justify-center"
+            style={{ zIndex: 99999, fontFamily: "'Anonymous Pro', monospace" }}
+            onClick={onClose}
+        >
+            {/* Close button */}
+            <button
+                onClick={(e) => { e.stopPropagation(); onClose(); }}
+                className="absolute top-6 right-6 z-50 p-4 bg-white/15 hover:bg-white/30 rounded-full transition-colors"
+            >
+                <X className="w-7 h-7 text-white" />
+            </button>
+
+            {/* Navigation arrows */}
+            {images.length > 1 && (
+                <>
+                    <button
+                        onClick={(e) => { e.stopPropagation(); onPrev(); }}
+                        className="absolute left-4 md:left-8 z-50 p-4 bg-white/15 hover:bg-white/30 rounded-full transition-colors"
+                    >
+                        <ChevronLeft className="w-7 h-7 text-white" />
+                    </button>
+                    <button
+                        onClick={(e) => { e.stopPropagation(); onNext(); }}
+                        className="absolute right-4 md:right-8 z-50 p-4 bg-white/15 hover:bg-white/30 rounded-full transition-colors"
+                    >
+                        <ChevronRight className="w-7 h-7 text-white" />
+                    </button>
+                </>
+            )}
+
+            {/* Image */}
+            <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="max-w-[90vw] max-h-[85vh] flex flex-col items-center pt-16"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <img
+                    src={images[currentIndex]?.src}
+                    alt={images[currentIndex]?.caption || ''}
+                    className="max-w-full max-h-[72vh] object-contain rounded-lg shadow-2xl"
+                />
+                {images[currentIndex]?.caption && (
+                    <p className="mt-4 text-zinc-300 text-sm text-center max-w-2xl">
+                        {images[currentIndex].caption}
+                    </p>
+                )}
+                <p className="mt-2 text-zinc-500 text-xs">
+                    {currentIndex + 1} / {images.length}
+                </p>
+            </motion.div>
+        </motion.div>,
+        document.body
+    );
+}
+
+// Image gallery grid for each section
+function ImageGallery({ images, sectionIndex }) {
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [lightboxIndex, setLightboxIndex] = useState(0);
+
+    const openLightbox = (index) => {
+        setLightboxIndex(index);
+        setLightboxOpen(true);
+    };
+
+    const handlePrev = useCallback(() => {
+        setLightboxIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    }, [images.length]);
+
+    const handleNext = useCallback(() => {
+        setLightboxIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, [images.length]);
+
+    if (!images || images.length === 0) return null;
+
+    const gridClass = images.length === 1
+        ? 'grid-cols-1'
+        : images.length === 2
+            ? 'grid-cols-1 md:grid-cols-2'
+            : images.length === 3
+                ? 'grid-cols-1 md:grid-cols-3'
+                : 'grid-cols-1 md:grid-cols-2';
+
+    return (
+        <>
+            <div className={`grid ${gridClass} gap-4 mt-8`}>
+                {images.map((img, i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1, duration: 0.5 }}
+                        className="group relative overflow-hidden rounded-2xl bg-zinc-900 border border-zinc-800/50 cursor-pointer hover:border-emerald-500/30 transition-all duration-300"
+                        onClick={() => openLightbox(i)}
+                    >
+                        <div className="aspect-[4/3] overflow-hidden">
+                            <img
+                                src={img.src}
+                                alt={img.caption || `Slide ${i + 1}`}
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                loading="lazy"
+                            />
+                        </div>
+                        {/* Hover overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <p className="text-white text-sm font-medium">{img.caption}</p>
+                        </div>
+                        {/* Always-visible caption on mobile */}
+                        {img.caption && (
+                            <div className="p-3 md:hidden">
+                                <p className="text-zinc-400 text-xs">{img.caption}</p>
+                            </div>
+                        )}
+                    </motion.div>
+                ))}
+            </div>
+
+            <AnimatePresence>
+                {lightboxOpen && (
+                    <ImageLightbox
+                        images={images}
+                        currentIndex={lightboxIndex}
+                        onClose={() => setLightboxOpen(false)}
+                        onPrev={handlePrev}
+                        onNext={handleNext}
+                    />
+                )}
+            </AnimatePresence>
+        </>
+    );
+}
+
+// Content section component 
+function ProjectSection({ section, index }) {
+    const IconComponent = sectionIcons[section.id] || Target;
+
+    return (
+        <motion.section
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="relative"
+            id={section.id}
+        >
+            <div className="relative bg-gradient-to-br from-zinc-900/80 to-zinc-950/80 backdrop-blur-md border border-zinc-800/50 rounded-3xl p-8 md:p-12 overflow-hidden">
+                {/* Decorative gradient */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+                
+                {/* Section header */}
+                <div className="flex items-start gap-4 mb-6">
+                    <div className="flex-shrink-0 w-12 h-12 bg-emerald-500/10 border border-emerald-500/30 rounded-2xl flex items-center justify-center">
+                        <IconComponent className="w-6 h-6 text-emerald-400" />
+                    </div>
+                    <div>
+                        <h2
+                            className="text-2xl md:text-3xl font-bold text-white mb-1"
+                            style={{ fontFamily: "'Anonymous Pro', monospace", letterSpacing: '-0.02em' }}
+                        >
+                            {section.title}
+                        </h2>
+                        {section.subtitle && (
+                            <p className="text-emerald-400/80 text-sm font-medium">{section.subtitle}</p>
+                        )}
+                    </div>
+                </div>
+
+                {/* Section content */}
+                <div className="text-zinc-300 leading-relaxed whitespace-pre-line text-[15px] md:text-base"
+                     style={{ fontFamily: "'Anonymous Pro', monospace" }}
+                >
+                    {section.content}
+                </div>
+
+                {/* Image gallery */}
+                <ImageGallery images={section.images} sectionIndex={index} />
+            </div>
+        </motion.section>
+    );
 }
 
 function ProjectDetailContent() {
     const { projectId } = useParams();
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const navigate = useNavigate();
-    
-    const allProjects = getAllProjects(t);
-    const project = findProjectBySlug(allProjects, projectId);
 
-    if (!project) {
+    const details = getProjectDetails(projectId);
+
+    // Scroll to top on mount
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, [projectId]);
+
+    if (!details) {
         return (
-            <div className="min-h-screen bg-white flex items-center justify-center">
-                <div className="text-center">
-                    <h1 className="text-4xl font-bold text-slate-900 mb-4">{t.projectDetail.notFound}</h1>
-                    <p className="text-slate-600 mb-8">{t.projectDetail.notFoundMessage}</p>
-                    <Link 
+            <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black flex items-center justify-center">
+                <div className="text-center px-6">
+                    <h1 className="text-5xl font-bold text-white mb-4">
+                        {language === 'en' ? 'Project Not Found' : 'Proyecto no encontrado'}
+                    </h1>
+                    <p className="text-zinc-400 mb-8 text-lg">
+                        {language === 'en'
+                            ? 'The project you are looking for does not have detailed content yet.'
+                            : 'El proyecto que buscás todavía no tiene contenido detallado.'}
+                    </p>
+                    <Link
                         to="/projects"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 text-black font-semibold rounded-xl hover:bg-emerald-400 transition-colors"
                     >
                         <ArrowLeft className="w-5 h-5" />
-                        {t.projectDetail.backToProjects}
+                        {language === 'en' ? 'Back to Projects' : 'Volver a Proyectos'}
                     </Link>
                 </div>
             </div>
         );
     }
 
+    // Collect ALL images from all sections for the table of contents mini-gallery
+    const allImages = details.sections.flatMap(s => s.images || []);
+
     return (
-        <div className="min-h-screen bg-white">
-            {/* Header */}
-            <section className="pt-32 pb-8 bg-slate-50 border-b border-slate-200">
-                <div className="container mx-auto px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        className="max-w-4xl mx-auto"
-                    >
-                        <Link 
-                            to="/projects"
-                            className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 mb-8 transition-colors"
-                        >
-                            <ArrowLeft className="w-5 h-5" />
-                            {t.projectDetail.backToProjects}
-                        </Link>
-                        
-                        <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-                            {project.title}
-                        </h1>
-                        <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                            {project.description}
-                        </p>
-                        
-                        <div className="flex flex-wrap gap-3">
-                            {project.tags.map((tag) => (
-                                <span
-                                    key={tag}
-                                    className="px-4 py-2 bg-slate-900 text-white text-sm font-medium rounded-lg"
-                                >
-                                    {tag}
-                                </span>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
+        <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
+            {/* Animated background */}
+            <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-0 md:opacity-100">
+                <motion.div
+                    animate={{ x: [0, 80, 0], y: [0, 40, 0] }}
+                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-0 left-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl"
+                />
+                <motion.div
+                    animate={{ x: [0, -60, 0], y: [0, -30, 0] }}
+                    transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                    className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-3xl"
+                />
+            </div>
 
-            {/* Project Image */}
-            <section className="py-12 bg-white">
-                <div className="container mx-auto px-6">
-                    <div className="max-w-6xl mx-auto">
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            className="aspect-video overflow-hidden rounded-2xl bg-slate-100"
-                        >
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                className="w-full h-full object-cover"
-                            />
-                        </motion.div>
-                    </div>
+            {/* Hero Section */}
+            <section className="relative">
+                {/* Hero image */}
+                <div className="relative h-[50vh] md:h-[65vh] overflow-hidden">
+                    <img
+                        src={details.heroImage}
+                        alt={details.slug}
+                        className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/40 to-transparent" />
                 </div>
-            </section>
 
-            {/* Project Details */}
-            <section className="py-12 bg-slate-50">
-                <div className="container mx-auto px-6">
-                    <div className="max-w-4xl mx-auto">
+                {/* Hero content overlay */}
+                <div className="absolute bottom-0 left-0 right-0 pb-12 pt-32">
+                    <div className="container mx-auto px-6">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.4 }}
-                            className="bg-white rounded-2xl p-8 border border-slate-200"
+                            transition={{ duration: 0.8 }}
+                            className="max-w-4xl"
                         >
-                            <h2 className="text-2xl font-bold text-slate-900 mb-6">{t.projectDetail.overview}</h2>
-                            <p className="text-slate-600 leading-relaxed mb-8">
-                                {project.description}
+                            <Link
+                                to="/projects"
+                                className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 mb-6 transition-colors text-sm font-medium"
+                            >
+                                <ArrowLeft className="w-4 h-4" />
+                                {language === 'en' ? 'Back to Projects' : 'Volver a Proyectos'}
+                            </Link>
+
+                            <h1
+                                className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-[0.95]"
+                                style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.04em' }}
+                            >
+                                Topper
+                                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">
+                                    Plan de Marketing Digital
+                                </span>
+                            </h1>
+
+                            <p className="text-zinc-400 text-lg md:text-xl max-w-2xl leading-relaxed mb-8"
+                               style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                            >
+                                {details.overview}
                             </p>
-                            
-                            <div className="border-t border-slate-200 pt-8">
-                                <h3 className="text-xl font-semibold text-slate-900 mb-4">{t.projectDetail.technologies}</h3>
-                                <div className="flex flex-wrap gap-3 mb-8">
-                                    {project.tags.map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className="px-4 py-2 bg-slate-100 text-slate-700 text-sm font-medium rounded-lg"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-                                
-                                <div className="flex flex-wrap gap-4">
-                                    <a
-                                        href={project.liveUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors"
-                                    >
-                                        <ExternalLink className="w-5 h-5" />
-                                        {t.projects.liveDemo || 'View Live Demo'}
-                                    </a>
-                                    <a
-                                        href={project.githubUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-slate-300 text-slate-900 rounded-lg hover:bg-slate-50 transition-colors"
-                                    >
-                                        <Github className="w-5 h-5" />
-                                        {t.projects.source || 'View Source Code'}
-                                    </a>
-                                </div>
+
+                            {/* Meta info pills */}
+                            <div className="flex flex-wrap gap-3">
+                                <span className="px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-semibold rounded-xl">
+                                    {details.role}
+                                </span>
+                                <span className="px-4 py-2 bg-zinc-800/80 border border-zinc-700/50 text-zinc-300 text-sm font-medium rounded-xl">
+                                    {details.client}
+                                </span>
+                                <span className="px-4 py-2 bg-zinc-800/80 border border-zinc-700/50 text-zinc-300 text-sm font-medium rounded-xl">
+                                    {details.date}
+                                </span>
+                                <span className="px-4 py-2 bg-zinc-800/80 border border-zinc-700/50 text-zinc-300 text-sm font-medium rounded-xl">
+                                    {details.context}
+                                </span>
                             </div>
                         </motion.div>
                     </div>
+                </div>
+            </section>
+
+            {/* Stats Bar */}
+            {details.stats && (
+                <section className="relative z-10 -mt-1">
+                    <div className="container mx-auto px-6">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4, duration: 0.6 }}
+                            className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4"
+                        >
+                            {details.stats.map((stat, i) => (
+                                <div
+                                    key={i}
+                                    className="bg-zinc-900/80 backdrop-blur-md border border-zinc-800/50 rounded-2xl p-6 text-center"
+                                >
+                                    <div className="text-3xl md:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 mb-1"
+                                         style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.03em' }}
+                                    >
+                                        {stat.value}
+                                    </div>
+                                    <div className="text-zinc-400 text-xs md:text-sm font-medium">{stat.label}</div>
+                                </div>
+                            ))}
+                        </motion.div>
+                    </div>
+                </section>
+            )}
+
+            {/* Table of Contents */}
+            <section className="relative z-10 py-12">
+                <div className="container mx-auto px-6">
+                    <div className="max-w-5xl mx-auto">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-zinc-900/60 backdrop-blur-md border border-zinc-800/50 rounded-3xl p-8"
+                        >
+                            <h3 className="text-lg font-bold text-white mb-4"
+                                style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
+                            >
+                                {language === 'en' ? 'Table of Contents' : 'Contenido del Proyecto'}
+                            </h3>
+                            <div className="grid md:grid-cols-2 gap-2">
+                                {details.sections.map((section, i) => {
+                                    const Icon = sectionIcons[section.id] || Target;
+                                    return (
+                                        <a
+                                            key={section.id}
+                                            href={`#${section.id}`}
+                                            className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-zinc-800/50 transition-colors group"
+                                        >
+                                            <Icon className="w-4 h-4 text-emerald-400/60 group-hover:text-emerald-400 transition-colors flex-shrink-0" />
+                                            <span className="text-zinc-400 group-hover:text-white text-sm transition-colors">
+                                                {section.title}
+                                            </span>
+                                        </a>
+                                    );
+                                })}
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Content Sections */}
+            <section className="relative z-10 pb-24">
+                <div className="container mx-auto px-6">
+                    <div className="max-w-5xl mx-auto space-y-8">
+                        {details.sections.map((section, index) => (
+                            <ProjectSection key={section.id} section={section} index={index} />
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* Bottom CTA */}
+            <section className="relative z-10 pb-32">
+                <div className="container mx-auto px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="max-w-3xl mx-auto text-center"
+                    >
+                        <div className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 rounded-3xl p-10">
+                            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4"
+                                style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.02em' }}
+                            >
+                                {language === 'en' ? 'Interested in working together?' : '¿Te interesa trabajar conmigo?'}
+                            </h3>
+                            <p className="text-zinc-400 mb-8 max-w-xl mx-auto">
+                                {language === 'en'
+                                    ? 'If you liked this project and want to discuss how I can help your brand, get in touch.'
+                                    : 'Si te gustó este proyecto y querés conocer cómo puedo ayudar a tu marca, escribime.'}
+                            </p>
+                            <Link
+                                to="/#contact"
+                                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-500 text-black font-bold rounded-2xl hover:from-emerald-400 hover:to-teal-400 transition-all duration-300 shadow-lg shadow-emerald-500/25"
+                            >
+                                <ExternalLink className="w-5 h-5" />
+                                {language === 'en' ? 'Contact Me' : 'Contactame'}
+                            </Link>
+                        </div>
+                    </motion.div>
                 </div>
             </section>
         </div>
@@ -269,5 +465,3 @@ export default function ProjectDetail() {
         </LanguageProvider>
     );
 }
-
-

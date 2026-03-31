@@ -413,15 +413,21 @@ function LayoutContent({ children, currentPageName }) {
                                     { 
                                         label: t.nav.resourcesMenu?.templates || 'Templates', 
                                         href: '/recursos?filter=template',
-                                        subItems: []
+                                        subItems: [
+                                             { label: t.nav.resourcesMenu?.cjmTemplate || 'Template de CJM', href: '/recursos?article=cjm-template' },
+                                             { label: t.nav.resourcesMenu?.fodaKit || 'Kit FODA completo', href: '/recursos?article=foda-kit' },
+                                             { label: t.nav.resourcesMenu?.contentCalendar || 'Calendario de Contenidos', href: '/recursos?article=content-calendar' },
+                                             { label: t.nav.resourcesMenu?.npsDashboard || 'Dashboard de NPS', href: '/recursos?article=nps-template' },
+                                             { label: t.nav.resourcesMenu?.contentStrategy || 'Estrategia de Contenidos', href: '/recursos?article=content-strategy' },
+                                         ]
                                     },
                                     { 
                                         label: t.nav.resourcesMenu?.guides || 'Guías', 
                                         href: '/recursos?filter=guide',
                                         subItems: [
-                                            { label: t.nav.resourcesMenu?.cjmGuide || 'Cómo crear un Customer Journey Map', href: '/recursos?article=cjm-guide' },
-                                            { label: t.nav.resourcesMenu?.seoLocalGuide || 'Guía de SEO local', href: '/recursos?article=seo-local-guide' },
-                                            { label: t.nav.resourcesMenu?.linkedinStrategy || 'Estrategia de contenido en LinkedIn', href: '/recursos?article=linkedin-strategy' },
+                                            { label: t.nav.resourcesMenu?.cjmGuide || 'Cómo crear un Customer Journey Map', href: '/recursos?article=guia-customer-journey-map' },
+                                            { label: t.nav.resourcesMenu?.seoLocalGuide || 'Guía de SEO local', href: '/recursos?article=guia-seo-local' },
+                                            { label: t.nav.resourcesMenu?.linkedinStrategy || 'Estrategia de contenido en LinkedIn', href: '/recursos?article=guia-estrategia-linkedin' },
                                             { label: t.nav.resourcesMenu?.cxMetrics || '10 métricas clave de CX', href: '/recursos?article=cx-metrics-guide' },
                                         ]
                                     },
@@ -429,10 +435,10 @@ function LayoutContent({ children, currentPageName }) {
                                         label: t.nav.resourcesMenu?.infographics || 'Infografías', 
                                         href: '/recursos?filter=infographic',
                                         subItems: [
-                                            { label: t.nav.resourcesMenu?.linkedinPostAnatomy || 'Anatomía de un buen post', href: '/recursos?article=linkedin-post-anatomy' },
-                                            { label: t.nav.resourcesMenu?.cxOptimization || 'Proceso de optimización de CX', href: '/recursos?article=cx-optimization-process' },
-                                            { label: t.nav.resourcesMenu?.keywordResearch || 'Cómo encontrar y usar keywords', href: '/recursos?article=keyword-research' },
-                                            { label: t.nav.resourcesMenu?.landingPageElements || 'Elementos clave de una landing page', href: '/recursos?article=landing-page-elements' },
+                                            { label: t.nav.resourcesMenu?.linkedinPostAnatomy || 'Anatomía de un buen post', href: '/recursos?article=infografia-anatomia-post-linkedin' },
+                                            { label: t.nav.resourcesMenu?.cxOptimization || 'Proceso de optimización de CX', href: '/recursos?article=infografia-optimizacion-atencion-cliente' },
+                                            { label: t.nav.resourcesMenu?.keywordResearch || 'Cómo encontrar y usar keywords', href: '/recursos?article=infografia-palabras-clave' },
+                                            { label: t.nav.resourcesMenu?.landingPageElements || 'Elementos clave de una landing page', href: '/recursos?article=infografia-elementos-landing-page' },
                                         ]
                                     },
                                 ]}
