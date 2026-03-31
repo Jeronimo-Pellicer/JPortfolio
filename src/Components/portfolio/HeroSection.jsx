@@ -53,13 +53,13 @@ export default function HeroSection() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: [0.6, 0.05, 0.01, 0.9] }}
-                        className="max-w-5xl mx-auto text-center"
+                        className="max-w-5xl mx-auto text-center flex flex-col items-center"
                     >
                         <motion.h1 
                             initial={{ opacity: 1, x: 0 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.7 }}
-                            className="text-7xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-3 tracking-tight leading-none"
+                            className="text-7xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-4 tracking-tight leading-none"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.05em' }}
                         >
                             {t.hero.greeting.toUpperCase()} JERÓNIMO
@@ -69,13 +69,13 @@ export default function HeroSection() {
                             initial={{ opacity: 1, x: 0 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.6 }}
-                            className="text-sm md:text-base lg:text-lg text-white max-w-3xl mx-auto leading-relaxed mb-3"
+                            className="text-sm md:text-base lg:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed mb-6"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
                         >
                             {language === 'es' ? (
-                                <>Diseñé esta plataforma pensando en estudiantes y apasionados del negocio digital: Accede a productos y recursos digitales premium de manera asequible, diseñados para resolver desafíos laborales y educativos con eficiencia y resultados inmediatos.</>
+                                <>Acelera tu crecimiento profesional con recursos y herramientas digitales premium. Soluciones prácticas y listas para usar que te ayudarán a resolver desafíos técnicos y creativos en minutos, no en horas.</>
                             ) : (
-                                <>I designed this platform with students and digital business enthusiasts in mind: Access premium digital products and resources affordably, designed to solve work and educational challenges with efficiency and immediate results.</>
+                                <>Accelerate your professional growth with premium digital resources and tools. Practical, ready-to-use solutions to help you solve technical and creative challenges in minutes, not hours.</>
                             )}
                         </motion.p>
 
@@ -83,59 +83,93 @@ export default function HeroSection() {
                             initial={{ width: 0 }}
                             animate={{ width: '100px' }}
                             transition={{ delay: 0.7, duration: 0.8 }}
-                            className="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto mb-6 rounded-full"
+                            className="h-1 bg-gradient-to-r from-emerald-500 to-teal-500 mx-auto mb-8 rounded-full"
                         />
 
                         <div className="md:flex md:flex-col">
-                            {/* CTA Buttons - Shown first on mobile, last on desktop */}
+                            {/* CTA Section - Redesigned */}
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 1.3, duration: 0.8 }}
-                                className="flex flex-nowrap items-center justify-center gap-1.5 md:gap-4 mb-4 md:mb-0 md:mt-4 overflow-x-auto overflow-y-visible md:overflow-visible opacity-30 pb-2 py-1 md:order-2"
+                                transition={{ delay: 0.9, duration: 0.8 }}
+                                className="flex flex-col items-center justify-center w-full mb-10 md:mb-14 mt-2 md:order-2"
                             >
-                            <Link to="/herramientas">
-                                <motion.button
-                                    whileHover={{ scale: 1.05, y: -2 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-2 md:px-8 py-2.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-orange-500/10 border border-orange-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-orange-500/20 hover:border-orange-400/50 transition-all duration-300 shadow-lg shadow-orange-500/10 hover:shadow-xl hover:shadow-orange-500/20 cursor-pointer"
-                                >
-                                    {language === 'es' ? 'Productos' : 'Products'}
-                                </motion.button>
-                            </Link>
-                            <Link to="/recursos">
-                                <motion.button
-                                    whileHover={{ scale: 1.05, y: -2 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-2 md:px-8 py-2.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-violet-500/10 border border-violet-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-violet-500/20 hover:border-violet-400/50 transition-all duration-300 shadow-lg shadow-violet-500/10 hover:shadow-xl hover:shadow-violet-500/20 cursor-pointer"
-                                >
-                                    {language === 'es' ? 'Recursos' : 'Resources'}
-                                </motion.button>
-                            </Link>
-                            <Link to="/projects">
-                                <motion.button
-                                    whileHover={{ scale: 1.05, y: -2 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="px-2 md:px-8 py-2.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-emerald-500/10 border border-emerald-500/30 text-white font-medium rounded-lg md:rounded-xl hover:bg-emerald-500/20 hover:border-emerald-400/50 transition-all duration-300 shadow-lg shadow-emerald-500/10 hover:shadow-xl hover:shadow-emerald-500/20 cursor-pointer"
-                                >
-                                    {language === 'es' ? 'Ver Mi Trabajo' : 'View My Work'}
-                                </motion.button>
-                            </Link>
-                            <motion.button
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                }}
-                                className="px-2 md:px-8 py-2.5 md:py-4 text-xs md:text-base whitespace-nowrap bg-zinc-900/20 backdrop-blur-sm text-white font-medium rounded-lg md:rounded-xl border border-zinc-800/30 hover:bg-zinc-900/30 hover:border-emerald-500/30 transition-all duration-300 cursor-pointer"
-                            >
-                                {language === 'es' ? 'Contactar' : 'Contact'}
-                            </motion.button>
-                        </motion.div>
+                                {/* Microcopy */}
+                                <p className="text-zinc-500 text-[10px] md:text-xs tracking-[0.2em] uppercase font-semibold mb-5">
+                                    {language === 'es' ? '¿Por dónde empezar?' : 'Where to start?'}
+                                </p>
+
+                                {/* Main CTAs */}
+                                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto mb-5 px-4 sm:px-0">
+                                    {/* Primary CTA: Ver mi trabajo */}
+                                    <Link to="/projects" className="w-full sm:w-auto">
+                                        <motion.button
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            className="w-full sm:w-auto px-6 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] flex items-center justify-center gap-2 group"
+                                        >
+                                            {language === 'es' ? 'Ver mi trabajo' : 'View my work'}
+                                            <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                                        </motion.button>
+                                    </Link>
+
+                                    {/* Secondary CTA: Explorar productos */}
+                                    <Link to="/herramientas" className="w-full sm:w-auto">
+                                        <motion.button
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            className="w-full sm:w-auto px-6 py-3.5 bg-zinc-900/80 backdrop-blur-md border border-zinc-800 hover:border-zinc-700 hover:bg-zinc-800/80 text-white font-medium rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
+                                        >
+                                            <span className="text-lg leading-none">📦</span> {language === 'es' ? 'Explorar productos' : 'Explore products'}
+                                        </motion.button>
+                                    </Link>
+                                </div>
+
+                                {/* Tertiary Links: Recursos & Contact */}
+                                <div className="flex items-center justify-center gap-4 text-sm mb-8 text-zinc-400">
+                                    <Link to="/recursos" className="hover:text-emerald-400 transition-colors border-b border-transparent hover:border-emerald-400/50 pb-0.5">
+                                        {language === 'es' ? 'Recursos gratuitos' : 'Free resources'}
+                                    </Link>
+                                    <span className="text-zinc-700 text-xs">•</span>
+                                    <button 
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                        }}
+                                        className="hover:text-emerald-400 transition-colors border-b border-transparent hover:border-emerald-400/50 pb-0.5 cursor-pointer"
+                                    >
+                                        {language === 'es' ? 'Contactar' : 'Contact'}
+                                    </button>
+                                </div>
+
+                                {/* Social Proof */}
+                                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-2">
+                                    {/* Avatars */}
+                                    <div className="flex -space-x-2">
+                                        <div className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-[10px] font-bold text-white border-2 border-zinc-950 z-30 shadow-sm">A</div>
+                                        <div className="w-7 h-7 rounded-full bg-violet-600 flex items-center justify-center text-[10px] font-bold text-white border-2 border-zinc-950 z-20 shadow-sm">M</div>
+                                        <div className="w-7 h-7 rounded-full bg-orange-600 flex items-center justify-center text-[10px] font-bold text-white border-2 border-zinc-950 z-10 shadow-sm">R</div>
+                                        <div className="w-7 h-7 rounded-full bg-emerald-900 flex items-center justify-center text-[12px] font-bold text-emerald-400 border-2 border-zinc-950 z-0 relative overflow-hidden group/pulse shadow-sm">
+                                            <div className="absolute inset-0 bg-emerald-500/20 animate-pulse"></div>
+                                            <span className="relative z-10 leading-none mb-0.5">+</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="flex items-center gap-2">
+                                        {/* Stars */}
+                                        <div className="flex text-yellow-500 text-xs tracking-widest">
+                                            ★★★★★
+                                        </div>
+                                        {/* Text */}
+                                        <span className="text-xs text-zinc-400 font-medium">
+                                            {language === 'es' ? 'Usado por +50 profesionales este mes' : 'Used by 50+ professionals this month'}
+                                        </span>
+                                    </div>
+                                </div>
+                            </motion.div>
 
                         {/* KPI Cards - Below buttons on mobile */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 md:order-1">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3 md:order-1 max-w-4xl mx-auto w-full">
                             {/* 2+ Years */}
                             <KPICard
                                 value="2+"
@@ -199,12 +233,12 @@ function KPICard({ value, label, delay }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay, duration: 0.6, ease: [0.6, 0.05, 0.01, 0.9] }}
-            className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-lg md:rounded-xl lg:rounded-2xl p-3 md:p-6 group hover:border-emerald-500/30 transition-all duration-300 text-center"
+            className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-lg md:rounded-xl p-3 md:p-4 group hover:border-emerald-500/30 transition-all duration-300 text-center flex flex-col justify-center"
         >
-            <h3 className="text-2xl md:text-3xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-1 md:mb-3 font-variant-numeric tabular-nums" style={{ letterSpacing: '-0.02em' }}>
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-1 font-variant-numeric tabular-nums" style={{ letterSpacing: '-0.02em' }}>
                 {value}
             </h3>
-            <p className="text-zinc-400 text-xs md:text-sm leading-relaxed">{label}</p>
+            <p className="text-zinc-400 text-[10px] md:text-xs leading-tight font-medium">{label}</p>
         </motion.div>
     );
 }
@@ -258,12 +292,12 @@ function AnimatedKPICard({ target, suffix, label, delay }) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay, duration: 0.6, ease: [0.6, 0.05, 0.01, 0.9] }}
-            className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-lg md:rounded-xl lg:rounded-2xl p-3 md:p-6 group hover:border-emerald-500/30 transition-all duration-300 text-center"
+            className="bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-lg md:rounded-xl p-3 md:p-4 group hover:border-emerald-500/30 transition-all duration-300 text-center flex flex-col justify-center"
         >
-            <h3 className="text-2xl md:text-3xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-1 md:mb-3 font-variant-numeric tabular-nums" style={{ letterSpacing: '-0.02em' }}>
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-1 font-variant-numeric tabular-nums" style={{ letterSpacing: '-0.02em' }}>
                 {displayValue}{suffix}
             </h3>
-            <p className="text-zinc-400 text-xs md:text-sm leading-relaxed">{label}</p>
+            <p className="text-zinc-400 text-[10px] md:text-xs leading-tight font-medium">{label}</p>
         </motion.div>
     );
 }

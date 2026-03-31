@@ -13,13 +13,24 @@ function Projects() {
 
     const allProjects = [
         {
+            title: t.projects.project5.title,
+            description: t.projects.project5.description,
+            image: '/stiberman/Digital Marketing Brief (3)_page-0001.jpg',
+            tags: ['SEO/SEM', 'Legal Marketing', 'Digital Strategy'],
+            category: 'marketing',
+            liveUrl: '#',
+            githubUrl: '#',
+            detailSlug: 'stiberman-law-seo-sem'
+        },
+        {
             title: t.projects.project1.title,
             description: t.projects.project1.description,
-            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',
+            image: '/kiddo/Franchising Kiddo _ Comercial_page-0001.jpg',
             tags: ['Business Strategy', 'Franchising', 'Commercial'],
             category: 'strategy',
             liveUrl: '#',
             githubUrl: '#',
+            detailSlug: 'kiddo-franquicias',
         },
         {
             title: t.projects.project2.title,
@@ -32,31 +43,14 @@ function Projects() {
             detailSlug: 'topper-plan-mobile-first',
         },
         {
-            title: t.projects.project3.title,
-            description: t.projects.project3.description,
-            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
-            tags: ['Fintech', 'Data Analysis', 'Performance Marketing'],
-            category: 'analytics',
-            liveUrl: '#',
-            githubUrl: '#',
-        },
-        {
             title: t.projects.project4.title,
             description: t.projects.project4.description,
-            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
+            image: '/licki/KPI Monthly Presentation_page-0001.jpg',
             tags: ['Data Visualization', 'Corporate Reporting', 'KPIs'],
             category: 'analytics',
             liveUrl: '#',
             githubUrl: '#',
-        },
-        {
-            title: t.projects.project5.title,
-            description: t.projects.project5.description,
-            image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&h=800&fit=crop',
-            tags: ['SEO/SEM', 'Legal Marketing', 'Digital Strategy'],
-            category: 'marketing',
-            liveUrl: '#',
-            githubUrl: '#',
+            detailSlug: 'lisicki-litvin-metricas',
         },
         {
             title: t.projects.project6.title,
@@ -67,6 +61,16 @@ function Projects() {
             liveUrl: '#',
             githubUrl: '#',
             beta: true,
+        },
+        {
+            title: t.projects.project3.title,
+            description: t.projects.project3.description,
+            image: '/easytrack/Presentación Informe Paid Media_page-0001.jpg',
+            tags: ['Fintech', 'Data Analysis', 'Performance Marketing'],
+            category: 'analytics',
+            liveUrl: '#',
+            githubUrl: '#',
+            detailSlug: 'easytrack-reporte-financiero',
         },
         {
             title: 'E-Commerce Platform Redesign',
