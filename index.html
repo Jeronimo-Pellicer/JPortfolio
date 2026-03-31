@@ -2,11 +2,14 @@
 <html lang="es">
   <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MDBJ7G6N');</script>
+    <script>
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-MDBJ7G6N';
+        s.async = true;
+        document.head.appendChild(s);
+      });
+    </script>
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -54,20 +57,14 @@
     </script>
     
     <!-- DNS Prefetch for external domains -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link rel="dns-prefetch" href="https://flagcdn.com">
     <link rel="dns-prefetch" href="https://images.unsplash.com">
-    <link rel="dns-prefetch" href="https://qtrypzzcjebvfcihiynt.supabase.co">
     
-    <!-- Preconnect for critical domains -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://qtrypzzcjebvfcihiynt.supabase.co">
+    <!-- Local Fonts Preload -->
+    <link rel="preload" href="/fonts/caveat-4.woff2" as="font" type="font/woff2" crossorigin>
     
     <!-- Optimized font loading with display=swap -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="preload" href="/fonts/caveat.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="/fonts/caveat.css" rel="stylesheet"></noscript>
     
     <link rel="icon" type="image/png" href="/favicon.png" />
   </head>

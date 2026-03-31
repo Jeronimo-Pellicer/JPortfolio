@@ -56,9 +56,9 @@ export default function HeroSection() {
                         className="max-w-5xl mx-auto text-center"
                     >
                         <motion.h1 
-                            initial={{ opacity: 0, x: -40 }}
+                            initial={{ opacity: 1, x: 0 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.2, duration: 0.7 }}
+                            transition={{ duration: 0.7 }}
                             className="text-7xl md:text-7xl lg:text-9xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-emerald-400 to-teal-400 mb-3 tracking-tight leading-none"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif', letterSpacing: '-0.05em' }}
                         >
@@ -66,9 +66,9 @@ export default function HeroSection() {
                         </motion.h1>
                         
                         <motion.p 
-                            initial={{ opacity: 0, x: 40 }}
+                            initial={{ opacity: 1, x: 0 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.3, duration: 0.6 }}
+                            transition={{ duration: 0.6 }}
                             className="text-sm md:text-base lg:text-lg text-white max-w-3xl mx-auto leading-relaxed mb-3"
                             style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}
                         >

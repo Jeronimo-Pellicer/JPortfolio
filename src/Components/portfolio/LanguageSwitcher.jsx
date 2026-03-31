@@ -23,7 +23,7 @@ export default function LanguageSwitcher({ className }) {
                     aria-label="Cambiar a Español"
                 >
                     <img 
-                        src="https://flagcdn.com/es.svg"
+                        src="/flags/es.svg"
                         alt="Spanish Flag"
                         width="32"
                         height="32"
@@ -45,7 +45,7 @@ export default function LanguageSwitcher({ className }) {
                     aria-label="Switch to English"
                 >
                     <img 
-                        src="https://flagcdn.com/us.svg"
+                        src="/flags/us.svg"
                         alt="US Flag"
                         width="32"
                         height="32"

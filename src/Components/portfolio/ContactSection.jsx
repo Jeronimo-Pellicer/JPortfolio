@@ -74,7 +74,7 @@ export default function ContactSection() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-10">
                             {contactInfo.map((item) => (
                                 <div key={item.label} className="space-y-2">
-                                    <h4 className="text-white font-semibold text-sm md:text-base lg:text-lg">{item.label}</h4>
+                                    <h3 className="text-white font-semibold text-sm md:text-base lg:text-lg">{item.label}</h3>
                                     {item.href ? (
                                         <a href={item.href} className="block text-zinc-400 hover:text-emerald-400 transition-colors">
                                             {item.value}
@@ -87,7 +87,7 @@ export default function ContactSection() {
                             
                             {/* Redes Sociales */}
                             <div className="space-y-4">
-                                <h4 className="text-white font-semibold text-sm md:text-base lg:text-lg">{t.contact.social}</h4>
+                                <h3 className="text-white font-semibold text-sm md:text-base lg:text-lg">{t.contact.social}</h3>
                                 <div className="flex gap-4">
                                     {socialLinks.map((item) => (
                                         <a 

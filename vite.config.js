@@ -14,9 +14,10 @@ export default defineConfig({
       output: {
         manualChunks: {
           // Separate heavy vendor libraries into their own chunks
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'react-vendor': ['react', 'react-dom'],
+          'react-router': ['react-router-dom'],
           'gsap': ['gsap'],
-          'framer-motion': ['framer-motion'],
+          'framer': ['framer-motion'],
           'radix-ui': ['@radix-ui/react-label', '@radix-ui/react-progress', '@radix-ui/react-select', '@radix-ui/react-slider', '@radix-ui/react-slot', '@radix-ui/react-tabs', '@radix-ui/react-tooltip'],
           'dnd': ['@hello-pangea/dnd'],
           'ogl': ['ogl'],

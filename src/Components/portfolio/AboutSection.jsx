@@ -33,7 +33,7 @@ const AboutSection = React.memo(() => {
                             baseRotation={1}
                             blurStrength={2}
                             containerClassName=""
-                            textClassName="text-[26px] md:text-[38px] lg:text-[53px] font-bold leading-snug md:leading-relaxed text-white"
+                            textClassName="text-justify tracking-tight text-[18px] md:text-[32px] lg:text-[44px] font-medium md:font-bold leading-relaxed text-white"
                             rotationEnd="bottom bottom"
                             wordAnimationEnd="bottom bottom"
                         />
@@ -43,7 +43,7 @@ const AboutSection = React.memo(() => {
                     <div className="w-full h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent my-16"></div>
 
                     {/* Why Trust Me title with decrypted effect */}
-                    <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold italic uppercase text-white mb-4 md:mb-6 text-left leading-tight pt-2 md:pt-4 pl-2 pb-2 md:pl-3 md:pb-3" style={{ contain: 'layout style paint' }}>
+                    <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold italic uppercase text-white mb-4 md:mb-6 text-left leading-tight pt-2 md:pt-4 pl-2 pb-2 md:pl-3 md:pb-3" style={{ contain: 'layout style paint' }}>
                         <DecryptedText 
                             key={trustTitle}
                             text={trustTitle}
@@ -55,7 +55,7 @@ const AboutSection = React.memo(() => {
                             className="text-white"
                             encryptedClassName="text-emerald-400/60"
                         />
-                    </h3>
+                    </h2>
 
                     {/* Trust cards - Minimalista layout */}
                     <div className="space-y-4 md:space-y-0 md:grid md:grid-cols-3 md:gap-6 mt-8">
@@ -68,7 +68,7 @@ const AboutSection = React.memo(() => {
                                     </svg>
                                 </div>
                                 <div className="flex-1">
-                                    <h4 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust1?.title}</h4>
+                                    <h3 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust1?.title}</h3>
                                     <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust1?.description}</p>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@ const AboutSection = React.memo(() => {
                                     </svg>
                                 </div>
                                 <div className="flex-1">
-                                    <h4 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust3?.title}</h4>
+                                    <h3 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust3?.title}</h3>
                                     <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust3?.description}</p>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@ const AboutSection = React.memo(() => {
                                     </svg>
                                 </div>
                                 <div className="flex-1">
-                                    <h4 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust2?.title}</h4>
+                                    <h3 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust2?.title}</h3>
                                     <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust2?.description}</p>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@ const AboutSection = React.memo(() => {
                                 </svg>
                             </div>
                             <div className="flex-1">
-                                <h4 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust4?.title}</h4>
+                                <h3 className="text-sm md:text-lg lg:text-xl font-bold text-white mb-1 md:mb-2">{t.about.trust4?.title}</h3>
                                 <p className="text-zinc-400 leading-relaxed text-xs md:text-sm lg:text-base">{t.about.trust4?.description}</p>
                             </div>
                         </div>

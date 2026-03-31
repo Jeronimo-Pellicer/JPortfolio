@@ -107,6 +107,7 @@ function NavButton({ onClick, label }) {
                     .flowing-border {
                         stroke-dasharray: 280;
                         animation: borderFlow 2.5s linear infinite;
+                        will-change: transform;
                     }
                 `}</style>
                 <rect
@@ -197,6 +198,7 @@ function NavDropdown({ label, items, nestedItems, onNavigate }) {
                         .flowing-border-dropdown {
                             stroke-dasharray: 280;
                             animation: borderFlow 2.5s linear infinite;
+                            will-change: transform;
                         }
                     `}</style>
                     <rect
@@ -563,41 +565,41 @@ function LayoutContent({ children, currentPageName }) {
                             <p className="text-lg md:text-2xl font-bold mb-1 md:mb-2">
                                 Jerónimo<span className="text-emerald-400">.</span>
                             </p>
-                            <p className="text-zinc-500 text-xs md:text-sm">
+                            <p className="text-zinc-400 text-xs md:text-sm">
                                 Digital Business & UX Professional
                             </p>
                         </div>
                         <div className="flex flex-wrap items-center justify-center md:justify-end gap-2 md:gap-6">
                             <button
                                 onClick={() => handleNavClick({ type: 'scroll', href: '#about' })}
-                                className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                                className="text-xs md:text-sm text-zinc-400 hover:text-emerald-400 transition-colors py-3 px-4 min-w-[44px] min-h-[44px]"
                             >
                                 {t.nav.aboutMe}
                             </button>
                             <Link to="/projects">
                                 <button
-                                    className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                                    className="text-xs md:text-sm text-zinc-400 hover:text-emerald-400 transition-colors py-3 px-4 min-w-[44px] min-h-[44px]"
                                 >
                                     {t.nav.projects}
                                 </button>
                             </Link>
                             <Link to="/herramientas">
                                 <button
-                                    className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                                    className="text-xs md:text-sm text-zinc-400 hover:text-emerald-400 transition-colors py-3 px-4 min-w-[44px] min-h-[44px]"
                                 >
                                     {t.nav.tools || 'HERRAMIENTAS'}
                                 </button>
                             </Link>
                             <Link to="/recursos">
                                 <button
-                                    className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                                    className="text-xs md:text-sm text-zinc-400 hover:text-emerald-400 transition-colors py-3 px-4 min-w-[44px] min-h-[44px]"
                                 >
                                     {t.nav.resources || 'RECURSOS'}
                                 </button>
                             </Link>
                             <button
                                 onClick={handleContactClick}
-                                className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors"
+                                className="text-xs md:text-sm text-zinc-400 hover:text-emerald-400 transition-colors py-3 px-4 min-w-[44px] min-h-[44px]"
                             >
                                 {t.nav.contactMe}
                             </button>
@@ -605,12 +607,12 @@ function LayoutContent({ children, currentPageName }) {
                     </div>
                     <div className="border-t border-zinc-800/50 mt-6 md:mt-10 pt-4 md:pt-8">
                         <div className="flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4">
-                            <p className="text-zinc-600 text-xs md:text-sm">
+                            <p className="text-zinc-400 text-xs md:text-sm">
                                 © {new Date().getFullYear()} Jerónimo Pellicer. {t.footer.copyright}
                             </p>
                             <Link 
                                 to="/books"
-                                className="text-xs md:text-sm text-zinc-500 hover:text-emerald-400 transition-colors flex items-center gap-2 group"
+                                className="text-xs md:text-sm text-zinc-400 hover:text-emerald-400 transition-colors flex items-center gap-2 group py-3 px-4 min-w-[44px] min-h-[44px]"
                             >
                                 <span className="font-medium">{t.footer.booksRecommend}</span>
                                 <svg 
