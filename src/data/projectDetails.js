@@ -9,7 +9,7 @@ const projectDetails = {
         client: 'Topper Argentina',
         date: '2024 – 2025',
         context: 'Universidad Escuela Argentina de Negocios (UEAN) — Marketing Digital II',
-        overview: `Como Gerente de Marketing en este proyecto para Topper, mi labor se centró en desarrollar un Plan de Marketing Digital integral diseñado para potenciar la marca y cumplir con sus objetivos estratégicos en el mercado argentino. Mi enfoque abarcó desde un análisis profundo del contexto actual hasta la planificación de campañas específicas para productos clave.`,
+        overview: `Como equipo de Marketing en este proyecto para Topper, mi labor se centró en desarrollar un Plan de Marketing Digital integral diseñado para potenciar la marca y cumplir con sus objetivos estratégicos en el mercado argentino. Mi enfoque abarcó desde un análisis profundo del contexto actual hasta la planificación de campañas específicas para productos clave.`,
         sections: [
             {
                 id: 'intro',
