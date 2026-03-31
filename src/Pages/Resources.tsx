@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect, Suspense, lazy } from 'react';
+import SEO from '../Components/shared/SEO';
 import AlphabetBar from '../Components/ui/AlphabetBar';
 import AlphabetSlider from '../Components/ui/AlphabetSlider';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -70,6 +71,11 @@ export default function Resources() {
 
   return (
     <div className="bg-slate-950 relative overflow-x-hidden">
+      <SEO 
+        title="Recursos Digitales y Guías | JP Studio"
+        description="Recursos, guías y materiales gratuitos y premium sobre UX, marketing digital y crecimiento de negocios. Aprendé y mejorá tus habilidades."
+        url="/recursos"
+      />
       {/* Prism Background - Fixed */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Suspense fallback={<div />}>

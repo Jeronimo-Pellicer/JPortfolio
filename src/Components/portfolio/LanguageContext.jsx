@@ -187,7 +187,7 @@ export const translations = {
         // Footer
         footer: {
             tagline: 'Optimizing customer experiences through data and strategy',
-            copyright: 'All rights reserved. Built with passion.',
+            copyright: 'enjoy this sh¡t.',
             booksRecommend: 'Books I Recommend',
         },
         // Marquee Sections
@@ -1226,7 +1226,7 @@ export const translations = {
         // Footer
         footer: {
             tagline: 'Optimizando experiencias del cliente a través de datos y estrategia',
-            copyright: 'Todos los derechos reservados. Construido con pasión.',
+            copyright: 'enjoy this sh¡t.',
             booksRecommend: 'Libros que Recomiendo',
         },
         // Secciones Marquee

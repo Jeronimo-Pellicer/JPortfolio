@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import SEO from '../Components/shared/SEO';
 import HeroSection from '../Components/home/HeroSection';
 import ToolsSection from '../Components/home/ToolsSection';
 import WhySection from '../Components/home/WhySection';
@@ -28,6 +29,11 @@ export default function Herramientas() {
 
     return (
         <div className="min-h-screen bg-slate-950">
+            <SEO 
+                title="Herramientas Gratuitas de Marketing Digital | JP Studio"
+                description="Accede gratis a herramientas profesionales de marketing: calculadora ROI, generador de buyer persona y más. Sin registro, resultados medibles al instante."
+                url="/herramientas"
+            />
             <main>
                 <HeroSection />
                 <ToolsSection />

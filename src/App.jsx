@@ -1,6 +1,7 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Layout from './Layout';
+import SEO from './Components/shared/SEO';
 import ResourceHints from './Components/shared/ResourceHints';
 import HeroSection from './Components/portfolio/HeroSection';
 import MarqueeSection from './Components/portfolio/MarqueeSection';
@@ -46,6 +47,11 @@ function HomeContent() {
 
   return (
     <>
+      <SEO 
+        title="JP | Digital Growth Studio"
+        description="JP Digital Growth Studio: diseño UX basado en datos, marketing digital y herramientas gratuitas para marketers y estudiantes. Buenos Aires, Argentina."
+        url=""
+      />
       <HeroSection />
       <MarqueeSection />
       <Suspense fallback={null}>

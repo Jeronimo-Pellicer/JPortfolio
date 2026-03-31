@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../Components/shared/SEO';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Filter, ArrowRight, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/Components/portfolio/LanguageContext';
@@ -155,7 +156,11 @@ function Projects() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
-            
+            <SEO 
+                title="Proyectos y Casos de Éxito | Jerónimo Pellicer"
+                description="Proyectos de diseño UX, desarrollo frontend y estrategias de marketing digital con resultados reales para clientes en Argentina."
+                url="/projects"
+            />
             {/* Animated Background - Optimized for mobile performance */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-0 md:opacity-100 transition-opacity duration-300">
                 <motion.div

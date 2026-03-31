@@ -1,4 +1,5 @@
 import React from 'react';
+import SEO from '../Components/shared/SEO';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Star, ExternalLink } from 'lucide-react';
@@ -87,6 +88,11 @@ export default function Books() {
 
     return (
         <div className="min-h-screen bg-zinc-950">
+            <SEO 
+                title="Libros Recomendados | Jerónimo Pellicer"
+                description="Libros recomendados sobre UX, experiencia del cliente, marketing digital y crecimiento profesional. Selección personal con notas y reseñas."
+                url="/books"
+            />
             {/* Header */}
             <section className="pt-32 pb-16 bg-zinc-950 border-b border-zinc-800/50">
                 <div className="container mx-auto px-6">
