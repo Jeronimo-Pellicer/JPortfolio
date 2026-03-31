@@ -4,7 +4,7 @@
 const projectDetails = {
     'topper-plan-mobile-first': {
         slug: 'topper-plan-mobile-first',
-        heroImage: '/topper/topper-0001.jpg',
+        heroImage: '/topper/topper-0001.webp',
         role: 'Gerente de Marketing Digital',
         client: 'Topper Argentina',
         date: '2024 – 2025',
@@ -19,8 +19,8 @@ const projectDetails = {
 
 Topper es una marca deportiva con presencia en Argentina, Uruguay, Brasil, Paraguay, Bolivia y Chile. Su propósito es democratizar el deporte en Latinoamérica y en el mundo, uniendo moda y deporte generando productos accesibles y de calidad.`,
                 images: [
-                    { src: '/topper/topper-0003.jpg', caption: 'Presentación del caso: misión, visión y principios de Topper' },
-                    { src: '/topper/topper-0004.jpg', caption: 'Identidad visual de la marca: logos y paleta de colores' },
+                    { src: '/topper/topper-0003.webp', caption: 'Presentación del caso: misión, visión y principios de Topper' },
+                    { src: '/topper/topper-0004.webp', caption: 'Identidad visual de la marca: logos y paleta de colores' },
                 ]
             },
             {
@@ -35,10 +35,10 @@ Topper es una marca deportiva con presencia en Argentina, Uruguay, Brasil, Parag
 
 • Benchmarking y Diferenciación: Comparé a Topper con competidores como Puma, Umbro y Athix, concluyendo que nuestra ventaja reside en la identidad local y precios accesibles, aunque con una identidad visual menos diferenciada que debemos fortalecer.`,
                 images: [
-                    { src: '/topper/topper-0005.jpg', caption: 'Análisis PESTEL del macroentorno' },
-                    { src: '/topper/topper-0006.jpg', caption: 'Análisis del microentorno y Matriz BCG' },
-                    { src: '/topper/topper-0007.jpg', caption: 'Matriz BCG: productos Estrella e Interrogante' },
-                    { src: '/topper/topper-0008.jpg', caption: 'Benchmarking competitivo: Puma, Umbro, Athix' },
+                    { src: '/topper/topper-0005.webp', caption: 'Análisis PESTEL del macroentorno' },
+                    { src: '/topper/topper-0006.webp', caption: 'Análisis del microentorno y Matriz BCG' },
+                    { src: '/topper/topper-0007.webp', caption: 'Matriz BCG: productos Estrella e Interrogante' },
+                    { src: '/topper/topper-0008.webp', caption: 'Benchmarking competitivo: Puma, Umbro, Athix' },
                 ]
             },
             {
@@ -53,10 +53,10 @@ Topper es una marca deportiva con presencia en Argentina, Uruguay, Brasil, Parag
 
 Diseñé un Mapa de Empatía y un Customer Journey Map para entender sus dolores, como la inflación y los procesos de compra online complejos, y convertirlos en puntos de mejora.`,
                 images: [
-                    { src: '/topper/topper-0009.jpg', caption: 'Buyer Persona: Raúl — perfil detallado' },
-                    { src: '/topper/topper-0010.jpg', caption: 'Buyer Persona: Sabrina — perfil detallado' },
-                    { src: '/topper/topper-0011.jpg', caption: 'Mapa de Empatía del consumidor' },
-                    { src: '/topper/topper-0012.jpg', caption: 'Customer Journey Map completo' },
+                    { src: '/topper/topper-0009.webp', caption: 'Buyer Persona: Raúl — perfil detallado' },
+                    { src: '/topper/topper-0010.webp', caption: 'Buyer Persona: Sabrina — perfil detallado' },
+                    { src: '/topper/topper-0011.webp', caption: 'Mapa de Empatía del consumidor' },
+                    { src: '/topper/topper-0012.webp', caption: 'Customer Journey Map completo' },
                 ]
             },
             {
@@ -71,8 +71,8 @@ Diseñé un Mapa de Empatía y un Customer Journey Map para entender sus dolores
 
 • Retargeting: Reactivar al 30% de clientes previos para que el 10% realice una nueva compra.`,
                 images: [
-                    { src: '/topper/topper-0013.jpg', caption: 'Objetivos SMART del Plan de Marketing' },
-                    { src: '/topper/topper-0014.jpg', caption: 'Estrategia para el producto Block Revolver' },
+                    { src: '/topper/topper-0013.webp', caption: 'Objetivos SMART del Plan de Marketing' },
+                    { src: '/topper/topper-0014.webp', caption: 'Estrategia para el producto Block Revolver' },
                 ]
             },
             {
@@ -87,10 +87,10 @@ Diseñé un Mapa de Empatía y un Customer Journey Map para entender sus dolores
 
 • Retargeting (Display): Diseñé piezas para invitar a antiguos clientes a "repetir su experiencia" basándome en los datos del CRM.`,
                 images: [
-                    { src: '/topper/topper-0015.jpg', caption: 'Distribución del presupuesto de campaña' },
-                    { src: '/topper/topper-0016.jpg', caption: 'Configuración de Google Ads (Reconocimiento)' },
-                    { src: '/topper/topper-0017.jpg', caption: 'Campaña de Meta Ads: segmentación por Buyer Persona' },
-                    { src: '/topper/topper-0018.jpg', caption: 'Estrategia de Retargeting con Google Display' },
+                    { src: '/topper/topper-0015.webp', caption: 'Distribución del presupuesto de campaña' },
+                    { src: '/topper/topper-0016.webp', caption: 'Configuración de Google Ads (Reconocimiento)' },
+                    { src: '/topper/topper-0017.webp', caption: 'Campaña de Meta Ads: segmentación por Buyer Persona' },
+                    { src: '/topper/topper-0018.webp', caption: 'Estrategia de Retargeting con Google Display' },
                 ]
             },
             {
@@ -101,8 +101,8 @@ Diseñé un Mapa de Empatía y un Customer Journey Map para entender sus dolores
 
 Mi intervención brindó a Topper un mapa claro para capitalizar sus fortalezas como marca líder accesible, mitigando debilidades tecnológicas y de identidad mediante una presencia digital robusta y orientada a resultados.`,
                 images: [
-                    { src: '/topper/topper-0019.jpg', caption: 'Dashboard de KPIs y métricas de control' },
-                    { src: '/topper/topper-0020.jpg', caption: 'Resumen ejecutivo de resultados esperados' },
+                    { src: '/topper/topper-0019.webp', caption: 'Dashboard de KPIs y métricas de control' },
+                    { src: '/topper/topper-0020.webp', caption: 'Resumen ejecutivo de resultados esperados' },
                 ]
             },
             {
@@ -117,9 +117,9 @@ Mi intervención brindó a Topper un mapa claro para capitalizar sus fortalezas 
 
 • Ad Desbloquear Beneficios: Resalta las funcionalidades exclusivas de la versión de pago con enlace profundo diferido directo a la URL de suscripción Premium.`,
                 images: [
-                    { src: '/topper/topper-0021.jpg', caption: 'Ad Futurista — Creativa y copys' },
-                    { src: '/topper/topper-0022.jpg', caption: 'Ad Control Total — Variantes de texto' },
-                    { src: '/topper/topper-0023.jpg', caption: 'Ad Desbloquear Beneficios — Deep link premium' },
+                    { src: '/topper/topper-0021.webp', caption: 'Ad Futurista — Creativa y copys' },
+                    { src: '/topper/topper-0022.webp', caption: 'Ad Control Total — Variantes de texto' },
+                    { src: '/topper/topper-0023.webp', caption: 'Ad Desbloquear Beneficios — Deep link premium' },
                 ]
             },
             {
@@ -134,9 +134,9 @@ Mi intervención brindó a Topper un mapa claro para capitalizar sus fortalezas 
 
 • Ad Planificación Free: Herramientas de ahorro y visualización de datos. "¿Querés planificar mejor tu futuro financiero?"`,
                 images: [
-                    { src: '/topper/topper-0024.jpg', caption: 'Ad Control Free — Versión gratuita' },
-                    { src: '/topper/topper-0025.jpg', caption: 'Ad Entidades Free — Conectividad bancaria' },
-                    { src: '/topper/topper-0026.jpg', caption: 'Ad Planificación Free — Herramientas de ahorro' },
+                    { src: '/topper/topper-0024.webp', caption: 'Ad Control Free — Versión gratuita' },
+                    { src: '/topper/topper-0025.webp', caption: 'Ad Entidades Free — Conectividad bancaria' },
+                    { src: '/topper/topper-0026.webp', caption: 'Ad Planificación Free — Herramientas de ahorro' },
                 ]
             },
             {
@@ -151,10 +151,10 @@ Mi intervención brindó a Topper un mapa claro para capitalizar sus fortalezas 
 
 Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Advantage+ en Meta y la Puja de Maximizar Conversiones en Google mostraran la combinación de imagen y texto con mayor probabilidad de éxito.`,
                 images: [
-                    { src: '/topper/topper-0027.jpg', caption: 'Anuncio Adaptable de Display — Configuración' },
-                    { src: '/topper/topper-0028.jpg', caption: 'Títulos y descripciones optimizados' },
-                    { src: '/topper/topper-0029.jpg', caption: 'Configuración de UTM y seguimiento' },
-                    { src: '/topper/topper-0030.jpg', caption: 'Resumen final de la estructura publicitaria' },
+                    { src: '/topper/topper-0027.webp', caption: 'Anuncio Adaptable de Display — Configuración' },
+                    { src: '/topper/topper-0028.webp', caption: 'Títulos y descripciones optimizados' },
+                    { src: '/topper/topper-0029.webp', caption: 'Configuración de UTM y seguimiento' },
+                    { src: '/topper/topper-0030.webp', caption: 'Resumen final de la estructura publicitaria' },
                 ]
             },
         ],
@@ -167,7 +167,7 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
     },
     'stiberman-law-seo-sem': {
         slug: 'stiberman-law-seo-sem',
-        heroImage: '/stiberman/Digital Marketing Brief (3)_page-0001.jpg',
+        heroImage: '/stiberman/Digital Marketing Brief (3)_page-0001.webp',
         role: 'Consultor SEO/SEM',
         client: 'Stiberman Law',
         date: '2025',
@@ -184,8 +184,8 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 • Consolidación de Deudas: Soluciones para el manejo integral de deudas en Florida.`,
                 images: [
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0002.jpg', caption: 'Enfoque de servicios legales' },
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0003.jpg', caption: 'Estrategia de resolución de deudas' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0002.webp', caption: 'Enfoque de servicios legales' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0003.webp', caption: 'Estrategia de resolución de deudas' },
                 ]
             },
             {
@@ -194,8 +194,8 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
                 subtitle: 'Brecha de visibilidad y posicionamiento',
                 content: `La investigación inicial reveló una carencia de visibilidad significativa: el dominio principal estaba ausente en las búsquedas de clientes para términos clave como "Bankruptcy Florida", representando literalmente un "404 Not Found" en términos de presencia en buscadores.`,
                 images: [
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0004.jpg', caption: 'Análisis de brecha de visibilidad' },
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0005.jpg', caption: 'Diagnóstico de presencia digital' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0004.webp', caption: 'Análisis de brecha de visibilidad' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0005.webp', caption: 'Diagnóstico de presencia digital' },
                 ]
             },
             {
@@ -210,9 +210,9 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 • A/B Testing & Tracking: Uso de A/B testing para refinar el ad copy y mejorar el tracking de conversiones clave.`,
                 images: [
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0006.jpg', caption: 'Estrategia PPC y Pujas' },
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0007.jpg', caption: 'Segmentación geográfica (Geo-targeting)' },
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0008.jpg', caption: 'A/B Testing y seguimiento' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0006.webp', caption: 'Estrategia PPC y Pujas' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0007.webp', caption: 'Segmentación geográfica (Geo-targeting)' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0008.webp', caption: 'A/B Testing y seguimiento' },
                 ]
             },
             {
@@ -227,8 +227,8 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 • Marketing de Contenidos: Actualizaciones regulares mediante un blog y contenidos de video para humanizar la marca y asentar su expertise.`,
                 images: [
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0009.jpg', caption: 'Estrategia Mobile-First y SEO Técnico' },
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0010.jpg', caption: 'Construcción de contenido orgánico' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0009.webp', caption: 'Estrategia Mobile-First y SEO Técnico' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0010.webp', caption: 'Construcción de contenido orgánico' },
                 ]
             },
             {
@@ -241,9 +241,9 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 • Integración de Chatbot con IA: Setup de asistentes virtuales 24/7 capacitados para responder inquietudes instantáneas, elevando la satisfacción exponencialmente.`,
                 images: [
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0011.jpg', caption: 'Secuencias de Retargeting' },
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0012.jpg', caption: 'Optimización de UX móvil' },
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0013.jpg', caption: 'Flujos de trabajo del Chatbot IA' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0011.webp', caption: 'Secuencias de Retargeting' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0012.webp', caption: 'Optimización de UX móvil' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0013.webp', caption: 'Flujos de trabajo del Chatbot IA' },
                 ]
             },
             {
@@ -254,8 +254,8 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 • Análisis de Mercado: Investigación constante de la competencia y del comportamiento de búsqueda del usuario para garantizar que Stiberman Law siempre mantenga su ventaja estratégica.`,
                 images: [
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0014.jpg', caption: 'Implementación de Objetivos SMART' },
-                    { src: '/stiberman/Digital Marketing Brief (3)_page-0015.jpg', caption: 'Dashboard analítico competitivo' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0014.webp', caption: 'Implementación de Objetivos SMART' },
+                    { src: '/stiberman/Digital Marketing Brief (3)_page-0015.webp', caption: 'Dashboard analítico competitivo' },
                 ]
             }
         ],
@@ -268,7 +268,7 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
     },
     'lisicki-litvin-metricas': {
         slug: 'lisicki-litvin-metricas',
-        heroImage: '/licki/KPI Monthly Presentation_page-0001.jpg',
+        heroImage: '/licki/KPI Monthly Presentation_page-0001.webp',
         role: 'Data Analyst & Consultant',
         client: 'Estudio Lisicki, Litvin & Asociados',
         date: 'Enero 2025',
@@ -289,9 +289,9 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 • Optimización de Márgenes: Supervisé la Ganancia Bruta, que alcanzó los $220,000, superando el objetivo de crecimiento del 2% al lograr un incremento del 5.6%.`,
                 images: [
-                    { src: '/licki/KPI Monthly Presentation_page-0002.jpg', caption: 'Resumen Ejecutivo y Crecimiento de Ingresos' },
-                    { src: '/licki/KPI Monthly Presentation_page-0003.jpg', caption: 'Análisis de Rentabilidad Lograda' },
-                    { src: '/licki/KPI Monthly Presentation_page-0004.jpg', caption: 'Control de Gastos y Optimización de Márgenes Financieros' }
+                    { src: '/licki/KPI Monthly Presentation_page-0002.webp', caption: 'Resumen Ejecutivo y Crecimiento de Ingresos' },
+                    { src: '/licki/KPI Monthly Presentation_page-0003.webp', caption: 'Análisis de Rentabilidad Lograda' },
+                    { src: '/licki/KPI Monthly Presentation_page-0004.webp', caption: 'Control de Gastos y Optimización de Márgenes Financieros' }
                 ]
             },
             {
@@ -306,8 +306,8 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 • Feedback del Mercado: Analicé el Net Promoter Score (NPS) y el Customer Effort Score (CES) para garantizar un servicio de máxima calidad que cree valor sostenible a través de toda la cartera de clientes.`,
                 images: [
-                    { src: '/licki/KPI Monthly Presentation_page-0005.jpg', caption: 'Métricas de Productividad Operativa y Eficiencia' },
-                    { src: '/licki/KPI Monthly Presentation_page-0006.jpg', caption: 'Dashboard de Experiencia del Cliente (CSAT, NPS, CES)' }
+                    { src: '/licki/KPI Monthly Presentation_page-0005.webp', caption: 'Métricas de Productividad Operativa y Eficiencia' },
+                    { src: '/licki/KPI Monthly Presentation_page-0006.webp', caption: 'Dashboard de Experiencia del Cliente (CSAT, NPS, CES)' }
                 ]
             },
             {
@@ -322,8 +322,8 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 • Revisión de Compensaciones: Monitoreé la distribución salarial a nivel gerencial y operativo, notando un salario promedio de 66.7K, para mantener fuerte competitividad frente al mercado de la contaduría y consultoría.`,
                 images: [
-                    { src: '/licki/KPI Monthly Presentation_page-0007.jpg', caption: 'Análisis de Fuerza Laboral y Estrategia de Retención' },
-                    { src: '/licki/KPI Monthly Presentation_page-0008.jpg', caption: 'Distribución Departamental y Compensaciones' }
+                    { src: '/licki/KPI Monthly Presentation_page-0007.webp', caption: 'Análisis de Fuerza Laboral y Estrategia de Retención' },
+                    { src: '/licki/KPI Monthly Presentation_page-0008.webp', caption: 'Distribución Departamental y Compensaciones' }
                 ]
             },
             {
@@ -332,7 +332,7 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
                 subtitle: 'Perspectiva estratégica para asegurar un crecimiento sostenido',
                 content: `Mis servicios concluyeron con un Outlook estratégico integral, determinando que aunque la gran mayoría de los KPIs operacionales superaron los objetivos en este período particular, nuestro foco principal debe seguir centrado en ser el proveedor de mayor calidad en la comunidad empresarial. Me mantengo totalmente comprometido en mitigar áreas de desviación para asegurar el éxito continuo y materializar un crecimiento orgánico verdaderamente sostenible de toda la empresa a largo plazo.`,
                 images: [
-                    { src: '/licki/KPI Monthly Presentation_page-0009.jpg', caption: 'Iniciativas y Roadmap Estratégico General' }
+                    { src: '/licki/KPI Monthly Presentation_page-0009.webp', caption: 'Iniciativas y Roadmap Estratégico General' }
                 ]
             }
         ],
@@ -345,7 +345,7 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
     },
     'kiddo-franquicias': {
         slug: 'kiddo-franquicias',
-        heroImage: '/kiddo/Franchising Kiddo _ Comercial_page-0001.jpg',
+        heroImage: '/kiddo/Franchising Kiddo _ Comercial_page-0001.webp',
         role: 'Consultor de Negocios & Franquicias',
         client: 'Kiddo / Burger Kid',
         date: '2024 - 2030',
@@ -362,8 +362,8 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 • Resultados Probados: Respaldamos la propuesta con métricas sólidas, destacando la venta de 25.000 hamburguesas mensuales por local y una facturación promedio mensual sostenida de USD 100.000.`,
                 images: [
-                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0002.jpg', caption: 'Consolidación del "Know-How" y trayectoria' },
-                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0003.jpg', caption: 'Diferenciación de marca y resultados comerciales' }
+                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0002.webp', caption: 'Consolidación del "Know-How" y trayectoria' },
+                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0003.webp', caption: 'Diferenciación de marca y resultados comerciales' }
                 ]
             },
             {
@@ -376,8 +376,8 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 • Ventajas Competitivas: Facilitamos directamente el acceso a un "Pool de Compras" exclusivo de la franquicia y procesos estandarizados basados en investigación de mercado constante para mantener la alta preferencia del consumidor.`,
                 images: [
-                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0004.jpg', caption: 'Desarrollo financiero del modelo de Franquicia' },
-                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0005.jpg', caption: 'Ventajas Competitivas y Pool de Compras' }
+                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0004.webp', caption: 'Desarrollo financiero del modelo de Franquicia' },
+                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0005.webp', caption: 'Ventajas Competitivas y Pool de Compras' }
                 ]
             },
             {
@@ -395,9 +395,9 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 • Visión a Futuro: Proyectamos escalar sistemáticamente hasta alcanzar los 39 locales para el año 2029 y expandir fuertemente las Master Franquicias hacia el mercado de Europa a partir de 2030.`,
                 images: [
-                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0006.jpg', caption: 'Estrategia de Expansión y Formatos de Locales' },
-                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0007.jpg', caption: 'Proyección Internacional: USA, Uruguay, Brasil' },
-                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0008.jpg', caption: 'Visión 2030: Master Franquicias y Mercado Europeo' }
+                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0006.webp', caption: 'Estrategia de Expansión y Formatos de Locales' },
+                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0007.webp', caption: 'Proyección Internacional: USA, Uruguay, Brasil' },
+                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0008.webp', caption: 'Visión 2030: Master Franquicias y Mercado Europeo' }
                 ]
             },
             {
@@ -412,7 +412,7 @@ Cada anuncio fue diseñado para ser flexible, permitiendo que el algoritmo de Ad
 
 Mi compromiso personal y profesional en este proyecto es asegurar que cada nuevo franquiciado no solo compre el nombre de una marca, sino un ecosistema y sistema operativo probado de absoluto éxito, con una proyección de crecimiento global sin precedentes en el competitivo sector del fast food argentino.`,
                 images: [
-                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0009.jpg', caption: 'Catálogo de Productos Core y Snacks & Co' }
+                    { src: '/kiddo/Franchising Kiddo _ Comercial_page-0009.webp', caption: 'Catálogo de Productos Core y Snacks & Co' }
                 ]
             }
         ],
@@ -425,7 +425,7 @@ Mi compromiso personal y profesional en este proyecto es asegurar que cada nuevo
     },
     'easytrack-reporte-financiero': {
         slug: 'easytrack-reporte-financiero',
-        heroImage: '/easytrack/Presentación Informe Paid Media_page-0001.jpg',
+        heroImage: '/easytrack/Presentación Informe Paid Media_page-0001.webp',
         role: 'Responsable de Paid Media',
         client: 'EASY TRACK (Fintech)',
         date: '2025',
@@ -444,8 +444,8 @@ Mi compromiso personal y profesional en este proyecto es asegurar que cada nuevo
 
 • Optimización Dinámica: Implementé una lógica de competencia de rendimiento; el presupuesto se reasigna en tiempo real hacia la plataforma o tienda con mejores resultados para garantizar eficiencia y ROAS.`,
                 images: [
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0002.jpg', caption: 'Distribución de Presupuesto Inicial' },
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0003.jpg', caption: 'Segmentación entre Meta y Google Ads' }
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0002.webp', caption: 'Distribución de Presupuesto Inicial' },
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0003.webp', caption: 'Segmentación entre Meta y Google Ads' }
                 ]
             },
             {
@@ -460,8 +460,8 @@ Mi compromiso personal y profesional en este proyecto es asegurar que cada nuevo
 
 • Configuración Técnica: Implementé enlaces profundos diferidos (deep links) hacia la suscripción Premium dentro de la app, mejorando sustancialmente el porcentaje de conversión de clics a compra en un solo tap.`,
                 images: [
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0004.jpg', caption: 'Modelado de Arquitectura Meta Ads' },
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0005.jpg', caption: 'Exclusión activa y Segmentación Avanzada' }
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0004.webp', caption: 'Modelado de Arquitectura Meta Ads' },
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0005.webp', caption: 'Exclusión activa y Segmentación Avanzada' }
                 ]
             },
             {
@@ -476,8 +476,8 @@ Mi compromiso personal y profesional en este proyecto es asegurar que cada nuevo
 
 • Estrategia de Puja: Configuré la campaña para Maximizar Conversiones asegurando que el presupuesto de $5.000.000 se traduzca en el mayor volumen posible de suscripciones operativas diarias.`,
                 images: [
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0006.jpg', caption: 'Tracking de Conversiones en Google' },
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0007.jpg', caption: 'Configuración Analítica de Pujas' }
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0006.webp', caption: 'Tracking de Conversiones en Google' },
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0007.webp', caption: 'Configuración Analítica de Pujas' }
                 ]
             },
             {
@@ -491,8 +491,8 @@ Mi compromiso personal y profesional en este proyecto es asegurar que cada nuevo
 • Educación Financiera: Foros Premium con recomendaciones directas de inversión.
 • Simplicidad UX: Transformación en backend de datos crudos complejos hacia gráficos amigables.`,
                 images: [
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0008.jpg', caption: 'Desarrollo Conceptual del Onboarding' },
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0009.jpg', caption: 'Diferenciadores en Pilares Clave' }
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0008.webp', caption: 'Desarrollo Conceptual del Onboarding' },
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0009.webp', caption: 'Diferenciadores en Pilares Clave' }
                 ]
             },
             {
@@ -507,8 +507,8 @@ Mi compromiso personal y profesional en este proyecto es asegurar que cada nuevo
 
 • Ad Desbloquear Beneficios: Mostrar estratégicamente las dolorosas limitantes en las features gratuitas contra la potencia infinita que regala el upgrade en un solo movimiento.`,
                 images: [
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0010.jpg', caption: 'Creatividades del Ad Futurista Upselling' },
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0011.jpg', caption: 'Visuales de Ad Control Total' }
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0010.webp', caption: 'Creatividades del Ad Futurista Upselling' },
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0011.webp', caption: 'Visuales de Ad Control Total' }
                 ]
             },
             {
@@ -521,8 +521,8 @@ Mi compromiso personal y profesional en este proyecto es asegurar que cada nuevo
 • Ad Entidades Free: "Sincroniza todas tus billeteras sin pagar fees ocultos".
 • Ad Planificación Free: Instrumentos de ahorro que apelan al sueño de previsibilidad financiera del usuario target.`,
                 images: [
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0012.jpg', caption: 'Variante de Ad Control Free (TOFU)' },
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0013.jpg', caption: 'Atracción por conectividad free' }
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0012.webp', caption: 'Variante de Ad Control Free (TOFU)' },
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0013.webp', caption: 'Atracción por conectividad free' }
                 ]
             },
             {
@@ -535,8 +535,8 @@ Mi compromiso personal y profesional en este proyecto es asegurar que cada nuevo
 
 • Seguimiento Avanzado vía UTMs: Se instauró una minuciosa jerarquía analítica en la URL final (utm_campaign=premium_push_arg) que luego permitiera atribuir fielmente el mérito absoluto a la Red de Display dentro de Looker Studio.`,
                 images: [
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0014.jpg', caption: 'Renders Dinámicos de Display para AdSense' },
-                    { src: '/easytrack/Presentación Informe Paid Media_page-0015.jpg', caption: 'Ruteo de Enlaces Parametrizados (UTM)' }
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0014.webp', caption: 'Renders Dinámicos de Display para AdSense' },
+                    { src: '/easytrack/Presentación Informe Paid Media_page-0015.webp', caption: 'Ruteo de Enlaces Parametrizados (UTM)' }
                 ]
             }
         ],

@@ -15,7 +15,7 @@ function Projects() {
         {
             title: t.projects.project5.title,
             description: t.projects.project5.description,
-            image: '/stiberman/Digital Marketing Brief (3)_page-0001.jpg',
+            image: '/stiberman/Digital Marketing Brief (3)_page-0001.webp',
             tags: ['SEO/SEM', 'Legal Marketing', 'Digital Strategy'],
             category: 'marketing',
             liveUrl: '#',
@@ -25,7 +25,7 @@ function Projects() {
         {
             title: t.projects.project1.title,
             description: t.projects.project1.description,
-            image: '/kiddo/Franchising Kiddo _ Comercial_page-0001.jpg',
+            image: '/kiddo/Franchising Kiddo _ Comercial_page-0001.webp',
             tags: ['Business Strategy', 'Franchising', 'Commercial'],
             category: 'strategy',
             liveUrl: '#',
@@ -35,7 +35,7 @@ function Projects() {
         {
             title: t.projects.project2.title,
             description: t.projects.project2.description,
-            image: '/topper/topper-0001.jpg',
+            image: '/topper/topper-0001.webp',
             tags: ['Marketing Strategy', 'Mobile Growth', 'Paid Media'],
             category: 'marketing',
             liveUrl: '#',
@@ -45,7 +45,7 @@ function Projects() {
         {
             title: t.projects.project4.title,
             description: t.projects.project4.description,
-            image: '/licki/KPI Monthly Presentation_page-0001.jpg',
+            image: '/licki/KPI Monthly Presentation_page-0001.webp',
             tags: ['Data Visualization', 'Corporate Reporting', 'KPIs'],
             category: 'analytics',
             liveUrl: '#',
@@ -65,7 +65,7 @@ function Projects() {
         {
             title: t.projects.project3.title,
             description: t.projects.project3.description,
-            image: '/easytrack/Presentación Informe Paid Media_page-0001.jpg',
+            image: '/easytrack/Presentación Informe Paid Media_page-0001.webp',
             tags: ['Fintech', 'Data Analysis', 'Performance Marketing'],
             category: 'analytics',
             liveUrl: '#',
