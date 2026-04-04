@@ -365,7 +365,7 @@ function Projects() {
                                         {hasDetail && (
                                         <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                             <span className="px-3 py-1.5 bg-emerald-500 text-black text-xs font-bold rounded-lg shadow-lg">
-                                                Ver Proyecto →
+                                                {language === 'en' ? 'View Project →' : 'Ver Proyecto →'}
                                             </span>
                                         </div>
                                         )}

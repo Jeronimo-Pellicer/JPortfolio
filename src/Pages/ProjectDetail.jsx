@@ -3,7 +3,8 @@ import { createPortal } from 'react-dom';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, ExternalLink, ChevronLeft, ChevronRight, X, Target, TrendingUp, Users, BarChart3, Megaphone, Settings, Smartphone, MonitorSpeaker } from 'lucide-react';
-import { LanguageProvider, useLanguage } from '@/Components/portfolio/LanguageContext';
+import { useLanguage } from '@/Components/portfolio/LanguageContext';
+import SEO from '@/Components/shared/SEO';
 import { getProjectDetails } from '../data/projectDetails';
 
 // Section icon mapping
@@ -231,7 +232,7 @@ function ProjectDetailContent() {
     const { t, language } = useLanguage();
     const navigate = useNavigate();
 
-    const details = getProjectDetails(projectId);
+    const details = getProjectDetails(projectId, language);
 
     // Scroll to top on mount
     useEffect(() => {
@@ -266,6 +267,12 @@ function ProjectDetailContent() {
     const allImages = details.sections.flatMap(s => s.images || []);
 
     return (
+        <>
+        <SEO
+            title={`${details.client} - ${details.role} | JP Studio`}
+            description={typeof details.overview === 'string' ? details.overview.substring(0, 160) : ''}
+            url={`/projects/${projectId}`}
+        />
         <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black relative overflow-hidden">
             {/* Animated background */}
             <div className="fixed inset-0 overflow-hidden pointer-events-none opacity-0 md:opacity-100">
@@ -455,13 +462,12 @@ function ProjectDetailContent() {
                 </div>
             </section>
         </div>
+        </>
     );
 }
 
 export default function ProjectDetail() {
     return (
-        <LanguageProvider>
-            <ProjectDetailContent />
-        </LanguageProvider>
+        <ProjectDetailContent />
     );
 }

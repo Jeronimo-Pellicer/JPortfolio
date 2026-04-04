@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { Grid3X3, Plus, X, GripVertical, Zap, Clock, AlertTriangle, Ban, Lightbulb } from 'lucide-react';
 import { useLanguage } from '@/Components/portfolio/LanguageContext';
+import SEO from '@/Components/shared/SEO';
 import ToolPageLayout from '@/Components/shared/ToolPageLayout';
 import { Input } from '@/Components/ui/input';
 import { Button } from '@/Components/ui/button';
@@ -70,7 +71,7 @@ const initialTasks = {
 };
 
 export default function PriorityMatrix() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const quadrants = getQuadrants(t);
   const [tasks, setTasks] = useState(initialTasks);
   const [newTask, setNewTask] = useState('');
@@ -104,6 +105,12 @@ export default function PriorityMatrix() {
   const getQuadrantStats = () => quadrants.map((q) => ({ ...q, count: tasks[q.id].length }));
 
   return (
+    <>
+    <SEO
+      title={`${t.tools.matrix.title} | JP Studio`}
+      description={language === 'en' ? 'Free Prioritization Matrix tool. Organize your tasks by impact and effort to maximize marketing productivity.' : 'Herramienta gratuita de Matriz de Priorización. Organizá tus tareas por impacto y esfuerzo para maximizar la productividad de marketing.'}
+      url="/herramientas/matriz-priorizacion"
+    />
     <ToolPageLayout
       title={t.tools.matrix.title}
       subtitle={t.tools.matrix.description}
@@ -207,6 +214,7 @@ export default function PriorityMatrix() {
         </div>
       </motion.div>
     </ToolPageLayout>
+    </>
   );
 }
 

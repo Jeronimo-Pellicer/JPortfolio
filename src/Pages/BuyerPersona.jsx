@@ -6,6 +6,7 @@ import {
   CheckCircle,
 } from 'lucide-react';
 import { useLanguage } from '@/Components/portfolio/LanguageContext';
+import SEO from '@/Components/shared/SEO';
 import ToolPageLayout from '@/Components/shared/ToolPageLayout';
 import { Input } from '@/Components/ui/input';
 import { Label } from '@/Components/ui/label';
@@ -41,7 +42,7 @@ const channelOptions = [
 ];
 
 export default function BuyerPersona() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [persona, setPersona] = useState(emptyPersona);
   const [activeTab, setActiveTab] = useState('info');
 
@@ -181,6 +182,12 @@ export default function BuyerPersona() {
   };
 
   return (
+    <>
+    <SEO
+      title={`${t.tools.persona.title} | JP Studio`}
+      description={language === 'en' ? 'Free Buyer Persona generator. Create detailed customer profiles to improve your marketing segmentation and messaging.' : 'Generador gratuito de Buyer Persona. Creá perfiles detallados de clientes para mejorar tu segmentación y mensajes de marketing.'}
+      url="/herramientas/buyer-persona"
+    />
     <ToolPageLayout
       title={t.tools.persona.title}
       subtitle={t.tools.persona.description}
@@ -407,6 +414,7 @@ export default function BuyerPersona() {
         </div>
       </motion.div>
     </ToolPageLayout>
+    </>
   );
 }
 

@@ -395,10 +395,10 @@ function LayoutContent({ children, currentPageName }) {
                             <NavDropdown
                                 label={t.nav.tools || 'HERRAMIENTAS'}
                                 items={[
-                                    { label: 'Calculadora de ROI', href: '/herramientas#roi' },
-                                    { label: 'Generador de Buyer Persona', href: '/herramientas#persona' },
-                                    { label: 'Matriz de Priorización', href: '/herramientas#matrix' },
-                                    { label: 'Quiz de Estrategia Digital', href: '/herramientas#quiz' },
+                                    { label: language === 'en' ? 'ROI Calculator' : 'Calculadora de ROI', href: '/herramientas/calculadora-roi' },
+                                    { label: language === 'en' ? 'Buyer Persona Generator' : 'Generador de Buyer Persona', href: '/herramientas/buyer-persona' },
+                                    { label: language === 'en' ? 'Prioritization Matrix' : 'Matriz de Priorización', href: '/herramientas/matriz-priorizacion' },
+                                    { label: language === 'en' ? 'Digital Strategy Quiz' : 'Quiz de Estrategia Digital', href: '/herramientas/quiz-estrategia' },
                                 ]}
                                 onNavigate={() => {
                                     navigate('/herramientas');

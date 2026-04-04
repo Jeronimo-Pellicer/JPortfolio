@@ -3,13 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Brain, Sparkles, Target, Rocket, Lightbulb, CheckCircle2, ArrowRight, RefreshCw, Calendar } from 'lucide-react';
 import { useLanguage } from '@/Components/portfolio/LanguageContext';
+import SEO from '@/Components/shared/SEO';
 import ToolPageLayout from '@/Components/shared/ToolPageLayout';
 import { Button } from '@/Components/ui/button';
 import { Progress } from '@/Components/ui/progress';
 import { createPageUrl } from '@/utils';
 
 export default function StrategyQuiz() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const navigate = useNavigate();
   const questions = t.tools.pages.strategyQuiz.questions;
   const strategyProfiles = t.tools.pages.strategyQuiz.strategyProfiles;
@@ -50,6 +51,12 @@ export default function StrategyQuiz() {
   const currentQuestion = questions[currentStep];
 
   return (
+    <>
+    <SEO
+      title={`${t.tools.pages.strategyQuiz.title} | JP Studio`}
+      description={language === 'en' ? 'Free Digital Strategy Quiz. Discover which marketing strategy best fits your business goals and get personalized recommendations.' : 'Quiz gratuito de Estrategia Digital. Descubrí qué estrategia de marketing se adapta mejor a tus objetivos y recibi recomendaciones personalizadas.'}
+      url="/herramientas/quiz-estrategia"
+    />
     <ToolPageLayout
       title={t.tools.pages.strategyQuiz.title}
       subtitle={t.tools.pages.strategyQuiz.subtitle}
@@ -159,5 +166,6 @@ export default function StrategyQuiz() {
         </AnimatePresence>
       </div>
     </ToolPageLayout>
+    </>
   );
 }

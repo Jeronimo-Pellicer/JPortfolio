@@ -5,6 +5,7 @@ import {
   ArrowUpRight, ArrowDownRight, Info, Lightbulb,
 } from 'lucide-react';
 import { useLanguage } from '@/Components/portfolio/LanguageContext';
+import SEO from '@/Components/shared/SEO';
 import ToolPageLayout from '@/Components/shared/ToolPageLayout';
 import { Slider } from '@/Components/ui/slider';
 import { Input } from '@/Components/ui/input';
@@ -55,6 +56,12 @@ export default function ROICalculator() {
   const insight = getInsight();
 
   return (
+    <>
+    <SEO
+      title={`${t.tools.roi.title} | JP Studio`}
+      description={language === 'en' ? 'Free ROI calculator for digital marketing campaigns. Calculate return on investment, CPA, conversion rate and more.' : 'Calculadora gratuita de ROI para campañas de marketing digital. Calculá retorno de inversión, CPA, tasa de conversión y más.'}
+      url="/herramientas/calculadora-roi"
+    />
     <ToolPageLayout
       title={t.tools.roi.title}
       subtitle={t.tools.roi.subtitle}
@@ -172,6 +179,7 @@ export default function ROICalculator() {
         </div>
       </motion.div>
     </ToolPageLayout>
+    </>
   );
 }
 
